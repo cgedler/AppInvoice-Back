@@ -15,6 +15,8 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <!-- Jackson -->
         <com.fasterxml.jackson.core-version>2.13.5</com.fasterxml.jackson.core-version>
+        <!-- Json Web Token -->
+        <io.jsonwebtoken-version>0.11.5</io.jsonwebtoken-version>
     </properties>
     <!-- Inherit defaults from Spring Boot -->
     <parent>
@@ -27,7 +29,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -39,11 +40,38 @@
 			<scope>test</scope>
 		</dependency>
                 <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-security</artifactId>
+                </dependency>
+                <dependency>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-data-jpa</artifactId>
+                </dependency>
+                <dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
 			<version>${com.fasterxml.jackson.core-version}</version>
 		</dependency>
-                
+                <dependency>
+                    <groupId>io.jsonwebtoken</groupId>
+                    <artifactId>jjwt-api</artifactId>
+                    <version>${io.jsonwebtoken-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.jsonwebtoken</groupId>
+                    <artifactId>jjwt-impl</artifactId>
+                    <version>${io.jsonwebtoken-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>io.jsonwebtoken</groupId>
+                    <artifactId>jjwt-jackson</artifactId>
+                    <version>${io.jsonwebtoken-version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>8.0.30</version>
+		</dependency>
     </dependencies>
     <build>
         <plugins>

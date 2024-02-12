@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="701px" preserveAspectRatio="none" style="width:320px;height:701px;background:#FFFFFF;" version="1.1" viewBox="0 0 320 701" width="320px" zoomAndPan="magnify">
+    <defs/>
+    <g>
+        <!--cluster AppInvoice-->
+        <g id="cluster_AppInvoice">
+            <path d="M60,6 L148,6 A3.75,3.75 0 0 1 150.5,8.5 L157.5,28.2969 L311,28.2969 A2.5,2.5 0 0 1 313.5,30.7969 L313.5,691.5 A2.5,2.5 0 0 1 311,694 L60,694 A2.5,2.5 0 0 1 57.5,691.5 L57.5,8.5 A2.5,2.5 0 0 1 60,6 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="57.5" x2="157.5" y1="28.2969" y2="28.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="87" x="61.5" y="20.9951">AppInvoice</text>
+        </g>
+        <!--cluster AppUsers-->
+        <g id="cluster_AppUsers">
+            <path d="M132,49 L210,49 A3.75,3.75 0 0 1 212.5,51.5 L219.5,71.2969 L239,71.2969 A2.5,2.5 0 0 1 241.5,73.7969 L241.5,127.5 A2.5,2.5 0 0 1 239,130 L132,130 A2.5,2.5 0 0 1 129.5,127.5 L129.5,51.5 A2.5,2.5 0 0 1 132,49 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="129.5" x2="219.5" y1="71.2969" y2="71.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="77" x="133.5" y="63.9951">AppUsers</text>
+        </g>
+        <!--cluster AccountsReceivable(AR)-->
+        <g id="cluster_AccountsReceivable(AR)">
+            <path d="M84,154 L277,154 A3.75,3.75 0 0 1 279.5,156.5 L286.5,176.2969 L287,176.2969 A2.5,2.5 0 0 1 289.5,178.7969 L289.5,426.5 A2.5,2.5 0 0 1 287,429 L84,429 A2.5,2.5 0 0 1 81.5,426.5 L81.5,156.5 A2.5,2.5 0 0 1 84,154 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="81.5" x2="286.5" y1="176.2969" y2="176.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="192" x="85.5" y="168.9951">AccountsReceivable(AR)</text>
+        </g>
+        <!--cluster AccountsPayable(AP)-->
+        <g id="cluster_AccountsPayable(AP)">
+            <path d="M93.5,453 L262.5,453 A3.75,3.75 0 0 1 265,455.5 L272,475.2969 L277.5,475.2969 A2.5,2.5 0 0 1 280,477.7969 L280,667.5 A2.5,2.5 0 0 1 277.5,670 L93.5,670 A2.5,2.5 0 0 1 91,667.5 L91,455.5 A2.5,2.5 0 0 1 93.5,453 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="91" x2="272" y1="475.2969" y2="475.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="168" x="95" y="467.9951">AccountsPayable(AP)</text>
+        </g>
+        <g id="elem_users">
+            <ellipse cx="185.4237" cy="99.0719" fill="#F1F1F1" rx="39.9237" ry="14.5719" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="163.0405" y="102.6655">Users</text>
+        </g>
+        <g id="elem_Sales">
+            <ellipse cx="185.7231" cy="204.0485" fill="#F1F1F1" rx="37.7231" ry="14.5485" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="165.6116" y="207.4312">Sales</text>
+        </g>
+        <g id="elem_bi">
+            <ellipse cx="185.4237" cy="268.0719" fill="#F1F1F1" rx="39.9237" ry="14.5719" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="163.0405" y="271.6655">Billing</text>
+        </g>
+        <g id="elem_cus">
+            <ellipse cx="185.5594" cy="333.2119" fill="#F1F1F1" rx="64.0594" ry="15.2119" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="144.5594" y="336.9594">Customers</text>
+        </g>
+        <g id="elem_sel">
+            <ellipse cx="185.3913" cy="398.1302" fill="#F1F1F1" rx="44.3913" ry="14.6302" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="159.3913" y="401.8777">Sellers</text>
+        </g>
+        <g id="elem_Shopping">
+            <ellipse cx="185.3197" cy="502.7671" fill="#F1F1F1" rx="59.3197" ry="14.7671" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="149.3197" y="506.5147">Shopping</text>
+        </g>
+        <g id="elem_supl">
+            <ellipse cx="185.3265" cy="567.7566" fill="#F1F1F1" rx="57.8265" ry="14.7566" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="150.3265" y="571.5041">Suppliers</text>
+        </g>
+        <g id="elem_shop">
+            <ellipse cx="185.5591" cy="636.1118" fill="#F1F1F1" rx="78.5591" ry="18.1118" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="125.8328" y="639.6525">Shopping record</text>
+        </g>
+        <!--entity user-->
+        <g id="elem_user">
+            <ellipse cx="22" cy="336.5" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/>
+            <path d="M22,344.5 L22,371.5 M9,352.5 L35,352.5 M22,371.5 L9,386.5 M22,371.5 L35,386.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="6" y="400.9951">User</text>
+        </g>
+        <!--link user to users-->
+        <g id="link_user_users">
+            <path d="M24.24,327.58 C26.5,278.61 32.72,197.38 49.5,173 C73.9,137.56 115.2922,119.2385 146.8922,109.1885 " fill="none" id="user-to-users" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="152.61,107.37,142.821,106.2859,147.8452,108.8854,145.2456,113.9096,152.61,107.37" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link user to bi-->
+        <g id="link_user_bi">
+            <path d="M31.35,327.88 C35.3,317.56 41.08,307.25 49.5,300 C75.97,277.21 109.7736,270.3733 139.3136,268.3833 " fill="none" id="user-to-bi" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="145.3,267.98,136.0515,264.594,140.3113,268.3161,136.5892,272.5759,145.3,267.98" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link user to cus-->
+        <g id="link_user_cus">
+            <path d="M38.19,362.9 C60.49,358.34 97.1916,350.842 130.6916,343.992 " fill="none" id="user-to-cus" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="136.57,342.79,126.9511,340.6741,131.6714,343.7917,128.5538,348.5119,136.57,342.79" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link user to sel-->
+        <g id="link_user_sel">
+            <path d="M38.19,369.01 C62.93,373.91 106.7245,382.5835 141.2845,389.4335 " fill="none" id="user-to-sel" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="147.17,390.6,139.1194,384.9265,142.2654,389.6279,137.564,392.7739,147.17,390.6" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link user to supl-->
+        <g id="link_user_supl">
+            <path d="M24.18,404.11 C26.34,447.99 32.42,516.41 49.5,535 C69.09,556.32 94.0183,564.2228 121.3083,567.3228 " fill="none" id="user-to-supl" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="127.27,568,118.779,563.0097,122.302,567.4357,117.876,570.9586,127.27,568" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link user to shop-->
+        <g id="link_user_shop">
+            <path d="M22.28,404.36 C21.99,463.09 24.94,571.51 49.5,600 C64.47,617.36 80.9272,625.4892 103.1272,630.4992 " fill="none" id="user-to-shop" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="108.98,631.82,101.0813,625.9369,104.1027,630.7193,99.3202,633.7406,108.98,631.82" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--SRC=[PL113W8X3BppYiQJU_0B9kh9cz7u0AnrRQmBeM1YpFvT43UOU85sfZCTi1XTWADI0AkGycs4BX6YWy3zDSAP0s5aDnXlyMPxWfNts-7X60bUvXSjBfgn-QVe9aCrvOJ5OlbjnoP2T6c8kYSaVjYJq7orxuh5mGffLvHebM2sPX4U-banFN73DqcZksVN3uD96tKWaObGafQYwclzLTIcJ8tcBztEFckqNOrsTTxdB1taEdalFBrMavV6G_uu5ywLoTZFdZBNkiBbjUCR]-->
+    </g>
+</svg>
