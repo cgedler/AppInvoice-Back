@@ -14,7 +14,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 
 public class TokenUtils {
     
-    private static final String ACCESS_TOKEN_SECRET_KEY = "586E3272357538782F413F4428472B4B6250655368566B597033733676397924";
+    private static final String ACCESS_TOKEN_SECRET_KEY = "";
     private static final long ACCESS_TOKEN_VALIDITY_SECONDS = 2_592_000L;
     
     public static String createToken(String name, String email) {
