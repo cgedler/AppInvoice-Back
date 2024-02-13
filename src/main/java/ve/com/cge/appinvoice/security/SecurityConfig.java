@@ -3,6 +3,8 @@ package ve.com.cge.appinvoice.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Role;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -32,6 +34,10 @@ public class SecurityConfig {
         return http
                 .csrf().disable()
                 .authorizeRequests()
+                //.antMatchers("/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/hello/publico/**").permitAll()
+                //.antMatchers(HttpMethod.POST, "/hello/publico").permitAll()
+                //.antMatchers("/hello/privado/**").hasRole(Role.USER_ADMIN)
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -56,6 +62,5 @@ public class SecurityConfig {
                 .and()
                 .build();
     }
-    
     
 }

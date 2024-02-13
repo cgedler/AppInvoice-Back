@@ -18,5 +18,15 @@ public class HelloRestController {
     public String helloAdmin() {
         return "Hello Admin";
     }
+    
+    @GetMapping("publico")
+    public String helloPublico() {
+        return "Publico";
+    }
+    
+    @GetMapping("privado")
+    public String helloPrivado() {
+        return "Acceso privado";
+    }
 
 }
