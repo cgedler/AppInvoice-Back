@@ -17,6 +17,8 @@
         <com.fasterxml.jackson.core-version>2.13.5</com.fasterxml.jackson.core-version>
         <!-- Json Web Token -->
         <io.jsonwebtoken-version>0.11.5</io.jsonwebtoken-version>
+        <!-- Lombok -->
+        <org.projectlombok-version>1.18.20</org.projectlombok-version>
     </properties>
     <!-- Inherit defaults from Spring Boot -->
     <parent>
@@ -72,6 +74,12 @@
                     <artifactId>mysql-connector-java</artifactId>
                     <version>8.0.30</version>
 		</dependency>
+                <dependency>
+                    <groupId>org.projectlombok</groupId>
+                    <artifactId>lombok</artifactId>
+                    <version>${org.projectlombok-version}</version>
+                    <scope>provided</scope>
+                </dependency>
     </dependencies>
     <build>
         <plugins>
