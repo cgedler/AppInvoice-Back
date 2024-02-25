@@ -1,10 +1,17 @@
 
-package ve.com.cge.appinvoice.auth;
+package ve.com.cge.appinvoice.config.security.dto;
 
-
+/**
+ * LoginRequest 
+ * 
+ * @author Christopher Gedler <cgedler@gmail.com>
+ * @version 1.0
+ * @since Feb 24, 2024
+ */
 public class LoginRequest {
-    String username;
-    String password;
+    
+    private String username;
+    private String password;
 
     public LoginRequest() {
     }
@@ -29,5 +36,4 @@ public class LoginRequest {
     public void setPassword(String password) {
         this.password = password;
     }
-    
 }

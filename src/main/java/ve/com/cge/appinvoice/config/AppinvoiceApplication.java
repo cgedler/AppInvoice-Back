@@ -1,5 +1,5 @@
 
-package ve.com.cge.appinvoice;
+package ve.com.cge.appinvoice.config;
 
 
 import org.springframework.boot.SpringApplication;

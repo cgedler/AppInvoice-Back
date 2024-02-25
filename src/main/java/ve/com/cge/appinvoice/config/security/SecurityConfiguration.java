@@ -1,43 +1,50 @@
 
-package ve.com.cge.appinvoice.config;
+package ve.com.cge.appinvoice.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import ve.com.cge.appinvoice.jwt.JwtAuthenticationFilter;
+import ve.com.cge.appinvoice.config.security.jwt.JwtAuthenticationFilter;
 
-
+/**
+ * SecurityConfiguration this class build the Beans for the security
+ * 
+ * @author Christopher Gedler <cgedler@gmail.com>
+ * @version 1.0
+ * @since Feb 15, 2024
+ */
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig {
-    
+public class SecurityConfiguration {
+        
+  
+    private final AuthenticationProvider authenticationProvider;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
-    private final AuthenticationProvider authProvider;
 
-    public SecurityConfig(JwtAuthenticationFilter jwtAuthenticationFilter, AuthenticationProvider authProvider) {
+    public SecurityConfiguration(AuthenticationProvider authenticationProvider, JwtAuthenticationFilter jwtAuthenticationFilter) {
+        this.authenticationProvider = authenticationProvider;
         this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-        this.authProvider = authProvider;
     }
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+        
         return http
-                .cors()
-                .and()
                 .csrf().disable()
-                .authorizeHttpRequests()
-                .antMatchers("/auth/**").permitAll()
-                .anyRequest().authenticated()
+                .authorizeHttpRequests().antMatchers(HttpMethod.POST, "/auth/**").permitAll()
                 .and()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .authenticationProvider(authProvider)
+                .authorizeHttpRequests().anyRequest().authenticated()
+                .and().formLogin()
+                .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and().authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
-                .build();        
+                .build();
     }
+   
 }

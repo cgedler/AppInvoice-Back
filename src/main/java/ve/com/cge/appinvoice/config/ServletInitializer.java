@@ -1,4 +1,5 @@
-package ve.com.cge.appinvoice;
+
+package ve.com.cge.appinvoice.config;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;

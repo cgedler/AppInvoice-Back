@@ -1,5 +1,5 @@
 
-package ve.com.cge.appinvoice.config;
+package ve.com.cge.appinvoice.config.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,15 +11,21 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import ve.com.cge.appinvoice.user.UserRepository;
+import ve.com.cge.appinvoice.config.user.IUserRepository;
 
-
+/**
+ * ApplicationConfiguration 
+ * 
+ * @author Christopher Gedler <cgedler@gmail.com>
+ * @version 1.0
+ * @since Feb 24, 2024
+ */
 @Configuration
-public class ApplicationConfig {
-    
-    private final UserRepository userRepository;
+public class ApplicationConfiguration {
 
-    public ApplicationConfig(UserRepository userRepository) {
+    private final IUserRepository userRepository;
+    
+    public ApplicationConfiguration(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
     
@@ -46,5 +52,4 @@ public class ApplicationConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-    
 }
