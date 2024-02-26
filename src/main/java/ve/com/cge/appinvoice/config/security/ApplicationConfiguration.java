@@ -1,6 +1,7 @@
 
 package ve.com.cge.appinvoice.config.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,6 +24,7 @@ import ve.com.cge.appinvoice.config.user.IUserRepository;
 @Configuration
 public class ApplicationConfiguration {
 
+    @Autowired
     private final IUserRepository userRepository;
     
     public ApplicationConfiguration(IUserRepository userRepository) {

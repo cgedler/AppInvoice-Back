@@ -1,6 +1,7 @@
 
 package ve.com.cge.appinvoice.config.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -22,9 +23,11 @@ import ve.com.cge.appinvoice.config.security.jwt.JwtAuthenticationFilter;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfiguration {
-        
-  
+    
+    @Autowired    
     private final AuthenticationProvider authenticationProvider;
+    
+    @Autowired
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     public SecurityConfiguration(AuthenticationProvider authenticationProvider, JwtAuthenticationFilter jwtAuthenticationFilter) {
@@ -38,6 +41,8 @@ public class SecurityConfiguration {
         return http
                 .csrf().disable()
                 .authorizeHttpRequests().antMatchers(HttpMethod.POST, "/auth/**").permitAll()
+                .and()
+                .authorizeHttpRequests().antMatchers("/hello/user/**").hasRole("USER")
                 .and()
                 .authorizeHttpRequests().anyRequest().authenticated()
                 .and().formLogin()

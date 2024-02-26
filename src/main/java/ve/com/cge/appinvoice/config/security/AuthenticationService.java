@@ -1,6 +1,7 @@
 
 package ve.com.cge.appinvoice.config.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -25,9 +26,16 @@ import ve.com.cge.appinvoice.config.user.User;
 @Service
 public class AuthenticationService {
     
+    @Autowired
     private final IUserRepository userRepository;
+    
+    @Autowired
     private final PasswordEncoder passwordEncoder;
+    
+    @Autowired
     private final JwtService jwtService;
+    
+    @Autowired
     private final AuthenticationManager authenticationManager;
     
     public AuthenticationService(IUserRepository userRepository, JwtService jwtService, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {

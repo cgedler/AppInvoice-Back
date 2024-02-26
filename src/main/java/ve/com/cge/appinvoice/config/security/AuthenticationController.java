@@ -1,6 +1,7 @@
 
 package ve.com.cge.appinvoice.config.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,6 +22,7 @@ import ve.com.cge.appinvoice.config.security.dto.RegisterRequest;
 @RequestMapping("/auth")
 public class AuthenticationController {
     
+    @Autowired
     private final AuthenticationService authenticationService;
 
     public AuthenticationController(AuthenticationService authenticationService) {
@@ -30,12 +32,10 @@ public class AuthenticationController {
     @PostMapping(value = "login")
     public ResponseEntity<AuthenticationResponse> login(@RequestBody LoginRequest request) {
         return ResponseEntity.ok(authenticationService.login(request));
-        //return ResponseEntity.ok(new AuthenticationResponse());
     }
     
     @PostMapping(value = "register")
     public ResponseEntity<AuthenticationResponse> register(@RequestBody RegisterRequest request) {
-        //return ResponseEntity.ok(new AuthenticationResponse());
         return ResponseEntity.ok(authenticationService.register(request));
     }
     

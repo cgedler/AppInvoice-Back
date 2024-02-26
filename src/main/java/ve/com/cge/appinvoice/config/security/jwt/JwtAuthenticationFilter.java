@@ -1,11 +1,14 @@
 
 package ve.com.cge.appinvoice.config.security.jwt;
 
+import io.jsonwebtoken.ExpiredJwtException;
 import java.io.IOException;
+import java.util.logging.Logger;
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -28,8 +31,14 @@ import org.springframework.web.filter.OncePerRequestFilter;
  */
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
+    
+    // debug
+    private Logger myLogger=Logger.getLogger(getClass().getName());
 
+    @Autowired
     private final JwtService jwtService;
+    
+    @Autowired
     private final UserDetailsService userDetailsService;
     
     public JwtAuthenticationFilter(JwtService jwtService, UserDetailsService userDetailsService) {
@@ -47,21 +56,28 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             return;
         }
         
-        username = jwtService.getUsernameFromToken(token);
-        
-        if (username!=null && SecurityContextHolder.getContext().getAuthentication()==null) {
-            UserDetails userDetails = userDetailsService.loadUserByUsername(username);
-            
-            if (jwtService.isTokenValid(token, userDetails)) {
-                UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                        userDetails, 
-                        null, 
-                        userDetails.getAuthorities());
-                authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
-                SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+        try {
+            username = jwtService.getUsernameFromToken(token);
+            if (username!=null && SecurityContextHolder.getContext().getAuthentication()==null) {
+                UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+                if (jwtService.isTokenValid(token, userDetails)) {
+                    UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
+                            userDetails, 
+                            null, 
+                            userDetails.getAuthorities());
+                    authenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
+                    SecurityContextHolder.getContext().setAuthentication(authenticationToken);
+                } 
             }
+        } catch (IllegalArgumentException e) {
+            myLogger.warning("Unable to fetch JWT Token");
+        } catch (ExpiredJwtException e) {
+            myLogger.warning("JWT Token is expired");
+        } catch (Exception e) {
+            myLogger.warning(e.getMessage());
         }
         
+         
         filterChain.doFilter(request, response); // Call filter to continue
     }
     
