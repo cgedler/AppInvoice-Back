@@ -14,7 +14,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import ve.com.cge.appinvoice.config.security.jwt.JwtAuthenticationFilter;
 
 /**
- * SecurityConfiguration this class build the Beans for the security
+ * SecurityConfiguration : configure the security filters
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0
@@ -24,10 +24,7 @@ import ve.com.cge.appinvoice.config.security.jwt.JwtAuthenticationFilter;
 @EnableWebSecurity
 public class SecurityConfiguration {
     
-    @Autowired    
     private final AuthenticationProvider authenticationProvider;
-    
-    @Autowired
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
     public SecurityConfiguration(AuthenticationProvider authenticationProvider, JwtAuthenticationFilter jwtAuthenticationFilter) {
@@ -37,15 +34,15 @@ public class SecurityConfiguration {
     
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        
+         
         return http
                 .csrf().disable()
                 .authorizeHttpRequests().antMatchers(HttpMethod.POST, "/auth/**").permitAll()
                 .and()
-                .authorizeHttpRequests().antMatchers("/hello/user/**").hasRole("USER")
+                .authorizeHttpRequests().antMatchers("/hello/user/**").hasAuthority("USER")
                 .and()
                 .authorizeHttpRequests().anyRequest().authenticated()
-                .and().formLogin()
+                //.and().formLogin()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and().authenticationProvider(authenticationProvider)
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

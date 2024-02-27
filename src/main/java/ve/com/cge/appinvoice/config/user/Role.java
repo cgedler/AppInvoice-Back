@@ -2,7 +2,7 @@
 package ve.com.cge.appinvoice.config.user;
 
 /**
- * Role 
+ * Role : roles of the user
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0

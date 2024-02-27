@@ -15,7 +15,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import ve.com.cge.appinvoice.config.user.IUserRepository;
 
 /**
- * ApplicationConfiguration 
+ * ApplicationConfiguration : Build basic Beans
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0
@@ -24,7 +24,6 @@ import ve.com.cge.appinvoice.config.user.IUserRepository;
 @Configuration
 public class ApplicationConfiguration {
 
-    @Autowired
     private final IUserRepository userRepository;
     
     public ApplicationConfiguration(IUserRepository userRepository) {

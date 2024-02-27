@@ -13,9 +13,10 @@ import java.util.logging.Logger;
 import javax.crypto.SecretKey;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import ve.com.cge.appinvoice.config.user.User;
 
 /**
- * JwtService 
+ * JwtService : JWT token methods
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0
@@ -24,19 +25,17 @@ import org.springframework.stereotype.Service;
 @Service
 public class JwtService {
     
-    // debug
-    private Logger myLogger=Logger.getLogger(getClass().getName());
-    
     private static final String SECRET_KEY = "586E3272357538782F413F4428472B4B6250655368566B597033733676397924";
     
-    public String getToken(UserDetails user) {
+    public String getToken(User user) {
         return getToken(new HashMap<>(), user);
     }
     
-    private String getToken(Map<String, Object> extraClaims, UserDetails user) {
+    private String getToken(Map<String, Object> extraClaims, User user) {
         return Jwts
                 .builder()
                 .claims(extraClaims)
+                .claim("roles", user.getRole())
                 .subject(user.getUsername())
                 .issuedAt(new Date(System.currentTimeMillis()))
                 .expiration(new Date(System.currentTimeMillis() + 1000*60*60*24))

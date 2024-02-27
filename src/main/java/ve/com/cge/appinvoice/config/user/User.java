@@ -16,6 +16,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+/**
+ * User : User model entity implements UserDetails 
+ * 
+ * @author Christopher Gedler <cgedler@gmail.com>
+ * @version 1.0
+ * @since Feb 15, 2024
+ */
 @Entity
 @Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User implements UserDetails {

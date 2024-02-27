@@ -26,16 +26,9 @@ import ve.com.cge.appinvoice.config.user.User;
 @Service
 public class AuthenticationService {
     
-    @Autowired
     private final IUserRepository userRepository;
-    
-    @Autowired
     private final PasswordEncoder passwordEncoder;
-    
-    @Autowired
     private final JwtService jwtService;
-    
-    @Autowired
     private final AuthenticationManager authenticationManager;
     
     public AuthenticationService(IUserRepository userRepository, JwtService jwtService, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager) {
@@ -47,7 +40,7 @@ public class AuthenticationService {
  
     public AuthenticationResponse login(LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-        UserDetails user = userRepository
+        User user = userRepository
                 .findByUsername(request.getUsername())
                 .orElseThrow(() -> new UsernameNotFoundException("The user no exist"));
         String token = jwtService.getToken(user);

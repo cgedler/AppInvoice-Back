@@ -2,7 +2,7 @@
 package ve.com.cge.appinvoice.config.security.dto;
 
 /**
- * LoginRequest 
+ * LoginRequest : DTO for login request
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0

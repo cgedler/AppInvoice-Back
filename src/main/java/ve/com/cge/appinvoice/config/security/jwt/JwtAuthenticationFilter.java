@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -32,13 +33,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @Component
 public class JwtAuthenticationFilter extends OncePerRequestFilter {
     
-    // debug
     private Logger myLogger=Logger.getLogger(getClass().getName());
 
-    @Autowired
     private final JwtService jwtService;
-    
-    @Autowired
     private final UserDetailsService userDetailsService;
     
     public JwtAuthenticationFilter(JwtService jwtService, UserDetailsService userDetailsService) {
@@ -74,7 +71,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         } catch (ExpiredJwtException e) {
             myLogger.warning("JWT Token is expired");
         } catch (Exception e) {
-            myLogger.warning(e.getMessage());
+            myLogger.warning("Exception : " + e.getMessage());
         }
         
          

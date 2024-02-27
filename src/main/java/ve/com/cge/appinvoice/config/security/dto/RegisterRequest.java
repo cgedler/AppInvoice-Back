@@ -4,7 +4,7 @@ package ve.com.cge.appinvoice.config.security.dto;
 import ve.com.cge.appinvoice.config.user.Role;
 
 /**
- * RegisterRequest 
+ * RegisterRequest : DTO for register request
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0

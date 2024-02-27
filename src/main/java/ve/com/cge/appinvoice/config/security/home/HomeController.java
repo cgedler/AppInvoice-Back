@@ -1,15 +1,14 @@
 
-package ve.com.cge.appinvoice.demo;
+package ve.com.cge.appinvoice.config.security.home;
 
 import java.util.logging.Logger;
 import javax.annotation.security.RolesAllowed;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ve.com.cge.appinvoice.config.user.Role;
 
 /**
- * HomeController 
+ * HomeController : Test roles controller 
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0
@@ -19,12 +18,9 @@ import ve.com.cge.appinvoice.config.user.Role;
 @RequestMapping("hello")
 public class HomeController {
     
-    private Logger myLogger=Logger.getLogger(getClass().getName());
-    
     @RolesAllowed("USER")
     @GetMapping("user")
     public String helloUser() {
-        myLogger.info("metodo GET hello/user");
         return "Hello User";
     }
 

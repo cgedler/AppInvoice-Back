@@ -2,7 +2,7 @@
 package ve.com.cge.appinvoice.config.security.dto;
 
 /**
- * AuthenticationResponse 
+ * AuthenticationResponse : DTO for responses
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0

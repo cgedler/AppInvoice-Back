@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 /**
- * IUserRepository 
+ * IUserRepository : 
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0
