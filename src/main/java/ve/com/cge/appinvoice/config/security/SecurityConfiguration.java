@@ -1,7 +1,6 @@
 
 package ve.com.cge.appinvoice.config.security;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
@@ -38,6 +37,10 @@ public class SecurityConfiguration {
         return http
                 .csrf().disable()
                 .authorizeHttpRequests().antMatchers(HttpMethod.POST, "/auth/**").permitAll()
+                .and()
+                .authorizeHttpRequests().antMatchers(HttpMethod.GET).permitAll()
+                .and()
+                .authorizeHttpRequests().antMatchers(HttpMethod.OPTIONS).permitAll()
                 .and()
                 .authorizeHttpRequests().antMatchers("/hello/user/**").hasAuthority("USER")
                 .and()
