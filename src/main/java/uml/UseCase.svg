@@ -1,98 +1,176 @@
-<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="701px" preserveAspectRatio="none" style="width:320px;height:701px;background:#FFFFFF;" version="1.1" viewBox="0 0 320 701" width="320px" zoomAndPan="magnify">
+<?xml version="1.0" encoding="UTF-8"?><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" height="1116px" preserveAspectRatio="none" style="width:529px;height:1116px;background:#FFFFFF;" version="1.1" viewBox="0 0 529 1116" width="529px" zoomAndPan="magnify">
     <defs/>
     <g>
         <!--cluster AppInvoice-->
         <g id="cluster_AppInvoice">
-            <path d="M60,6 L148,6 A3.75,3.75 0 0 1 150.5,8.5 L157.5,28.2969 L311,28.2969 A2.5,2.5 0 0 1 313.5,30.7969 L313.5,691.5 A2.5,2.5 0 0 1 311,694 L60,694 A2.5,2.5 0 0 1 57.5,691.5 L57.5,8.5 A2.5,2.5 0 0 1 60,6 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
-            <line style="stroke:#000000;stroke-width:1.5;" x1="57.5" x2="157.5" y1="28.2969" y2="28.2969"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="87" x="61.5" y="20.9951">AppInvoice</text>
+            <path d="M56.5,6 L144.5,6 A3.75,3.75 0 0 1 147,8.5 L154,28.2969 L519.5,28.2969 A2.5,2.5 0 0 1 522,30.7969 L522,1106.5 A2.5,2.5 0 0 1 519.5,1109 L56.5,1109 A2.5,2.5 0 0 1 54,1106.5 L54,8.5 A2.5,2.5 0 0 1 56.5,6 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="54" x2="154" y1="28.2969" y2="28.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="87" x="58" y="20.9951">AppInvoice</text>
         </g>
-        <!--cluster AppUsers-->
-        <g id="cluster_AppUsers">
-            <path d="M132,49 L210,49 A3.75,3.75 0 0 1 212.5,51.5 L219.5,71.2969 L239,71.2969 A2.5,2.5 0 0 1 241.5,73.7969 L241.5,127.5 A2.5,2.5 0 0 1 239,130 L132,130 A2.5,2.5 0 0 1 129.5,127.5 L129.5,51.5 A2.5,2.5 0 0 1 132,49 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
-            <line style="stroke:#000000;stroke-width:1.5;" x1="129.5" x2="219.5" y1="71.2969" y2="71.2969"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="77" x="133.5" y="63.9951">AppUsers</text>
+        <!--cluster ManageUsers-->
+        <g id="cluster_ManageUsers">
+            <path d="M108.5,49 L216.5,49 A3.75,3.75 0 0 1 219,51.5 L226,71.2969 L268.5,71.2969 A2.5,2.5 0 0 1 271,73.7969 L271,193.5 A2.5,2.5 0 0 1 268.5,196 L108.5,196 A2.5,2.5 0 0 1 106,193.5 L106,51.5 A2.5,2.5 0 0 1 108.5,49 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="106" x2="226" y1="71.2969" y2="71.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="107" x="110" y="63.9951">ManageUsers</text>
         </g>
-        <!--cluster AccountsReceivable(AR)-->
-        <g id="cluster_AccountsReceivable(AR)">
-            <path d="M84,154 L277,154 A3.75,3.75 0 0 1 279.5,156.5 L286.5,176.2969 L287,176.2969 A2.5,2.5 0 0 1 289.5,178.7969 L289.5,426.5 A2.5,2.5 0 0 1 287,429 L84,429 A2.5,2.5 0 0 1 81.5,426.5 L81.5,156.5 A2.5,2.5 0 0 1 84,154 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
-            <line style="stroke:#000000;stroke-width:1.5;" x1="81.5" x2="286.5" y1="176.2969" y2="176.2969"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="192" x="85.5" y="168.9951">AccountsReceivable(AR)</text>
+        <!--cluster Inventory-->
+        <g id="cluster_Inventory">
+            <path d="M128.5,228 L204.5,228 A3.75,3.75 0 0 1 207,230.5 L214,250.2969 L248.5,250.2969 A2.5,2.5 0 0 1 251,252.7969 L251,341.5 A2.5,2.5 0 0 1 248.5,344 L128.5,344 A2.5,2.5 0 0 1 126,341.5 L126,230.5 A2.5,2.5 0 0 1 128.5,228 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="126" x2="214" y1="250.2969" y2="250.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="75" x="130" y="242.9951">Inventory</text>
         </g>
-        <!--cluster AccountsPayable(AP)-->
-        <g id="cluster_AccountsPayable(AP)">
-            <path d="M93.5,453 L262.5,453 A3.75,3.75 0 0 1 265,455.5 L272,475.2969 L277.5,475.2969 A2.5,2.5 0 0 1 280,477.7969 L280,667.5 A2.5,2.5 0 0 1 277.5,670 L93.5,670 A2.5,2.5 0 0 1 91,667.5 L91,455.5 A2.5,2.5 0 0 1 93.5,453 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
-            <line style="stroke:#000000;stroke-width:1.5;" x1="91" x2="272" y1="475.2969" y2="475.2969"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="168" x="95" y="467.9951">AccountsPayable(AP)</text>
+        <!--cluster AccountsReceivable-->
+        <g id="cluster_AccountsReceivable">
+            <path d="M103,384 L263,384 A3.75,3.75 0 0 1 265.5,386.5 L272.5,406.2969 L274,406.2969 A2.5,2.5 0 0 1 276.5,408.7969 L276.5,627.5 A2.5,2.5 0 0 1 274,630 L103,630 A2.5,2.5 0 0 1 100.5,627.5 L100.5,386.5 A2.5,2.5 0 0 1 103,384 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="100.5" x2="272.5" y1="406.2969" y2="406.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="159" x="104.5" y="398.9951">AccountsReceivable</text>
         </g>
-        <g id="elem_users">
-            <ellipse cx="185.4237" cy="99.0719" fill="#F1F1F1" rx="39.9237" ry="14.5719" style="stroke:#181818;stroke-width:0.5;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="163.0405" y="102.6655">Users</text>
+        <!--cluster AccountsPayable-->
+        <g id="cluster_AccountsPayable">
+            <path d="M88.5,670 L224.5,670 A3.75,3.75 0 0 1 227,672.5 L234,692.2969 L288.5,692.2969 A2.5,2.5 0 0 1 291,694.7969 L291,854.5 A2.5,2.5 0 0 1 288.5,857 L88.5,857 A2.5,2.5 0 0 1 86,854.5 L86,672.5 A2.5,2.5 0 0 1 88.5,670 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="86" x2="234" y1="692.2969" y2="692.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="135" x="90" y="684.9951">AccountsPayable</text>
         </g>
-        <g id="elem_Sales">
-            <ellipse cx="185.7231" cy="204.0485" fill="#F1F1F1" rx="37.7231" ry="14.5485" style="stroke:#181818;stroke-width:0.5;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="165.6116" y="207.4312">Sales</text>
+        <!--cluster Finance-->
+        <g id="cluster_Finance">
+            <path d="M126.5,897 L188.5,897 A3.75,3.75 0 0 1 191,899.5 L198,919.2969 L250.5,919.2969 A2.5,2.5 0 0 1 253,921.7969 L253,1074.5 A2.5,2.5 0 0 1 250.5,1077 L126.5,1077 A2.5,2.5 0 0 1 124,1074.5 L124,899.5 A2.5,2.5 0 0 1 126.5,897 " fill="none" style="stroke:#000000;stroke-width:1.5;"/>
+            <line style="stroke:#000000;stroke-width:1.5;" x1="124" x2="198" y1="919.2969" y2="919.2969"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" font-weight="bold" lengthAdjust="spacing" textLength="61" x="128" y="911.9951">Finance</text>
+        </g>
+        <g id="elem_GMN12">
+            <path d="M383.5,323.5 L383.5,348.6328 L449.5,348.6328 L449.5,333.5 L439.5,323.5 L383.5,323.5 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/>
+            <path d="M439.5,323.5 L439.5,333.5 L449.5,333.5 L439.5,323.5 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="45" x="389.5" y="340.5669">- Stock</text>
+        </g>
+        <g id="elem_GMN22">
+            <path d="M327,602 L327,642.2656 L506,642.2656 L506,612 L496,602 L327,602 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/>
+            <path d="M496,602 L496,612 L506,612 L496,602 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="158" x="333" y="619.0669">AccountsReceivable (AR)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="44" x="333" y="634.1997">- Sales</text>
+        </g>
+        <g id="elem_GMN30">
+            <path d="M336,829 L336,869.2656 L497,869.2656 L497,839 L487,829 L336,829 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/>
+            <path d="M487,829 L487,839 L497,839 L487,829 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="140" x="342" y="846.0669">AccountsPayable (AP)</text>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="69" x="342" y="861.1997">- Shopping</text>
+        </g>
+        <g id="elem_GMN38">
+            <path d="M370.5,1056.5 L370.5,1081.6328 L462.5,1081.6328 L462.5,1066.5 L452.5,1056.5 L370.5,1056.5 " fill="#FEFFDD" style="stroke:#181818;stroke-width:0.5;"/>
+            <path d="M452.5,1056.5 L452.5,1066.5 L462.5,1066.5 L452.5,1056.5 " fill="#FEFFDD" style="stroke:#181818;stroke-width:1.0;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="71" x="376.5" y="1073.5669">Accounting</text>
+        </g>
+        <g id="elem_register">
+            <ellipse cx="188.4626" cy="100.1925" fill="#F1F1F1" rx="66.4626" ry="15.6925" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="83" x="143.9626" y="103.9401">Registration</text>
+        </g>
+        <g id="elem_login">
+            <ellipse cx="188.7231" cy="165.0485" fill="#F1F1F1" rx="37.7231" ry="14.5485" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="37" x="168.6116" y="168.4312">Login</text>
+        </g>
+        <g id="elem_items">
+            <ellipse cx="188.4534" cy="286.0556" fill="#F1F1F1" rx="38.4534" ry="14.5556" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="38" x="167.5903" y="289.5095">Items</text>
         </g>
         <g id="elem_bi">
-            <ellipse cx="185.4237" cy="268.0719" fill="#F1F1F1" rx="39.9237" ry="14.5719" style="stroke:#181818;stroke-width:0.5;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="163.0405" y="271.6655">Billing</text>
+            <ellipse cx="188.4237" cy="442.0719" fill="#F1F1F1" rx="39.9237" ry="14.5719" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="40" x="166.0405" y="445.6655">Billing</text>
         </g>
         <g id="elem_cus">
-            <ellipse cx="185.5594" cy="333.2119" fill="#F1F1F1" rx="64.0594" ry="15.2119" style="stroke:#181818;stroke-width:0.5;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="144.5594" y="336.9594">Customers</text>
+            <ellipse cx="188.5594" cy="507.2119" fill="#F1F1F1" rx="64.0594" ry="15.2119" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="76" x="147.5594" y="510.9594">Customers</text>
         </g>
         <g id="elem_sel">
-            <ellipse cx="185.3913" cy="398.1302" fill="#F1F1F1" rx="44.3913" ry="14.6302" style="stroke:#181818;stroke-width:0.5;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="159.3913" y="401.8777">Sellers</text>
-        </g>
-        <g id="elem_Shopping">
-            <ellipse cx="185.3197" cy="502.7671" fill="#F1F1F1" rx="59.3197" ry="14.7671" style="stroke:#181818;stroke-width:0.5;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="66" x="149.3197" y="506.5147">Shopping</text>
+            <ellipse cx="188.3913" cy="572.1302" fill="#F1F1F1" rx="44.3913" ry="14.6302" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="46" x="162.3913" y="575.8777">Sellers</text>
         </g>
         <g id="elem_supl">
-            <ellipse cx="185.3265" cy="567.7566" fill="#F1F1F1" rx="57.8265" ry="14.7566" style="stroke:#181818;stroke-width:0.5;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="150.3265" y="571.5041">Suppliers</text>
+            <ellipse cx="188.3265" cy="727.7566" fill="#F1F1F1" rx="57.8265" ry="14.7566" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="64" x="153.3265" y="731.5041">Suppliers</text>
         </g>
         <g id="elem_shop">
-            <ellipse cx="185.5591" cy="636.1118" fill="#F1F1F1" rx="78.5591" ry="18.1118" style="stroke:#181818;stroke-width:0.5;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="125.8328" y="639.6525">Shopping record</text>
+            <ellipse cx="188.5591" cy="796.1118" fill="#F1F1F1" rx="78.5591" ry="18.1118" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="115" x="128.8328" y="799.6525">Shopping record</text>
+        </g>
+        <g id="elem_bank">
+            <ellipse cx="188.2722" cy="955.0369" fill="#F1F1F1" rx="36.2722" ry="14.5369" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="35" x="169.6457" y="958.2741">Bank</text>
+        </g>
+        <g id="elem_taxes">
+            <ellipse cx="188.6638" cy="1019.0812" fill="#F1F1F1" rx="40.6638" ry="14.5812" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="41" x="165.5122" y="1022.7432">Taxes</text>
         </g>
         <!--entity user-->
         <g id="elem_user">
-            <ellipse cx="22" cy="336.5" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/>
-            <path d="M22,344.5 L22,371.5 M9,352.5 L35,352.5 M22,371.5 L9,386.5 M22,371.5 L35,386.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/>
-            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="6" y="400.9951">User</text>
+            <ellipse cx="22" cy="510.5" fill="#F1F1F1" rx="8" ry="8" style="stroke:#181818;stroke-width:0.5;"/>
+            <path d="M22,518.5 L22,545.5 M9,526.5 L35,526.5 M22,545.5 L9,560.5 M22,545.5 L35,560.5 " fill="none" style="stroke:#181818;stroke-width:0.5;"/>
+            <text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="32" x="6" y="574.9951">User</text>
         </g>
-        <!--link user to users-->
-        <g id="link_user_users">
-            <path d="M24.24,327.58 C26.5,278.61 32.72,197.38 49.5,173 C73.9,137.56 115.2922,119.2385 146.8922,109.1885 " fill="none" id="user-to-users" style="stroke:#181818;stroke-width:1.0;"/>
-            <polygon fill="#181818" points="152.61,107.37,142.821,106.2859,147.8452,108.8854,145.2456,113.9096,152.61,107.37" style="stroke:#181818;stroke-width:1.0;"/>
+        <!--link user to register-->
+        <g id="link_user_register">
+            <path d="M22.6,501.98 C21.95,406.24 22.6,160.83 46,133 C64.42,111.08 88.37,102.8115 115.95,99.6115 " fill="none" id="user-to-register" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="121.91,98.92,112.509,95.9839,116.9433,99.4963,113.431,103.9306,121.91,98.92" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link user to login-->
+        <g id="link_user_login">
+            <path d="M24.2,501.86 C26.75,429.05 33.56,275.65 46,255 C71.62,212.49 120.2609,188.7836 153.6509,176.2836 " fill="none" id="user-to-login" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="159.27,174.18,149.4389,173.5893,154.5874,175.933,152.2437,181.0815,159.27,174.18" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link user to items-->
+        <g id="link_user_items">
+            <path d="M24.15,501.83 C26.44,438.65 32.52,317.88 46,304 C73.43,275.75 115.4148,274.9182 147.8048,278.8982 " fill="none" id="user-to-items" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="153.76,279.63,145.315,274.5622,148.7973,279.0202,144.3393,282.5025,153.76,279.63" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link Inventory to GMN12-->
+        <g id="link_Inventory_GMN12">
+            <path d="M251.6078,336 C251.9054,336 252.2036,336 252.5023,336 C253.0999,336 253.6998,336 254.3019,336 C255.5062,336 256.7195,336 257.941,336 C260.3841,336 262.8602,336 265.3638,336 C305.42,336 352.48,336 383.09,336 " fill="none" id="Inventory-GMN12" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
         </g>
         <!--link user to bi-->
         <g id="link_user_bi">
-            <path d="M31.35,327.88 C35.3,317.56 41.08,307.25 49.5,300 C75.97,277.21 109.7736,270.3733 139.3136,268.3833 " fill="none" id="user-to-bi" style="stroke:#181818;stroke-width:1.0;"/>
-            <polygon fill="#181818" points="145.3,267.98,136.0515,264.594,140.3113,268.3161,136.5892,272.5759,145.3,267.98" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M29.2,501.91 C32.59,491.59 37.85,481.27 46,474 C73.9,449.09 111.0452,442.5588 142.3652,441.2588 " fill="none" id="user-to-bi" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="148.36,441.01,139.2019,437.3867,143.3643,441.2174,139.5336,445.3798,148.36,441.01" style="stroke:#181818;stroke-width:1.0;"/>
         </g>
         <!--link user to cus-->
         <g id="link_user_cus">
-            <path d="M38.19,362.9 C60.49,358.34 97.1916,350.842 130.6916,343.992 " fill="none" id="user-to-cus" style="stroke:#181818;stroke-width:1.0;"/>
-            <polygon fill="#181818" points="136.57,342.79,126.9511,340.6741,131.6714,343.7917,128.5538,348.5119,136.57,342.79" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M38.18,536.95 C60.93,532.39 98.9672,524.76 133.3172,517.87 " fill="none" id="user-to-cus" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="139.2,516.69,129.5891,514.5381,134.2976,517.6733,131.1624,522.3819,139.2,516.69" style="stroke:#181818;stroke-width:1.0;"/>
         </g>
         <!--link user to sel-->
         <g id="link_user_sel">
-            <path d="M38.19,369.01 C62.93,373.91 106.7245,382.5835 141.2845,389.4335 " fill="none" id="user-to-sel" style="stroke:#181818;stroke-width:1.0;"/>
-            <polygon fill="#181818" points="147.17,390.6,139.1194,384.9265,142.2654,389.6279,137.564,392.7739,147.17,390.6" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M38.18,542.95 C63.39,547.86 108.7404,556.6741 144.1004,563.5541 " fill="none" id="user-to-sel" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="149.99,564.7,141.9196,559.0547,145.082,563.7451,140.3917,566.9075,149.99,564.7" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link AccountsReceivable to GMN22-->
+        <g id="link_AccountsReceivable_GMN22">
+            <path d="M277.0572,622 C278.0175,622 278.9803,622 279.9455,622 C295.3875,622 311.415,622 326.81,622 " fill="none" id="AccountsReceivable-GMN22" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
         </g>
         <!--link user to supl-->
         <g id="link_user_supl">
-            <path d="M24.18,404.11 C26.34,447.99 32.42,516.41 49.5,535 C69.09,556.32 94.0183,564.2228 121.3083,567.3228 " fill="none" id="user-to-supl" style="stroke:#181818;stroke-width:1.0;"/>
-            <polygon fill="#181818" points="127.27,568,118.779,563.0097,122.302,567.4357,117.876,570.9586,127.27,568" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M25.16,578.15 C27.85,597.54 33.66,620.62 46,638 C73.14,676.22 116.5875,699.6145 149.1975,713.4645 " fill="none" id="user-to-supl" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="154.72,715.81,147.9999,708.61,150.1179,713.8554,144.8725,715.9734,154.72,715.81" style="stroke:#181818;stroke-width:1.0;"/>
         </g>
         <!--link user to shop-->
         <g id="link_user_shop">
-            <path d="M22.28,404.36 C21.99,463.09 24.94,571.51 49.5,600 C64.47,617.36 80.9272,625.4892 103.1272,630.4992 " fill="none" id="user-to-shop" style="stroke:#181818;stroke-width:1.0;"/>
-            <polygon fill="#181818" points="108.98,631.82,101.0813,625.9369,104.1027,630.7193,99.3202,633.7406,108.98,631.82" style="stroke:#181818;stroke-width:1.0;"/>
+            <path d="M24.65,578.28 C27.55,637.66 34.38,746.56 46,760 C62.25,778.79 80.905,787.3008 105.015,792.0908 " fill="none" id="user-to-shop" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="110.9,793.26,102.852,787.5829,105.9958,792.2857,101.2931,795.4295,110.9,793.26" style="stroke:#181818;stroke-width:1.0;"/>
         </g>
-        <!--SRC=[PL113W8X3BppYiQJU_0B9kh9cz7u0AnrRQmBeM1YpFvT43UOU85sfZCTi1XTWADI0AkGycs4BX6YWy3zDSAP0s5aDnXlyMPxWfNts-7X60bUvXSjBfgn-QVe9aCrvOJ5OlbjnoP2T6c8kYSaVjYJq7orxuh5mGffLvHebM2sPX4U-banFN73DqcZksVN3uD96tKWaObGafQYwclzLTIcJ8tcBztEFckqNOrsTTxdB1taEdalFBrMavV6G_uu5ywLoTZFdZBNkiBbjUCR]-->
+        <!--link AccountsPayable to GMN30-->
+        <g id="link_AccountsPayable_GMN30">
+            <path d="M291.558,849 C292.0718,849 292.5859,849 293.1003,849 C295.1579,849 297.2196,849 299.2828,849 C303.4091,849 307.5412,849 311.657,849 C319.8886,849 328.055,849 335.98,849 " fill="none" id="AccountsPayable-GMN30" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
+        </g>
+        <!--link user to bank-->
+        <g id="link_user_bank">
+            <path d="M23.78,578.17 C25.72,658.77 31.63,840.89 46,865 C71.49,907.77 120.4351,931.4719 153.8651,943.8819 " fill="none" id="user-to-bank" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="159.49,945.97,152.4447,939.0879,154.8026,944.2299,149.6605,946.5878,159.49,945.97" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link user to taxes-->
+        <g id="link_user_taxes">
+            <path d="M23.72,578.1 C25.87,683.36 32.92,971.47 46,987 C70.66,1016.28 109.92,1022.092 142.62,1021.972 " fill="none" id="user-to-taxes" style="stroke:#181818;stroke-width:1.0;"/>
+            <polygon fill="#181818" points="148.62,1021.95,139.6054,1017.9831,143.62,1021.9683,139.6347,1025.983,148.62,1021.95" style="stroke:#181818;stroke-width:1.0;"/>
+        </g>
+        <!--link Finance to GMN38-->
+        <g id="link_Finance_GMN38">
+            <path d="M253.4707,1069 C253.7514,1069 254.0326,1069 254.3143,1069 C255.441,1069 256.5756,1069 257.7175,1069 C294.2575,1069 338.25,1069 370.49,1069 " fill="none" id="Finance-GMN38" style="stroke:#181818;stroke-width:1.0;stroke-dasharray:7.0,7.0;"/>
+        </g>
+        <!--SRC=[VP7TQW8n48NlynI3L_72LoYiXOBGWgXzW1Z7DHYJa6IbKdptpcpMZKNRgvqvytE-oIgTVOJFX15KWew-mk8-G_OGJNl8i3CHTJRUYQ3qKRK8JGWBT_P68toBKVrGZZwyA94iLzYQbAFYoIclZhr0w-MxRqtHB4U2JM4sUwajer8QhjM5ZD4HyOKz5XbFgLzaEAfZ9QKnvpCET_Wzo75wAcQmpbuV1ReTS5UrQBJsdSjfXHhDMMqjdqchjKe8axcnrhXsmgvRK_NNBcL_ekFxYkvIBQtHsbiXeQsOPRx4mqH9kEkH_X5iAfx0ocRLdwSifd_EMwfBkGs4N7SXM4EC_MEcBbZI3Zu4kfJ-YlPnLogatL5oNysuzZVqO5U9R_woMVQuWzqJuZVZbDE5TAxSiKVPKY3aHdrXWSuStJqjbyUi51_XXiqZr6__wmy0]-->
     </g>
 </svg>
