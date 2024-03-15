@@ -17,7 +17,11 @@ import org.springframework.data.repository.query.Param;
 public interface IAuditRepository extends JpaRepository<Audit, Integer> {
     
     @Modifying()
-    @Query("INSERT INTO `audit`(`username`, `transaction`, `transactiontype`, `creation`) VALUES (?,?,?,?)")
-    void save(@Param(value = "username") String username, @Param(value = "transaction") String transaction , @Param(value = "transactiontype") TransactionType transactionType, @Param(value = "creation") Timestamp creation);
+    @Query(value = "INSERT INTO audit (username, transaction, transactiontype, creation) VALUES (?,?,?,?)", nativeQuery = true)
+    void save(
+            @Param(value = "username") String username,
+            @Param(value = "transaction") String transaction,
+            @Param(value = "transactiontype") TransactionType transactionType,
+            @Param(value = "creation") Timestamp creation);
 
 }

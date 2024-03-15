@@ -24,7 +24,7 @@ import javax.persistence.Table;
 public class Audit {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "username", nullable = false)
@@ -44,8 +44,7 @@ public class Audit {
         
     }
 
-    public Audit(Integer id, String username, String transaction, TransactionType transactionType, Timestamp creation) {
-        this.id = id;
+    public Audit(String username, String transaction, TransactionType transactionType, Timestamp creation) {
         this.username = username;
         this.transaction = transaction;
         this.transactionType = transactionType;

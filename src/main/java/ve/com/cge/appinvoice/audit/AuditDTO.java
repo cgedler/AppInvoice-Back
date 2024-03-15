@@ -21,8 +21,7 @@ public class AuditDTO {
     public AuditDTO() {
     }
 
-    public AuditDTO(Integer id, String username, String transaction, TransactionType transactionType, Timestamp creation) {
-        this.id = id;
+    public AuditDTO(String username, String transaction, TransactionType transactionType, Timestamp creation) {
         this.username = username;
         this.transaction = transaction;
         this.transactionType = transactionType;
