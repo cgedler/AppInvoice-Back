@@ -24,7 +24,7 @@ import ve.com.cge.appinvoice.config.user.IUserRepository;
 public class ApplicationConfiguration {
 
     private final IUserRepository userRepository;
-    
+
     public ApplicationConfiguration(IUserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -52,4 +52,5 @@ public class ApplicationConfiguration {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
+
 }

@@ -3,15 +3,14 @@ package ve.com.cge.appinvoice.items;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.util.logging.Logger;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ve.com.cge.appinvoice.audit.Audit;
-import ve.com.cge.appinvoice.audit.AuditDTO;
 import ve.com.cge.appinvoice.audit.AuditService;
 import ve.com.cge.appinvoice.audit.TransactionType;
 import ve.com.cge.appinvoice.config.security.jwt.JwtService;
@@ -27,12 +26,11 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
 @RestController
 @RequestMapping("/item")
 public class ItemController {
-
-    private Logger logger;
-            
+  
     private final CategoryService categoryService;
     private final JwtService jwtService;
     private final AuditService auditService;
+    
 
     public ItemController(CategoryService categoryService, JwtService jwtService, AuditService auditService) {
         this.categoryService = categoryService;
@@ -41,12 +39,28 @@ public class ItemController {
     }
     
     
+    
+    @GetMapping(value = "/category")
+    public ResponseEntity<UserResponse> getCategoriesData() {
+        UserResponse responseBody = categoryService.findCategories();
+        return ResponseEntity.ok(responseBody);    
+    }
+    
+    
+    @GetMapping(value = "/category/{id}")
+    public ResponseEntity<UserResponse> getCategoryData() {
+        UserResponse responseBody = categoryService.findCategories();
+        return ResponseEntity.ok(responseBody);    
+    }
+    
+    
+    
+    
     @PostMapping(value = "/category/add")
-    public ResponseEntity<UserResponse> add(@RequestBody CategoryDTO request, @RequestHeader("Authorization") String bearerToken) {
-        logger.info("antes");
-        String username = jwtService.getUsernameFromToken(bearerToken);
-        logger.info(username);
-        AuditDTO transaction = new AuditDTO(
+    public ResponseEntity<UserResponse> add(@RequestBody CategoryDTO request, @RequestHeader("Authorization") String token) {
+        String tokenString = jwtService.getTokenFromHeader(token);
+        String username = jwtService.getUsernameFromToken(tokenString);
+        Audit transaction = new Audit(
                 username,
                 request.getDescription(),
                 TransactionType.INSERT,
@@ -54,6 +68,5 @@ public class ItemController {
         auditService.register(transaction);        
         return ResponseEntity.ok(categoryService.saveCategory(request));
     }
-    
-    
+        
 }

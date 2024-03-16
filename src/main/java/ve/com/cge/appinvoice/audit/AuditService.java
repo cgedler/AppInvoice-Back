@@ -19,8 +19,8 @@ public class AuditService {
         this.auditRepository = auditRepository;
     }
     
-    public void register(AuditDTO transactionData) {
-        auditRepository.save(transactionData.getUsername(), transactionData.getTransaction(), transactionData.getTransactionType(), transactionData.getCreation());
+    public void register(Audit transactionData) {
+        auditRepository.save(transactionData);
     }
 
 }

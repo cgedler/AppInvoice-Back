@@ -30,8 +30,8 @@ public class Audit {
     @Column(name = "username", nullable = false)
     private String username;
 
-    @Column(name = "transaction", nullable = false)
-    private String transaction;
+    @Column(name = "description", nullable = false)
+    private String description;
     
     @Column(name = "transactiontype", nullable = false)
     @Enumerated(EnumType.STRING) 
@@ -44,9 +44,9 @@ public class Audit {
         
     }
 
-    public Audit(String username, String transaction, TransactionType transactionType, Timestamp creation) {
+    public Audit(String username, String description, TransactionType transactionType, Timestamp creation) {
         this.username = username;
-        this.transaction = transaction;
+        this.description = description;
         this.transactionType = transactionType;
         this.creation = creation;
     }
@@ -67,12 +67,12 @@ public class Audit {
         this.username = username;
     }
 
-    public String getTransaction() {
-        return transaction;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTransaction(String transaction) {
-        this.transaction = transaction;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public TransactionType getTransactionType() {

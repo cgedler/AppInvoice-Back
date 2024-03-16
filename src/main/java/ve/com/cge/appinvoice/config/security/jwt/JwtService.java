@@ -8,10 +8,11 @@ import io.jsonwebtoken.security.Keys;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;;
+import java.util.function.Function;
 import javax.crypto.SecretKey;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import ve.com.cge.appinvoice.config.user.User;
 
 /**
@@ -80,5 +81,15 @@ public class JwtService {
     private boolean isTokenExpired(String token) {
         return getExpiration(token).before(new Date());
     }
-
+    
+    /* For AuditService and save data from transactions
+     *
+    */
+    public String getTokenFromHeader(String requestHeader) {
+        if (StringUtils.hasText(requestHeader) && requestHeader.startsWith("Bearer ")) {
+            return requestHeader.substring(7);
+        }
+        return null;
+    }
+    
 }

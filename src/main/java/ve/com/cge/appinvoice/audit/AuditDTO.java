@@ -14,16 +14,16 @@ public class AuditDTO {
     
     private Integer id;
     private String username;
-    private String transaction;
+    private String description;
     private TransactionType transactionType;
     private Timestamp creation;
 
     public AuditDTO() {
     }
 
-    public AuditDTO(String username, String transaction, TransactionType transactionType, Timestamp creation) {
+    public AuditDTO(String username, String description, TransactionType transactionType, Timestamp creation) {
         this.username = username;
-        this.transaction = transaction;
+        this.description = description;
         this.transactionType = transactionType;
         this.creation = creation;
     }
@@ -44,12 +44,12 @@ public class AuditDTO {
         this.username = username;
     }
 
-    public String getTransaction() {
-        return transaction;
+    public String getDescription() {
+        return description;
     }
 
-    public void setTransaction(String transaction) {
-        this.transaction = transaction;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public TransactionType getTransactionType() {

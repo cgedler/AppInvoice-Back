@@ -33,14 +33,14 @@ public class UserController {
     //@RolesAllowed("USER")
     @GetMapping(value = "{id}")
     public ResponseEntity<UserDTO> getUser(@PathVariable Integer id) {
-        //return new ResponseEntity<>(" llego" + id, HttpStatus.OK);
+        //return new ResponseEntity<>(" Arrive" + id, HttpStatus.OK);
         UserDTO userDTO = userService.getUser(id);
         if (userDTO == null)
         {
-           //return new ResponseEntity<>("Nullo", HttpStatus.OK); 
+           //return new ResponseEntity<>("Null", HttpStatus.OK); 
            return ResponseEntity.notFound().build();
         }
-        //return new ResponseEntity<>("Con datos : " , HttpStatus.OK); 
+        //return new ResponseEntity<>("With data : " , HttpStatus.OK); 
         return ResponseEntity.ok(userDTO);
     }
     
