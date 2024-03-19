@@ -22,20 +22,5 @@ public interface ICategoryRepository extends JpaRepository<Category, Integer> {
     @Modifying()
     @Query(value = "INSERT INTO category (description) VALUES (?)", nativeQuery = true)
     void insert(@Param(value = "description") String description);
-
-    @Modifying()
-    @Query(value = "UPDATE category c set c.description =:description where c.id=:id")
-    void update(@Param("description") String description, @Param("id") int id);
-    
-    /*
-    @Modifying
-    @Query("update User u set u.active = false where u.lastLoginDate < :date")
-    void deactivateUsersNotLoggedInSince(@Param("date") LocalDate date);
-
-    @Modifying(clearAutomatically = true)
-    @Query("update RssFeedEntry feedEntry set feedEntry.read =:isRead where feedEntry.id =:entryId")
-    void markEntryAsRead(@Param("entryId") Long rssFeedEntryId, @Param("isRead") boolean isRead);
-
-    */
     
 }

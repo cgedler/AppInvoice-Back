@@ -39,6 +39,11 @@ public class Category {
         this.description = description;
     }
 
+    public Category(Integer id, String description) {
+        this.id = id;
+        this.description = description;
+    }
+    
     public Integer getId() {
         return id;
     }

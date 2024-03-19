@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import javax.transaction.Transactional;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -34,12 +35,6 @@ public class CategoryService {
         this.categoryRepository = categoryRepository;
     }
     
-    public UserResponse insertCategory(CategoryDTO request) {
-        Category category = new Category(request.getDescription());
-        categoryRepository.insert(category.getDescription());
-        return new UserResponse("The new category was create");
-    }
-    
     public List<Category> findCategories() {
         List<Category> categoryList = categoryRepository.findAll();
         return categoryList;
@@ -52,26 +47,25 @@ public class CategoryService {
         }
         return null;
     }
-            
-      
     
-    
-    /*        
-    @RequestMapping(value="", method=RequestMethod.GET, produces=MediaType.APPLICATION_JSON_VALUE)
-    public @ResponseBody ResponseEntity<Object> getAll() {
-        List<Entity> entityList = entityManager.findAll();
-
-        List<JSONObject> entities = new ArrayList<JSONObject>();
-        for (Entity n : entityList) {
-            JSONObject Entity = new JSONObject();
-            entity.put("id", n.getId());
-            entity.put("address", n.getAddress());
-            entities.add(entity);
-        }
-        return new ResponseEntity<Object>(entities, HttpStatus.OK);
+    @Transactional
+    public UserResponse insertCategory(CategoryDTO request) {
+        Category category = new Category(request.getDescription());
+        categoryRepository.insert(category.getDescription());
+        return new UserResponse("The new data was create");
     }
     
-    */
-    
+    @Transactional
+    public UserResponse updateCategory(CategoryDTO request, Integer id) {
+        Category category = new Category(id, request.getDescription());
+        categoryRepository.save(category);
+        return new UserResponse("The data was update");
+    }
+     
+    @Transactional
+    public UserResponse deleteCategory(Integer id) {
+        categoryRepository.deleteById(id);
+        return new UserResponse("The data was delete");
+    }   
     
 }
