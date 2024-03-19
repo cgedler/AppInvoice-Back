@@ -3,8 +3,11 @@ package ve.com.cge.appinvoice.items;
 
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
@@ -14,6 +17,7 @@ import ve.com.cge.appinvoice.audit.Audit;
 import ve.com.cge.appinvoice.audit.AuditService;
 import ve.com.cge.appinvoice.audit.TransactionType;
 import ve.com.cge.appinvoice.config.security.jwt.JwtService;
+import ve.com.cge.appinvoice.config.user.UserDTO;
 import ve.com.cge.appinvoice.config.user.UserResponse;
 
 /**
@@ -40,21 +44,28 @@ public class ItemController {
     
     
     
-    @GetMapping(value = "/category")
+    /*@GetMapping(value = "/category")
     public ResponseEntity<UserResponse> getCategoriesData() {
         UserResponse responseBody = categoryService.findCategories();
         return ResponseEntity.ok(responseBody);    
-    }
+    }*/
     
+    @GetMapping(value = "/category")
+    public List<Category> getCategoriesData() {
+        List<Category> listCategories= new ArrayList<Category>();
+        listCategories = categoryService.findCategories();
+        return listCategories; //(List<Category>) ResponseEntity.ok(listCategories);    
+    }
     
     @GetMapping(value = "/category/{id}")
-    public ResponseEntity<UserResponse> getCategoryData() {
-        UserResponse responseBody = categoryService.findCategories();
-        return ResponseEntity.ok(responseBody);    
+    public ResponseEntity<CategoryDTO> getCategoryData(@PathVariable Integer id) {
+        CategoryDTO categoryDTO = categoryService.findCategoryById(id);
+        if (categoryDTO == null) {
+           return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(categoryDTO);        
     }
-    
-    
-    
+       
     
     @PostMapping(value = "/category/add")
     public ResponseEntity<UserResponse> add(@RequestBody CategoryDTO request, @RequestHeader("Authorization") String token) {
@@ -66,7 +77,7 @@ public class ItemController {
                 TransactionType.INSERT,
                 Timestamp.valueOf(LocalDateTime.now()));
         auditService.register(transaction);        
-        return ResponseEntity.ok(categoryService.saveCategory(request));
+        return ResponseEntity.ok(categoryService.insertCategory(request));
     }
         
 }
