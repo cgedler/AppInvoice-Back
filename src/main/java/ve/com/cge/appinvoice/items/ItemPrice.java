@@ -1,12 +1,14 @@
 
 package ve.com.cge.appinvoice.items;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,13 +24,49 @@ import javax.persistence.Table;
 public class ItemPrice {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @OneToOne(mappedBy="priceId", cascade=CascadeType.ALL)
-    private Item item;
     
     @Column(name = "price", nullable = false)
     private double price;
+    
+    @OneToOne(mappedBy="price")
+    @JoinColumn(name="item_id")
+    @JsonIgnore
+    private Item item;
+
+    public ItemPrice() {
+    }
+
+    public ItemPrice(double price) {
+        this.price = price;
+    }
+
+    public ItemPrice(Integer id, double price) {
+        this.id = id;
+        this.price = price;
+    }
+
+    public ItemPrice(Integer id, double price, Item item) {
+        this.id = id;
+        this.price = price;
+        this.item = item;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
         
 }

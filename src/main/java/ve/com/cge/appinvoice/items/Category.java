@@ -1,14 +1,17 @@
 
 package ve.com.cge.appinvoice.items;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 /**
  * Category 
@@ -18,7 +21,7 @@ import javax.persistence.Table;
  * @since Mar 14, 2024
  */
 @Entity
-@Table(name = "category")
+@Table(name = "category", uniqueConstraints = {@UniqueConstraint(columnNames = {"description"})})
 public class Category {
     
     @Id
@@ -28,7 +31,9 @@ public class Category {
     @Column(name = "description", nullable = false)
     private String description;
       
-    @OneToOne(mappedBy="categoryId", cascade=CascadeType.ALL)
+    @OneToOne(mappedBy="category")
+    @JoinColumn(name="item_id")
+    @JsonIgnore
     private Item item;
     
     public Category() {
@@ -59,6 +64,13 @@ public class Category {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
     
 }

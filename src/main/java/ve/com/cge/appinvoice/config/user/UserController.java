@@ -1,8 +1,8 @@
 
 package ve.com.cge.appinvoice.config.user;
 
-import javax.annotation.security.RolesAllowed;
-import org.springframework.http.HttpStatus;
+//import javax.annotation.security.RolesAllowed;
+//import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,14 +33,11 @@ public class UserController {
     //@RolesAllowed("USER")
     @GetMapping(value = "{id}")
     public ResponseEntity<UserDTO> getUser(@PathVariable Integer id) {
-        //return new ResponseEntity<>(" Arrive" + id, HttpStatus.OK);
         UserDTO userDTO = userService.getUser(id);
         if (userDTO == null)
         {
-           //return new ResponseEntity<>("Null", HttpStatus.OK); 
            return ResponseEntity.notFound().build();
         }
-        //return new ResponseEntity<>("With data : " , HttpStatus.OK); 
         return ResponseEntity.ok(userDTO);
     }
     

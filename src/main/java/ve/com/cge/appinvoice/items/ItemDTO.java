@@ -1,48 +1,29 @@
 
 package ve.com.cge.appinvoice.items;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
-import javax.persistence.Table;
-
 /**
- * Item 
+ * ItemDTO 
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0
- * @since Mar 14, 2024
+ * @since Mar 21, 2024
  */
-@Entity
-@Table(name = "items")
-public class Item {
-
-    @Id
+public class ItemDTO {
+    
     private Integer id;
-    
-    @Column(name = "description", nullable = false)
     private String description;
-        
-    @OneToOne
     private Category category;
-    
-    @OneToOne
     private ItemStock stock;
-    
-    @OneToOne
-    private ItemPrice price;
+    private ItemPrice price; 
 
-    public Item() {
+    public ItemDTO() {
     }
 
-    public Item(Integer id, String description, Category category, ItemStock stock, ItemPrice price) {
+    public ItemDTO(Integer id, String description, Category category, ItemStock stock, ItemPrice price) {
         this.id = id;
         this.description = description;
         this.category = category;
-        this.stock= stock;
+        this.stock = stock;
         this.price = price;
     }
 
@@ -85,5 +66,5 @@ public class Item {
     public void setPrice(ItemPrice price) {
         this.price = price;
     }
-    
+
 }

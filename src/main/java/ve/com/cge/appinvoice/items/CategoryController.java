@@ -23,46 +23,45 @@ import ve.com.cge.appinvoice.config.security.jwt.JwtService;
 import ve.com.cge.appinvoice.config.user.UserResponse;
 
 /**
- * ItemController 
+ * CategoryController 
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0
- * @since Mar 14, 2024
+ * @since Mar 21, 2024
  */
 @RestController
-@RequestMapping("/item")
+@RequestMapping("/item/category")
 @CrossOrigin(origins = {"http://localhost:4200"})
-public class ItemController {
-    
+public class CategoryController {
+
+    private final CategoryService categoryService;
     private final JwtService jwtService;
     private final AuditService auditService;
-    private final ItemService itemService;
 
-    public ItemController(JwtService jwtService, AuditService auditService, ItemService itemService) {
+    public CategoryController(CategoryService categoryService, JwtService jwtService, AuditService auditService) {
+        this.categoryService = categoryService;
         this.jwtService = jwtService;
         this.auditService = auditService;
-        this.itemService = itemService;
     }
-  
+        
     @GetMapping(value = "/")
-    public List<Item> getItemsData() {
-        List<Item> listItems= new ArrayList<Item>();
-        listItems = itemService.findItems();
-        return listItems;
+    public List<Category> getCategoriesData() {
+        List<Category> listCategories = new ArrayList<Category>();
+        listCategories = categoryService.findCategories();
+        return listCategories;
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ItemDTO> getItemData(@PathVariable Integer id) {
-        ItemDTO itemDTO = itemService.findItemById(id);
-        if (itemDTO == null) {
+    public ResponseEntity<CategoryDTO> getCategoryData(@PathVariable Integer id) {
+        CategoryDTO categoryDTO = categoryService.findCategoryById(id);
+        if (categoryDTO == null) {
            return ResponseEntity.notFound().build();
         }
-        return ResponseEntity.ok(itemDTO);        
+        return ResponseEntity.ok(categoryDTO);        
     }
-    
-    
+       
     @PostMapping(value = "/add")
-    public ResponseEntity<UserResponse> create(@RequestBody ItemDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> create(@RequestBody CategoryDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -71,10 +70,8 @@ public class ItemController {
                 TransactionType.INSERT,
                 Timestamp.valueOf(LocalDateTime.now()));
         auditService.register(transaction);
-        return ResponseEntity.ok(itemService.insertItem(request));
+        return ResponseEntity.ok(categoryService.insertCategory(request));
     }
-    
-    /*
     
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody CategoryDTO request, @RequestHeader("Authorization") String token) {
@@ -101,5 +98,5 @@ public class ItemController {
         auditService.register(transaction);
         return ResponseEntity.ok(categoryService.deleteCategory(id));        
     }
-    */   
+    
 }

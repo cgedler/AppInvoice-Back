@@ -24,7 +24,7 @@ import javax.persistence.Table;
 public class Audit {
     
     @Id
-     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "username", nullable = false)

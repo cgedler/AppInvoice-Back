@@ -1,12 +1,14 @@
 
 package ve.com.cge.appinvoice.items;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -22,13 +24,53 @@ import javax.persistence.Table;
 public class ItemStock {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    
-    @OneToOne(mappedBy="stockId", cascade=CascadeType.ALL)
-    private Item item;
     
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
+    
+    @OneToOne(mappedBy="stock")
+    @JoinColumn(name="item_id")
+    @JsonIgnore
+    private Item item;
 
+    public ItemStock() {
+    }
+
+    public ItemStock(Integer id, Integer quantity) {
+        this.id = id;
+        this.quantity = quantity;
+    }
+
+    public ItemStock(Integer id, Integer quantity, Item item) {
+        this.id = id;
+        this.quantity = quantity;
+        this.item = item;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+    
 }
