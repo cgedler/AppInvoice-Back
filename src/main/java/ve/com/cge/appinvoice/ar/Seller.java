@@ -26,7 +26,7 @@ public class Seller {
     @Column(name = "description", nullable = false)
     private String description;
     
-    @OneToMany(mappedBy = "billing")
+    @OneToMany(mappedBy = "seller")
     @JsonIgnore
     private List<Billing> billing;
 

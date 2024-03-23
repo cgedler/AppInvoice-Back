@@ -1,5 +1,5 @@
 
-package ve.com.cge.appinvoice.ap;
+package ve.com.cge.appinvoice.ar;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -7,18 +7,19 @@ import ve.com.cge.appinvoice.finance.Bank;
 import ve.com.cge.appinvoice.finance.Taxes;
 
 /**
- * ShoppingDTO 
+ * BillingDTO 
  * 
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0
- * @since Mar 22, 2024
+ * @since Mar 23, 2024
  */
-public class ShoppingDTO {
+public class BillingDTO {
  
     private Integer id;
     private String description;
-    private List<ShoppingDetails> shoppingDetails;
-    private Supplier supplier;
+    private List<BillingDetails> billingDetails;
+    private Customer customer;
+    private Seller seller;
     private Bank bank;
     private Taxes taxes;
     private Timestamp date;
@@ -26,14 +27,15 @@ public class ShoppingDTO {
     private double amountTax;
     private double total;
 
-    public ShoppingDTO() {
+    public BillingDTO() {
     }
 
-    public ShoppingDTO(Integer id, String description, List<ShoppingDetails> shoppingDetails, Supplier supplier, Bank bank, Taxes taxes, Timestamp date, double subTotal, double amountTax, double total) {
+    public BillingDTO(Integer id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, double subTotal, double amountTax, double total) {
         this.id = id;
         this.description = description;
-        this.shoppingDetails = shoppingDetails;
-        this.supplier = supplier;
+        this.billingDetails = billingDetails;
+        this.customer = customer;
+        this.seller = seller;
         this.bank = bank;
         this.taxes = taxes;
         this.date = date;
@@ -58,20 +60,28 @@ public class ShoppingDTO {
         this.description = description;
     }
 
-    public List<ShoppingDetails> getShoppingDetails() {
-        return shoppingDetails;
+    public List<BillingDetails> getBillingDetails() {
+        return billingDetails;
     }
 
-    public void setShoppingDetails(List<ShoppingDetails> shoppingDetails) {
-        this.shoppingDetails = shoppingDetails;
-    }
-    
-    public Supplier getSupplier() {
-        return supplier;
+    public void setBillingDetails(List<BillingDetails> billingDetails) {
+        this.billingDetails = billingDetails;
     }
 
-    public void setSupplier(Supplier supplier) {
-        this.supplier = supplier;
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
     }
 
     public Bank getBank() {

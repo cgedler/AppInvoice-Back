@@ -34,7 +34,7 @@ public class Billing {
     @Column(name = "description", nullable = false)
     private String description;
     
-    @OneToMany(mappedBy = "billingdetails_id")
+    @OneToMany(mappedBy = "billing")
     @JsonIgnore
     private List<BillingDetails> billingDetails;
 

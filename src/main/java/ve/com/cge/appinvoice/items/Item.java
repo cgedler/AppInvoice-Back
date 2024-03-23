@@ -2,12 +2,10 @@
 package ve.com.cge.appinvoice.items;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -44,11 +42,11 @@ public class Item {
     @OneToOne(cascade = CascadeType.ALL)
     private ItemPrice price;
     
-    @OneToMany(mappedBy = "shoppingdetails_id")
+    @OneToMany(mappedBy = "item")
     @JsonIgnore
     private List<ShoppingDetails> shoppingDetails;
      
-    @OneToMany(mappedBy = "billingdetails_id")
+    @OneToMany(mappedBy = "item")
     @JsonIgnore
     private List<BillingDetails> billingDetails;
 

@@ -28,11 +28,11 @@ public class Taxes {
     @Column(name = "description", nullable = false)
     private String description;
     
-    @OneToMany(mappedBy = "billing")
+    @OneToMany(mappedBy = "taxes")
     @JsonIgnore
     private List<Billing> billing;
 
-    @OneToMany(mappedBy = "shopping")
+    @OneToMany(mappedBy = "taxes")
     @JsonIgnore
     private List<Shopping> shopping;
 
