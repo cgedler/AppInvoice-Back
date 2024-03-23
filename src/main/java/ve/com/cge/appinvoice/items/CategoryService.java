@@ -1,23 +1,10 @@
 
 package ve.com.cge.appinvoice.items;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 import javax.transaction.Transactional;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestMapping;
-import ve.com.cge.appinvoice.config.user.User;
-import ve.com.cge.appinvoice.config.user.UserDTO;
 import ve.com.cge.appinvoice.config.user.UserResponse;
-
 
 /**
  * CategoryService 

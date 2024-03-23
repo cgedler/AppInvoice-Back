@@ -27,15 +27,6 @@ public class ItemService {
         return itemsList;
     }
 
-    /*
-    
-      public List<Category> findCategories() {
-        List<Category> categoryList = categoryRepository.findAll();
-        return categoryList;
-    }
-    
-    */
-    
     public ItemDTO findItemById(Integer id) {
         Item item = itemRepository.findById(id).orElse(null);
         if (item != null) {
@@ -46,11 +37,22 @@ public class ItemService {
     
     @Transactional
     public UserResponse insertItem(ItemDTO request) {
-        //Item item = new Item(request.getDescription());
-        //itemRepository.insert(item.getDescription());
         Item item = new Item(request.getId(), request.getDescription(), request.getCategory(), request.getStock(), request.getPrice());
         itemRepository.save(item);
         return new UserResponse("The new data was create");
     }
+    
+    @Transactional
+    public UserResponse updateItem(ItemDTO request, Integer id) {
+        Item item = new Item(request.getId(), request.getDescription(), request.getCategory(), request.getStock(), request.getPrice());
+        itemRepository.save(item);
+        return new UserResponse("The data was update");
+    }
+     
+    @Transactional
+    public UserResponse deleteItem(Integer id) {
+        itemRepository.deleteById(id);
+        return new UserResponse("The data was delete");
+    }   
 
 }

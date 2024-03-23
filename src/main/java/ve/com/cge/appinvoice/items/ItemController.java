@@ -60,7 +60,6 @@ public class ItemController {
         return ResponseEntity.ok(itemDTO);        
     }
     
-    
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody ItemDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
@@ -74,10 +73,8 @@ public class ItemController {
         return ResponseEntity.ok(itemService.insertItem(request));
     }
     
-    /*
-    
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody CategoryDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody ItemDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -86,7 +83,7 @@ public class ItemController {
                 TransactionType.UPDATE,
                 Timestamp.valueOf(LocalDateTime.now()));
         auditService.register(transaction);
-        return ResponseEntity.ok(categoryService.updateCategory(request, id));
+        return ResponseEntity.ok(itemService.updateItem(request, id));
     }
     
     @DeleteMapping(value = "/{id}")
@@ -99,7 +96,7 @@ public class ItemController {
                 TransactionType.DELETE,
                 Timestamp.valueOf(LocalDateTime.now()));
         auditService.register(transaction);
-        return ResponseEntity.ok(categoryService.deleteCategory(id));        
+        return ResponseEntity.ok(itemService.deleteItem(id));        
     }
-    */   
+    
 }

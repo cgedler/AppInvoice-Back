@@ -2,6 +2,7 @@
 package ve.com.cge.appinvoice.items;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,8 +31,8 @@ public class ItemStock {
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
     
-    @OneToOne(mappedBy="stock")
-    @JoinColumn(name="item_id")
+    @OneToOne(mappedBy = "stock") //, cascade=CascadeType.ALL)
+    @JoinColumn(name = "item_id", referencedColumnName = "id")
     @JsonIgnore
     private Item item;
 

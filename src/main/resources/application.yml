@@ -26,8 +26,12 @@ spring:
 #  security:
 #    user:
 #      password: pass1234
+
+  jackson:
+    serialization:
+        FAIL_ON_EMPTY_BEANS: false
     
     
 #jwt:
 #  private.key: classpath:app.key
-#  public.key: classpath:app.pub
+#  public.key: classpath:app.pub 

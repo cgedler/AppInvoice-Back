@@ -1,13 +1,21 @@
 
 package ve.com.cge.appinvoice.items;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import ve.com.cge.appinvoice.ap.ShoppingDetails;
+import ve.com.cge.appinvoice.ar.BillingDetails;
 
 /**
  * Item 
@@ -26,14 +34,23 @@ public class Item {
     @Column(name = "description", nullable = false)
     private String description;
         
-    @OneToOne
+    @ManyToOne
+    @JoinColumn(name = "category_id")
     private Category category;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ItemStock stock;
     
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private ItemPrice price;
+    
+    @OneToMany(mappedBy = "shoppingdetails_id")
+    @JsonIgnore
+    private List<ShoppingDetails> shoppingDetails;
+     
+    @OneToMany(mappedBy = "billingdetails_id")
+    @JsonIgnore
+    private List<BillingDetails> billingDetails;
 
     public Item() {
     }

@@ -2,6 +2,7 @@
 package ve.com.cge.appinvoice.items;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -30,11 +31,11 @@ public class ItemPrice {
     @Column(name = "price", nullable = false)
     private double price;
     
-    @OneToOne(mappedBy="price")
-    @JoinColumn(name="item_id")
+    @OneToOne(mappedBy = "price")
+    @JoinColumn(name = "item_id", referencedColumnName = "id")
     @JsonIgnore
     private Item item;
-
+    
     public ItemPrice() {
     }
 
@@ -67,6 +68,14 @@ public class ItemPrice {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+    
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
     }
         
 }
