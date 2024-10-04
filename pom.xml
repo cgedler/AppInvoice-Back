@@ -4,7 +4,7 @@
     <!-- Project Information -->
     <groupId>ve.com.cge</groupId>
     <artifactId>AppInvoice</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
     <packaging>war</packaging>
     <!-- Properties -->
     <properties>
