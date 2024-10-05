@@ -12,13 +12,29 @@ server:
   
 spring:
   datasource:
-    url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/jwt
-    username: cge
-    password: "%Clave01%"
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    # MSSQL
+    url: jdbc:sqlserver://ASUS\\SQL2014:1433;databaseName=jwt;TrustServerCertificate=True;
+    username: profit
+    password: profit
+    driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+    # Postgres
+    # url: jdbc:postgresql://localhost:5432/jwt
+    # username: postgres
+    # password: 1234
+    # driver-class-name: org.postgresql.Driver
+    # MySQL
+    # url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/jwt
+    # username: cge
+    # password: "%Clave01%"
+    # driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    # MSSQL
+    database-platform: org.hibernate.dialect.SQLServer2012Dialect
+    # Postgres
+    #database-platform: org.hibernate.dialect.PostgreSQLDialect
+    # MySQL
+    #database-platform: org.hibernate.dialect.MySQL8Dialect
     hibernate:
       ddl-auto: update
     show-sql: true
@@ -30,8 +46,7 @@ spring:
   jackson:
     serialization:
         FAIL_ON_EMPTY_BEANS: false
-    
-    
+       
 #jwt:
 #  private.key: classpath:app.key
 #  public.key: classpath:app.pub 

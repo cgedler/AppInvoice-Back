@@ -38,7 +38,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @since Feb 15, 2024
  */
 @Entity
-@Table(name = "user", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
+@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
 public class User implements UserDetails {
     
     @Id
