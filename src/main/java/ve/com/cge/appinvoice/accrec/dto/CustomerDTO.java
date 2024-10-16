@@ -24,22 +24,22 @@ package ve.com.cge.appinvoice.accrec.dto;
  */
 public class CustomerDTO {
     
-    private Integer id;
+    private Long id;
     private String description;
  
     public CustomerDTO() {
     }
 
-    public CustomerDTO(Integer id, String description) {
+    public CustomerDTO(Long id, String description) {
         this.id = id;
         this.description = description;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

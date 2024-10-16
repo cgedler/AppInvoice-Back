@@ -61,7 +61,7 @@ public class ItemController {
         this.itemService = itemService;
     }
   
-    @GetMapping(value = "/")
+    @GetMapping(value = "/item")
     public List<Item> getItemsData() {
         List<Item> listItems= new ArrayList<Item>();
         listItems = itemService.findItems();
@@ -69,7 +69,7 @@ public class ItemController {
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ItemDTO> getItemData(@PathVariable Integer id) {
+    public ResponseEntity<ItemDTO> getItemData(@PathVariable Long id) {
         ItemDTO itemDTO = itemService.findItemById(id);
         if (itemDTO == null) {
            return ResponseEntity.notFound().build();
@@ -91,7 +91,7 @@ public class ItemController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody ItemDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody ItemDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -104,7 +104,7 @@ public class ItemController {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> delete(@PathVariable Integer id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
     String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(

@@ -69,7 +69,7 @@ public class BankController {
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<BankDTO> getBankData(@PathVariable Integer id) {
+    public ResponseEntity<BankDTO> getBankData(@PathVariable Long id) {
         BankDTO bankDTO = bankService.findBankById(id);
         if (bankDTO == null) {
            return ResponseEntity.notFound().build();
@@ -91,7 +91,7 @@ public class BankController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody BankDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody BankDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -104,7 +104,7 @@ public class BankController {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> delete(@PathVariable Integer id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
     String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(

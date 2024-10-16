@@ -38,12 +38,12 @@ public class ItemStock {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
     
-    @OneToOne(mappedBy = "stock") //, cascade=CascadeType.ALL)
+    @OneToOne(mappedBy = "stock")
     @JoinColumn(name = "item_id", referencedColumnName = "id")
     @JsonIgnore
     private Item item;
@@ -51,22 +51,22 @@ public class ItemStock {
     public ItemStock() {
     }
 
-    public ItemStock(Integer id, Integer quantity) {
+    public ItemStock(Long id, Integer quantity) {
         this.id = id;
         this.quantity = quantity;
     }
 
-    public ItemStock(Integer id, Integer quantity, Item item) {
+    public ItemStock(Long id, Integer quantity, Item item) {
         this.id = id;
         this.quantity = quantity;
         this.item = item;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

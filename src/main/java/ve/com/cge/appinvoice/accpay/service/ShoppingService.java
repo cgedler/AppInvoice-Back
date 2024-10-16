@@ -44,7 +44,7 @@ public class ShoppingService {
         return shoppingList;
     }
        
-    public ShoppingDTO findShoppingById(Integer id) {
+    public ShoppingDTO findShoppingById(Long id) {
         Shopping shopping = shoppingRepository.findById(id).orElse(null);
         if (shopping != null) {
             return new ShoppingDTO(
@@ -79,7 +79,7 @@ public class ShoppingService {
     }
     
     @Transactional
-    public UserResponse updateShopping(ShoppingDTO request, Integer id) {
+    public UserResponse updateShopping(ShoppingDTO request, Long id) {
         Shopping shopping = new Shopping(
                 id,
                 request.getDescription(),
@@ -96,7 +96,7 @@ public class ShoppingService {
     }
      
     @Transactional
-    public UserResponse deleteShopping(Integer id) {
+    public UserResponse deleteShopping(Long id) {
         shoppingRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }

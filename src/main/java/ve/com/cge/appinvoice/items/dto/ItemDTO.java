@@ -28,7 +28,7 @@ import ve.com.cge.appinvoice.items.model.ItemStock;
  */
 public class ItemDTO {
     
-    private Integer id;
+    private Long id;
     private String description;
     private Category category;
     private ItemStock stock;
@@ -37,7 +37,7 @@ public class ItemDTO {
     public ItemDTO() {
     }
 
-    public ItemDTO(Integer id, String description, Category category, ItemStock stock, ItemPrice price) {
+    public ItemDTO(Long id, String description, Category category, ItemStock stock, ItemPrice price) {
         this.id = id;
         this.description = description;
         this.category = category;
@@ -45,11 +45,11 @@ public class ItemDTO {
         this.price = price;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -69,7 +69,7 @@ public class BillingController {
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<BillingDTO> getBillingData(@PathVariable Integer id) {
+    public ResponseEntity<BillingDTO> getBillingData(@PathVariable Long id) {
         BillingDTO billingDTO = billingService.findBillingById(id);
         if (billingDTO == null) {
            return ResponseEntity.notFound().build();
@@ -91,7 +91,7 @@ public class BillingController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody BillingDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody BillingDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -104,7 +104,7 @@ public class BillingController {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> delete(@PathVariable Integer id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
     String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(

@@ -25,6 +25,6 @@ import ve.com.cge.appinvoice.accpay.model.Supplier;
  * @version 1.0
  * @since Mar 22, 2024
  */
-public interface ISupplierRepository extends JpaRepository<Supplier, Integer> {
+public interface ISupplierRepository extends JpaRepository<Supplier, Long> {
 
 }

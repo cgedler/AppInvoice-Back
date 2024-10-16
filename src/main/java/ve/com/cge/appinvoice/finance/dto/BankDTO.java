@@ -24,24 +24,24 @@ package ve.com.cge.appinvoice.finance.dto;
  */
 public class BankDTO {
 
-    private Integer id;
+    private Long id;
     private String description;
-    private Integer number;
+    private String number;
 
     public BankDTO() {
     }
 
-    public BankDTO(Integer id, String description, Integer number) {
+    public BankDTO(Long id, String description, String number) {
         this.id = id;
         this.description = description;
         this.number = number;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -53,11 +53,11 @@ public class BankDTO {
         this.description = description;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
     

@@ -25,6 +25,6 @@ import ve.com.cge.appinvoice.accrec.model.BillingDetails;
  * @version 1.0
  * @since Mar 23, 2024
  */
-public interface IBillingDetailsRepository extends JpaRepository<BillingDetails, Integer> {
+public interface IBillingDetailsRepository extends JpaRepository<BillingDetails, Long> {
 
 }

@@ -44,7 +44,7 @@ public class SupplierService {
         return supplierList;
     }
        
-    public SupplierDTO findSupplierById(Integer id) {
+    public SupplierDTO findSupplierById(Long id) {
         Supplier supplier = supplierRepository.findById(id).orElse(null);
         if (supplier != null) {
             return new SupplierDTO(supplier.getId(), supplier.getDescription());
@@ -60,14 +60,14 @@ public class SupplierService {
     }
     
     @Transactional
-    public UserResponse updateSupplier(SupplierDTO request, Integer id) {
+    public UserResponse updateSupplier(SupplierDTO request, Long id) {
         Supplier supplier = new Supplier(id, request.getDescription());
         supplierRepository.save(supplier);
         return new UserResponse("The data was update");
     }
      
     @Transactional
-    public UserResponse deleteSupplier(Integer id) {
+    public UserResponse deleteSupplier(Long id) {
         supplierRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }   

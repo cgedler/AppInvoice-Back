@@ -36,10 +36,10 @@ public class SalesLedger {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     
     @Column(name = "billing_id", nullable = false)
-    private Integer billingId;
+    private Long billingId;
       
     @Column(name = "date", nullable = false)
     private Timestamp date;
@@ -56,7 +56,7 @@ public class SalesLedger {
     public SalesLedger() {
     }
 
-    public SalesLedger(Integer billingId, Timestamp date, double subTotal, double amountTax, double total) {
+    public SalesLedger(Long billingId, Timestamp date, double subTotal, double amountTax, double total) {
         this.billingId = billingId;
         this.date = date;
         this.subTotal = subTotal;
@@ -64,7 +64,7 @@ public class SalesLedger {
         this.total = total;
     }
 
-    public SalesLedger(Integer id, Integer billingId, Timestamp date, double subTotal, double amountTax, double total) {
+    public SalesLedger(Long id, Long billingId, Timestamp date, double subTotal, double amountTax, double total) {
         this.id = id;
         this.billingId = billingId;
         this.date = date;
@@ -73,15 +73,15 @@ public class SalesLedger {
         this.total = total;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public Integer getBillingId() {
+    public Long getBillingId() {
         return billingId;
     }
 
-    public void setBillingId(Integer billingId) {
+    public void setBillingId(Long billingId) {
         this.billingId = billingId;
     }
 

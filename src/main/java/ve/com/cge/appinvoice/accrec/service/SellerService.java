@@ -44,7 +44,7 @@ public class SellerService {
         return sellerList;
     }
        
-    public SellerDTO findSellerById(Integer id) {
+    public SellerDTO findSellerById(Long id) {
         Seller seller = sellerRepository.findById(id).orElse(null);
         if (seller != null) {
             return new SellerDTO(seller.getId(), seller.getDescription());
@@ -60,14 +60,14 @@ public class SellerService {
     }
     
     @Transactional
-    public UserResponse updateSeller(SellerDTO request, Integer id) {
+    public UserResponse updateSeller(SellerDTO request, Long id) {
         Seller seller = new Seller(id, request.getDescription());
         sellerRepository.save(seller);
         return new UserResponse("The data was update");
     }
      
     @Transactional
-    public UserResponse deleteSeller(Integer id) {
+    public UserResponse deleteSeller(Long id) {
         sellerRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }

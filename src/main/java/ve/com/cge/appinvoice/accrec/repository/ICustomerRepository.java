@@ -25,6 +25,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @version 1.0
  * @since Mar 23, 2024
  */
-public interface ICustomerRepository extends JpaRepository<Customer, Integer> {
+public interface ICustomerRepository extends JpaRepository<Customer, Long> {
 
 }

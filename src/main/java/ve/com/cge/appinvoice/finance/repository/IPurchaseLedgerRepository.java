@@ -25,6 +25,6 @@ import ve.com.cge.appinvoice.finance.model.PurchaseLedger;
  * @version 1.0
  * @since Mar 23, 2024
  */
-public interface IPurchaseLedgerRepository extends JpaRepository<PurchaseLedger, Integer>  {
+public interface IPurchaseLedgerRepository extends JpaRepository<PurchaseLedger, Long>  {
 
 }

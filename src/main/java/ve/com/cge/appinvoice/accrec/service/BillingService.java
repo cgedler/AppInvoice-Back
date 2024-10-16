@@ -44,7 +44,7 @@ public class BillingService {
         return billingList;
     }
        
-    public BillingDTO findBillingById(Integer id) {
+    public BillingDTO findBillingById(Long id) {
         Billing billing = billingRepository.findById(id).orElse(null);
         if (billing != null) {
             return new BillingDTO(
@@ -81,7 +81,7 @@ public class BillingService {
     }
     
     @Transactional
-    public UserResponse updateBilling(BillingDTO request, Integer id) {
+    public UserResponse updateBilling(BillingDTO request, Long id) {
         Billing billing = new Billing(
                 id,
                 request.getDescription(),
@@ -99,7 +99,7 @@ public class BillingService {
     }
      
     @Transactional
-    public UserResponse deleteBilling(Integer id) {
+    public UserResponse deleteBilling(Long id) {
         billingRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }

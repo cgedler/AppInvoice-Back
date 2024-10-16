@@ -69,7 +69,7 @@ public class SupplierController {
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<SupplierDTO> getSupplierData(@PathVariable Integer id) {
+    public ResponseEntity<SupplierDTO> getSupplierData(@PathVariable Long id) {
         SupplierDTO supplierDTO = supplierService.findSupplierById(id);
         if (supplierDTO == null) {
            return ResponseEntity.notFound().build();
@@ -91,7 +91,7 @@ public class SupplierController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody SupplierDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody SupplierDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -104,7 +104,7 @@ public class SupplierController {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> delete(@PathVariable Integer id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
     String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(

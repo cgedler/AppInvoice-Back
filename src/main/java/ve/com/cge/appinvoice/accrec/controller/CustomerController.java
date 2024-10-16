@@ -69,7 +69,7 @@ public class CustomerController {
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<CustomerDTO> getCustomerData(@PathVariable Integer id) {
+    public ResponseEntity<CustomerDTO> getCustomerData(@PathVariable Long id) {
         CustomerDTO customerDTO = customerService.findCustomerById(id);
         if (customerDTO == null) {
            return ResponseEntity.notFound().build();
@@ -91,7 +91,7 @@ public class CustomerController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody CustomerDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody CustomerDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -104,7 +104,7 @@ public class CustomerController {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> delete(@PathVariable Integer id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
     String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(

@@ -37,7 +37,7 @@ import ve.com.cge.appinvoice.accrec.model.Billing;
 public class Taxes {
     
     @Id
-    private Integer id;
+    private Long id;
     
     @Column(name = "description", nullable = false)
     private String description;
@@ -56,17 +56,17 @@ public class Taxes {
     public Taxes() {
     }
 
-    public Taxes(Integer id, String description, double tax) {
+    public Taxes(Long id, String description, double tax) {
         this.id = id;
         this.description = description;
         this.tax = tax;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

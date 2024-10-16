@@ -44,7 +44,7 @@ public class CustomerService {
         return customerList;
     }
        
-    public CustomerDTO findCustomerById(Integer id) {
+    public CustomerDTO findCustomerById(Long id) {
         Customer customer = customerRepository.findById(id).orElse(null);
         if (customer != null) {
             return new CustomerDTO(customer.getId(), customer.getDescription());
@@ -60,14 +60,14 @@ public class CustomerService {
     }
     
     @Transactional
-    public UserResponse updateCustomer(CustomerDTO request, Integer id) {
+    public UserResponse updateCustomer(CustomerDTO request, Long id) {
         Customer customer = new Customer(id, request.getDescription());
         customerRepository.save(customer);
         return new UserResponse("The data was update");
     }
      
     @Transactional
-    public UserResponse deleteCustomer(Integer id) {
+    public UserResponse deleteCustomer(Long id) {
         customerRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }

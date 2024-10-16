@@ -37,7 +37,7 @@ import ve.com.cge.appinvoice.accrec.model.Billing;
 public class Bank {
     
     @Id
-    private Integer id;
+    private Long id;
     
     @Column(name = "description", nullable = false)
     private String description;
@@ -51,22 +51,22 @@ public class Bank {
     private List<Shopping> shopping;
 
     @Column(name = "number", nullable = false)
-    private Integer number;
+    private String number;
 
     public Bank() {
     }
 
-    public Bank(Integer id, String description, Integer number) {
+    public Bank(Long id, String description, String number) {
         this.id = id;
         this.description = description;
         this.number = number;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -78,11 +78,11 @@ public class Bank {
         this.description = description;
     }
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
     

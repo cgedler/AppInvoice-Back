@@ -35,7 +35,7 @@ import javax.persistence.Table;
 public class Supplier {
     
     @Id
-    private Integer id;
+    private Long id;
     
     @Column(name = "description", nullable = false)
     private String description;
@@ -47,16 +47,16 @@ public class Supplier {
     public Supplier() {
     }
     
-    public Supplier(Integer id, String description) {
+    public Supplier(Long id, String description) {
         this.id = id;
         this.description = description;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

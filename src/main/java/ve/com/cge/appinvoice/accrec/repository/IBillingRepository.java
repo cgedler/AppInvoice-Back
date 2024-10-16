@@ -25,6 +25,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @version 1.0
  * @since Mar 23, 2024
  */
-public interface IBillingRepository extends JpaRepository<Billing, Integer> {
+public interface IBillingRepository extends JpaRepository<Billing, Long> {
 
 }

@@ -24,7 +24,7 @@ package ve.com.cge.appinvoice.items.dto;
  */
 public class CategoryDTO {
 
-    private Integer id;
+    private Long id;
     private String description;
     
     public CategoryDTO() {
@@ -35,16 +35,16 @@ public class CategoryDTO {
         this.description = description;
     }
 
-    public CategoryDTO(Integer id, String description) {
+    public CategoryDTO(Long id, String description) {
         this.id = id;
         this.description = description;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

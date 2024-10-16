@@ -44,7 +44,7 @@ public class ItemService {
         return itemsList;
     }
 
-    public ItemDTO findItemById(Integer id) {
+    public ItemDTO findItemById(Long id) {
         Item item = itemRepository.findById(id).orElse(null);
         if (item != null) {
             return new ItemDTO(item.getId(), item.getDescription(), item.getCategory(), item.getStock(), item.getPrice());
@@ -60,14 +60,14 @@ public class ItemService {
     }
     
     @Transactional
-    public UserResponse updateItem(ItemDTO request, Integer id) {
+    public UserResponse updateItem(ItemDTO request, Long id) {
         Item item = new Item(request.getId(), request.getDescription(), request.getCategory(), request.getStock(), request.getPrice());
         itemRepository.save(item);
         return new UserResponse("The data was update");
     }
      
     @Transactional
-    public UserResponse deleteItem(Integer id) {
+    public UserResponse deleteItem(Long id) {
         itemRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }   

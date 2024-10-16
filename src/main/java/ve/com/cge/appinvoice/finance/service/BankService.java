@@ -44,7 +44,7 @@ public class BankService {
         return bankList;
     }
        
-    public BankDTO findBankById(Integer id) {
+    public BankDTO findBankById(Long id) {
         Bank bank = bankRepository.findById(id).orElse(null);
         if (bank != null) {
             return new BankDTO(bank.getId(), bank.getDescription(), bank.getNumber());
@@ -60,14 +60,14 @@ public class BankService {
     }
     
     @Transactional
-    public UserResponse updateBank(BankDTO request, Integer id) {
+    public UserResponse updateBank(BankDTO request, Long id) {
         Bank bank = new Bank(id, request.getDescription(), request.getNumber());
         bankRepository.save(bank);
         return new UserResponse("The data was update");
     }
      
     @Transactional
-    public UserResponse deleteBank(Integer id) {
+    public UserResponse deleteBank(Long id) {
         bankRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }   

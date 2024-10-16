@@ -44,7 +44,7 @@ public class CategoryService {
         return categoryList;
     }
        
-    public CategoryDTO findCategoryById(Integer id) {
+    public CategoryDTO findCategoryById(Long id) {
         Category category = categoryRepository.findById(id).orElse(null);
         if (category != null) {
             return new CategoryDTO(category.getId(), category.getDescription());
@@ -60,14 +60,14 @@ public class CategoryService {
     }
     
     @Transactional
-    public UserResponse updateCategory(CategoryDTO request, Integer id) {
+    public UserResponse updateCategory(CategoryDTO request, Long id) {
         Category category = new Category(id, request.getDescription());
         categoryRepository.save(category);
         return new UserResponse("The data was update");
     }
      
     @Transactional
-    public UserResponse deleteCategory(Integer id) {
+    public UserResponse deleteCategory(Long id) {
         categoryRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }   

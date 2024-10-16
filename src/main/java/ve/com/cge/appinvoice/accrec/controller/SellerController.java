@@ -69,7 +69,7 @@ public class SellerController {
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<SellerDTO> getSellerData(@PathVariable Integer id) {
+    public ResponseEntity<SellerDTO> getSellerData(@PathVariable Long id) {
         SellerDTO sellerDTO = sellerService.findSellerById(id);
         if (sellerDTO == null) {
            return ResponseEntity.notFound().build();
@@ -91,7 +91,7 @@ public class SellerController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody SellerDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody SellerDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -104,7 +104,7 @@ public class SellerController {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> delete(@PathVariable Integer id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
     String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(

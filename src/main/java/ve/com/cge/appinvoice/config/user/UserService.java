@@ -35,15 +35,13 @@ public class UserService {
     }
 
     @Transactional
-    public UserResponse updateUser(UserRequest userRequest) {
-       
+    public UserResponse updateUser(UserRequest userRequest) {     
         userRepository.updateUser(userRequest.id, userRequest.username, userRequest.name, userRequest.password);
         return new UserResponse("El usuario se registró satisfactoriamente");
     }
 
     public UserDTO getUser(Integer id) {
-        User user = userRepository.findById(id).orElse(null);
-       
+        User user = userRepository.findById(id).orElse(null);     
         if (user != null)
         {
             return new UserDTO(user.getId(), user.getUsername(), user.getName(), user.getPassword());

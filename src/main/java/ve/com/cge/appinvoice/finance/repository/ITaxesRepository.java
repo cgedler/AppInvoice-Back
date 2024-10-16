@@ -25,6 +25,6 @@ import ve.com.cge.appinvoice.finance.model.Taxes;
  * @version 1.0
  * @since Mar 23, 2024
  */
-public interface ITaxesRepository extends JpaRepository<Taxes, Integer> {
+public interface ITaxesRepository extends JpaRepository<Taxes, Long> {
 
 }

@@ -71,7 +71,7 @@ public class ShoppingController {
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<ShoppingDTO> getShoppingData(@PathVariable Integer id) {
+    public ResponseEntity<ShoppingDTO> getShoppingData(@PathVariable Long id) {
         ShoppingDTO shoppingDTO = shoppingService.findShoppingById(id);
         if (shoppingDTO == null) {
            return ResponseEntity.notFound().build();
@@ -93,7 +93,7 @@ public class ShoppingController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody ShoppingDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody ShoppingDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -106,7 +106,7 @@ public class ShoppingController {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> delete(@PathVariable Integer id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
     String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(

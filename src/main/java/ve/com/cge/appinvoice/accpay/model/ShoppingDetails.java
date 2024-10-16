@@ -38,7 +38,7 @@ public class ShoppingDetails {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     
     @Column(name = "description", nullable = false)
     private String description;
@@ -68,7 +68,7 @@ public class ShoppingDetails {
         this.amount = amount;
     }
 
-    public ShoppingDetails(Integer id, String description, Shopping shopping, Item item, Integer quantity, double amount) {
+    public ShoppingDetails(Long id, String description, Shopping shopping, Item item, Integer quantity, double amount) {
         this.id = id;
         this.description = description;
         this.shopping = shopping;
@@ -77,7 +77,7 @@ public class ShoppingDetails {
         this.amount = amount;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

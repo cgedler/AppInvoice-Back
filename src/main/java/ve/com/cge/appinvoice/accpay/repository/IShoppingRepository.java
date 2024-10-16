@@ -25,6 +25,6 @@ import ve.com.cge.appinvoice.accpay.model.Shopping;
  * @version 1.0
  * @since Mar 22, 2024
  */
-public interface IShoppingRepository extends JpaRepository<Shopping, Integer> {
+public interface IShoppingRepository extends JpaRepository<Shopping, Long> {
 
 }

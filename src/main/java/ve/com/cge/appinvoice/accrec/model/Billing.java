@@ -43,7 +43,7 @@ public class Billing {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     
     @Column(name = "description", nullable = false)
     private String description;
@@ -96,7 +96,7 @@ public class Billing {
         this.total = total;
     }
 
-    public Billing(Integer id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, double subTotal, double amountTax, double total) {
+    public Billing(Long id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, double subTotal, double amountTax, double total) {
         this.id = id;
         this.description = description;
         this.billingDetails = billingDetails;
@@ -110,7 +110,7 @@ public class Billing {
         this.total = total;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 

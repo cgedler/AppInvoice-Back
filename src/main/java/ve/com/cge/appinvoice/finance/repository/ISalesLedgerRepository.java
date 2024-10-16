@@ -25,6 +25,6 @@ import ve.com.cge.appinvoice.finance.model.SalesLedger;
  * @version 1.0
  * @since Mar 23, 2024
  */
-public interface ISalesLedgerRepository extends JpaRepository<SalesLedger, Integer>  {
+public interface ISalesLedgerRepository extends JpaRepository<SalesLedger, Long>  {
 
 }

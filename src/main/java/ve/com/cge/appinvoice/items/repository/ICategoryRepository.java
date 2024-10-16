@@ -29,9 +29,9 @@ import ve.com.cge.appinvoice.items.model.Category;
  * @version 1.0
  * @since Mar 14, 2024
  */
-public interface ICategoryRepository extends JpaRepository<Category, Integer> {
+public interface ICategoryRepository extends JpaRepository<Category, Long> {
 
-    Optional<Category> findById(int id);
+    Optional<Category> findById(Long id);
     
     @Modifying()
     @Query(value = "INSERT INTO category (description) VALUES (?)", nativeQuery = true)

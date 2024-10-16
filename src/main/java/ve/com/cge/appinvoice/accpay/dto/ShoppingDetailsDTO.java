@@ -24,17 +24,17 @@ package ve.com.cge.appinvoice.accpay.dto;
  */
 public class ShoppingDetailsDTO {
     
-    private Integer id;
+    private Long id;
     private String description;
-    private Integer shoppingId;
-    private Integer itemId;
+    private Long shoppingId;
+    private Long itemId;
     private Integer quantity;
     private double amount;
 
     public ShoppingDetailsDTO() {
     }
 
-    public ShoppingDetailsDTO(Integer id, String description, Integer shoppingId, Integer itemId, Integer quantity, double amount) {
+    public ShoppingDetailsDTO(Long id, String description, Long shoppingId, Long itemId, Integer quantity, double amount) {
         this.id = id;
         this.description = description;
         this.shoppingId = shoppingId;
@@ -43,11 +43,11 @@ public class ShoppingDetailsDTO {
         this.amount = amount;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -59,19 +59,19 @@ public class ShoppingDetailsDTO {
         this.description = description;
     }
 
-    public Integer getShoppingId() {
+    public Long getShoppingId() {
         return shoppingId;
     }
 
-    public void setShoppingId(Integer shoppingId) {
+    public void setShoppingId(Long shoppingId) {
         this.shoppingId = shoppingId;
     }
 
-    public Integer getItemId() {
+    public Long getItemId() {
         return itemId;
     }
 
-    public void setItemId(Integer itemId) {
+    public void setItemId(Long itemId) {
         this.itemId = itemId;
     }
 

@@ -38,12 +38,12 @@ public class ItemPrice {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     
     @Column(name = "price", nullable = false)
     private double price;
     
-    @OneToOne(mappedBy = "price")
+    @OneToOne
     @JoinColumn(name = "item_id", referencedColumnName = "id")
     @JsonIgnore
     private Item item;
@@ -55,22 +55,22 @@ public class ItemPrice {
         this.price = price;
     }
 
-    public ItemPrice(Integer id, double price) {
+    public ItemPrice(Long id, double price) {
         this.id = id;
         this.price = price;
     }
 
-    public ItemPrice(Integer id, double price, Item item) {
+    public ItemPrice(Long id, double price, Item item) {
         this.id = id;
         this.price = price;
         this.item = item;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

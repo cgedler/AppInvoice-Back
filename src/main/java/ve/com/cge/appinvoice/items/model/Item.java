@@ -41,7 +41,7 @@ import ve.com.cge.appinvoice.accrec.model.BillingDetails;
 public class Item {
 
     @Id
-    private Integer id;
+    private Long id;
     
     @Column(name = "description", nullable = false)
     private String description;
@@ -51,9 +51,11 @@ public class Item {
     private Category category;
     
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "stock_id")
     private ItemStock stock;
     
     @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "price_id")
     private ItemPrice price;
     
     @OneToMany(mappedBy = "item")
@@ -67,7 +69,7 @@ public class Item {
     public Item() {
     }
 
-    public Item(Integer id, String description, Category category, ItemStock stock, ItemPrice price) {
+    public Item(Long id, String description, Category category, ItemStock stock, ItemPrice price) {
         this.id = id;
         this.description = description;
         this.category = category;
@@ -75,11 +77,11 @@ public class Item {
         this.price = price;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -69,7 +69,7 @@ public class TaxesController {
     }
     
     @GetMapping(value = "/{id}")
-    public ResponseEntity<TaxesDTO> getTaxesData(@PathVariable Integer id) {
+    public ResponseEntity<TaxesDTO> getTaxesData(@PathVariable Long id) {
         TaxesDTO taxesDTO = taxesService.findTaxesById(id);
         if (taxesDTO == null) {
            return ResponseEntity.notFound().build();
@@ -91,7 +91,7 @@ public class TaxesController {
     }
     
     @PutMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> edit(@PathVariable Integer id, @RequestBody TaxesDTO request, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody TaxesDTO request, @RequestHeader("Authorization") String token) {
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -104,7 +104,7 @@ public class TaxesController {
     }
     
     @DeleteMapping(value = "/{id}")
-    public ResponseEntity<UserResponse> delete(@PathVariable Integer id, @RequestHeader("Authorization") String token) {
+    public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
     String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(

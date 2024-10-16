@@ -24,24 +24,24 @@ package ve.com.cge.appinvoice.finance.dto;
  */
 public class TaxesDTO {
 
-    private Integer id;
+    private Long id;
     private String description;
     private double tax;
 
     public TaxesDTO() {
     }
 
-    public TaxesDTO(Integer id, String description, double tax) {
+    public TaxesDTO(Long id, String description, double tax) {
         this.id = id;
         this.description = description;
         this.tax = tax;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

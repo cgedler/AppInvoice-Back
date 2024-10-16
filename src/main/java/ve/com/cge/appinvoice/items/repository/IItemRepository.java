@@ -26,8 +26,8 @@ import ve.com.cge.appinvoice.items.model.Item;
  * @version 1.0
  * @since Mar 14, 2024
  */
-public interface IItemRepository extends JpaRepository<Item, Integer> {
+public interface IItemRepository extends JpaRepository<Item, Long> {
 
-    Optional<Item> findById(int id);
+    Optional<Item> findById(Long id);
 
 }

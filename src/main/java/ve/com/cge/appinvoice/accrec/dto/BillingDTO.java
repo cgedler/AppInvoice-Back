@@ -32,7 +32,7 @@ import ve.com.cge.appinvoice.finance.model.Taxes;
  */
 public class BillingDTO {
  
-    private Integer id;
+    private Long id;
     private String description;
     private List<BillingDetails> billingDetails;
     private Customer customer;
@@ -47,7 +47,7 @@ public class BillingDTO {
     public BillingDTO() {
     }
 
-    public BillingDTO(Integer id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, double subTotal, double amountTax, double total) {
+    public BillingDTO(Long id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, double subTotal, double amountTax, double total) {
         this.id = id;
         this.description = description;
         this.billingDetails = billingDetails;
@@ -61,11 +61,11 @@ public class BillingDTO {
         this.total = total;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -36,10 +36,10 @@ public class PurchaseLedger {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
     
     @Column(name = "shopping_id", nullable = false)
-    private Integer shoppingId;  
+    private Long shoppingId;  
     
     @Column(name = "date", nullable = false)
     private Timestamp date;
@@ -56,7 +56,7 @@ public class PurchaseLedger {
     public PurchaseLedger() {
     }
 
-    public PurchaseLedger(Integer shoppingId, Timestamp date, double subTotal, double amountTax, double total) {
+    public PurchaseLedger(Long shoppingId, Timestamp date, double subTotal, double amountTax, double total) {
         this.shoppingId = shoppingId;
         this.date = date;
         this.subTotal = subTotal;
@@ -64,7 +64,7 @@ public class PurchaseLedger {
         this.total = total;
     }
 
-    public PurchaseLedger(Integer id, Integer shoppingId, Timestamp date, double subTotal, double amountTax, double total) {
+    public PurchaseLedger(Long id, Long shoppingId, Timestamp date, double subTotal, double amountTax, double total) {
         this.id = id;
         this.shoppingId = shoppingId;
         this.date = date;
@@ -73,15 +73,15 @@ public class PurchaseLedger {
         this.total = total;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public Integer getShoppingId() {
+    public Long getShoppingId() {
         return shoppingId;
     }
 
-    public void setShoppingId(Integer shoppingId) {
+    public void setShoppingId(Long shoppingId) {
         this.shoppingId = shoppingId;
     }
 

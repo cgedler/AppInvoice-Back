@@ -44,7 +44,7 @@ public class TaxesService {
         return taxesList;
     }
        
-    public TaxesDTO findTaxesById(Integer id) {
+    public TaxesDTO findTaxesById(Long id) {
         Taxes taxes = taxesRepository.findById(id).orElse(null);
         if (taxes != null) {
             return new TaxesDTO(taxes.getId(), taxes.getDescription(), taxes.getTax());
@@ -60,14 +60,14 @@ public class TaxesService {
     }
     
     @Transactional
-    public UserResponse updateTaxes(TaxesDTO request, Integer id) {
+    public UserResponse updateTaxes(TaxesDTO request, Long id) {
         Taxes taxes = new Taxes(id, request.getDescription(), request.getTax());
         taxesRepository.save(taxes);
         return new UserResponse("The data was update");
     }
      
     @Transactional
-    public UserResponse deleteTaxes(Integer id) {
+    public UserResponse deleteTaxes(Long id) {
         taxesRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }   
