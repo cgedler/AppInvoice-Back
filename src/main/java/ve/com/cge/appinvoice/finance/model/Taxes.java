@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.finance.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,8 +34,8 @@ import ve.com.cge.appinvoice.accrec.model.Billing;
  * @since Mar 22, 2024
  */
 @Entity
-@Table(name = "taxes")
-public class Taxes {
+@Table(name = "Finance.Taxes")
+public class Taxes implements Serializable {
     
     @Id
     private Long id;

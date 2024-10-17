@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.finance.model;
 
+import java.io.Serializable;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,8 +32,8 @@ import javax.persistence.Table;
  * @since Mar 22, 2024
  */
 @Entity
-@Table(name = "purchaseledger")
-public class PurchaseLedger {
+@Table(name = "Finance.PurchaseLedger")
+public class PurchaseLedger implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

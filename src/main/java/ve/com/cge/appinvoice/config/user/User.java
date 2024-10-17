@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.config.user;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Collection;
 import javax.persistence.Column;
@@ -38,8 +39,8 @@ import org.springframework.security.core.userdetails.UserDetails;
  * @since Feb 15, 2024
  */
 @Entity
-@Table(name = "users", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
-public class User implements UserDetails {
+@Table(name = "System.Users", uniqueConstraints = {@UniqueConstraint(columnNames = {"username"})})
+public class User implements UserDetails, Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

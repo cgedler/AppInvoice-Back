@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.items.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,8 +35,8 @@ import javax.persistence.UniqueConstraint;
  * @since Mar 14, 2024
  */
 @Entity
-@Table(name = "category", uniqueConstraints = {@UniqueConstraint(columnNames = {"description"})})
-public class Category {
+@Table(name = "Inventory.Categories", uniqueConstraints = {@UniqueConstraint(columnNames = {"description"})})
+public class Category implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -33,7 +33,7 @@ import javax.persistence.Table;
  * @since Mar 13, 2024
  */
 @Entity
-@Table(name = "audit")
+@Table(name = "System.Audit")
 public class Audit {
     
     @Id

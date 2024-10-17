@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.accpay.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -31,8 +32,8 @@ import javax.persistence.Table;
  * @since Mar 22, 2024
  */
 @Entity
-@Table(name = "suppliers")
-public class Supplier {
+@Table(name = "AccountsPayable.Suppliers")
+public class Supplier implements Serializable {
     
     @Id
     private Long id;

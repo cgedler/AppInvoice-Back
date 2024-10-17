@@ -20,6 +20,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,6 +52,8 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
 @RequestMapping("/seller")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class SellerController {
+    
+    private static Logger logger = LoggerFactory.getLogger(SellerController.class);
 
     private final JwtService jwtService;
     private final AuditService auditService;
@@ -63,6 +67,7 @@ public class SellerController {
   
     @GetMapping(value = "/")
     public List<Seller> getSellersData() {
+        logger.info("- Get list : SellerController -");
         List<Seller> listSellers= new ArrayList<Seller>();
         listSellers = sellerService.findSellers();
         return listSellers;
@@ -70,6 +75,7 @@ public class SellerController {
     
     @GetMapping(value = "/{id}")
     public ResponseEntity<SellerDTO> getSellerData(@PathVariable Long id) {
+        logger.info("- Get by Id : SellerController -");
         SellerDTO sellerDTO = sellerService.findSellerById(id);
         if (sellerDTO == null) {
            return ResponseEntity.notFound().build();
@@ -79,6 +85,7 @@ public class SellerController {
     
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody SellerDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Add new : SellerController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -92,6 +99,7 @@ public class SellerController {
     
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody SellerDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Edit by Id : SellerController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -105,7 +113,8 @@ public class SellerController {
     
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
-    String tokenString = jwtService.getTokenFromHeader(token);
+        logger.info("- Delete by Id : SellerController -");
+        String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
                 username,

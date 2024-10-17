@@ -21,6 +21,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,6 +52,8 @@ import ve.com.cge.appinvoice.finance.service.TaxesService;
 @RequestMapping("/taxes")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class TaxesController {
+    
+    private static Logger logger = LoggerFactory.getLogger(TaxesController.class);
   
     private final JwtService jwtService;
     private final AuditService auditService;
@@ -63,6 +67,7 @@ public class TaxesController {
   
     @GetMapping(value = "/")
     public List<Taxes> getTaxessData() {
+        logger.info("- Get list : TaxesController -");
         List<Taxes> listTaxess= new ArrayList<Taxes>();
         listTaxess = taxesService.findTaxess();
         return listTaxess;
@@ -70,6 +75,7 @@ public class TaxesController {
     
     @GetMapping(value = "/{id}")
     public ResponseEntity<TaxesDTO> getTaxesData(@PathVariable Long id) {
+        logger.info("- Get by Id : TaxesController -");
         TaxesDTO taxesDTO = taxesService.findTaxesById(id);
         if (taxesDTO == null) {
            return ResponseEntity.notFound().build();
@@ -79,6 +85,7 @@ public class TaxesController {
     
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody TaxesDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Add new : TaxesController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -92,6 +99,7 @@ public class TaxesController {
     
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody TaxesDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Edit by Id : TaxesController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -105,7 +113,8 @@ public class TaxesController {
     
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
-    String tokenString = jwtService.getTokenFromHeader(token);
+        logger.info("- Delete by Id : TaxesController -");
+        String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
                 username,

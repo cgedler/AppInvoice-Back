@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.items.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,8 +38,8 @@ import ve.com.cge.appinvoice.accrec.model.BillingDetails;
  * @since Mar 14, 2024
  */
 @Entity
-@Table(name = "items")
-public class Item {
+@Table(name = "Inventory.Items")
+public class Item implements Serializable {
 
     @Id
     private Long id;

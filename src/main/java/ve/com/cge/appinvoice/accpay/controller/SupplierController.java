@@ -21,6 +21,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,6 +52,8 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
 @RequestMapping("/supplier")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class SupplierController {
+    
+    private static Logger logger = LoggerFactory.getLogger(SupplierController.class);
 
     private final JwtService jwtService;
     private final AuditService auditService;
@@ -63,6 +67,7 @@ public class SupplierController {
   
     @GetMapping(value = "/")
     public List<Supplier> getSuppliersData() {
+        logger.info("- Get list : SupplierController -");
         List<Supplier> listSuppliers= new ArrayList<Supplier>();
         listSuppliers = supplierService.findSuppliers();
         return listSuppliers;
@@ -70,6 +75,7 @@ public class SupplierController {
     
     @GetMapping(value = "/{id}")
     public ResponseEntity<SupplierDTO> getSupplierData(@PathVariable Long id) {
+        logger.info("- Get by Id : SupplierController -");
         SupplierDTO supplierDTO = supplierService.findSupplierById(id);
         if (supplierDTO == null) {
            return ResponseEntity.notFound().build();
@@ -79,6 +85,7 @@ public class SupplierController {
     
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody SupplierDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Add new : SupplierController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -92,6 +99,7 @@ public class SupplierController {
     
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody SupplierDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Edit by Id : SupplierController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -105,7 +113,8 @@ public class SupplierController {
     
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
-    String tokenString = jwtService.getTokenFromHeader(token);
+        logger.info("- Delete by Id : SupplierController -");
+        String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
                 username,

@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.finance.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,8 +34,8 @@ import ve.com.cge.appinvoice.accrec.model.Billing;
  * @since Mar 22, 2024
  */
 @Entity
-@Table(name = "bank")
-public class Bank {
+@Table(name = "Finance.Bank")
+public class Bank implements Serializable {
     
     @Id
     private Long id;

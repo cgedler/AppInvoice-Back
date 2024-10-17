@@ -20,6 +20,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,6 +52,8 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
 @RequestMapping("/billing")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class BillingController {
+    
+    private static Logger logger = LoggerFactory.getLogger(BillingController.class);
 
     private final JwtService jwtService;
     private final AuditService auditService;
@@ -63,6 +67,7 @@ public class BillingController {
   
     @GetMapping(value = "/")
     public List<Billing> getBillingsData() {
+        logger.info("- Get list : BillingController -");
         List<Billing> listBillings= new ArrayList<Billing>();
         listBillings = billingService.findBillings();
         return listBillings;
@@ -70,6 +75,7 @@ public class BillingController {
     
     @GetMapping(value = "/{id}")
     public ResponseEntity<BillingDTO> getBillingData(@PathVariable Long id) {
+        logger.info("- Get by Id : BillingController -");
         BillingDTO billingDTO = billingService.findBillingById(id);
         if (billingDTO == null) {
            return ResponseEntity.notFound().build();
@@ -79,6 +85,7 @@ public class BillingController {
     
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody BillingDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Add new : BillingController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -92,6 +99,7 @@ public class BillingController {
     
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody BillingDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Edit by Id : BillingController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -105,7 +113,8 @@ public class BillingController {
     
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
-    String tokenString = jwtService.getTokenFromHeader(token);
+        logger.info("- Delete by Id : BillingController -");
+        String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
                 username,

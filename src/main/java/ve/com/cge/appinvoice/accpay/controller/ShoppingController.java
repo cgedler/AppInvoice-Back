@@ -20,6 +20,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -51,7 +53,9 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
 @RequestMapping("/shopping")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class ShoppingController {
-
+    
+    private static Logger logger = LoggerFactory.getLogger(ShoppingController.class);
+    
     private final JwtService jwtService;
     private final AuditService auditService;
     private final ShoppingService shoppingService;
@@ -65,6 +69,7 @@ public class ShoppingController {
     
     @GetMapping(value = "/")
     public List<Shopping> getShoppingsData() {
+        logger.info("- Get list : ShoppingController -");
         List<Shopping> listShoppings= new ArrayList<Shopping>();
         listShoppings = shoppingService.findShoppings();
         return listShoppings;
@@ -72,6 +77,7 @@ public class ShoppingController {
     
     @GetMapping(value = "/{id}")
     public ResponseEntity<ShoppingDTO> getShoppingData(@PathVariable Long id) {
+        logger.info("- Get by Id : ShoppingController -");
         ShoppingDTO shoppingDTO = shoppingService.findShoppingById(id);
         if (shoppingDTO == null) {
            return ResponseEntity.notFound().build();
@@ -81,6 +87,7 @@ public class ShoppingController {
     
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody ShoppingDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Add new : ShoppingController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -94,6 +101,7 @@ public class ShoppingController {
     
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody ShoppingDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Edit by Id : ShoppingController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -107,7 +115,8 @@ public class ShoppingController {
     
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
-    String tokenString = jwtService.getTokenFromHeader(token);
+        logger.info("- Delete by Id : ShoppingController -");
+        String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
                 username,

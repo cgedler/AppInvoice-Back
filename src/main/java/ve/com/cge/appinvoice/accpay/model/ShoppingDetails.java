@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.accpay.model;
 
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,8 +34,8 @@ import ve.com.cge.appinvoice.items.model.Item;
  * @since Mar 22, 2024
  */
 @Entity
-@Table(name = "shoppingdetails")
-public class ShoppingDetails {
+@Table(name = "AccountsPayable.ShoppingDetails")
+public class ShoppingDetails implements Serializable {
     
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -34,7 +34,7 @@ public interface ICategoryRepository extends JpaRepository<Category, Long> {
     Optional<Category> findById(Long id);
     
     @Modifying()
-    @Query(value = "INSERT INTO category (description) VALUES (?)", nativeQuery = true)
+    @Query(value = "INSERT INTO inventory_categories (description) VALUES (?)", nativeQuery = true)
     void insert(@Param(value = "description") String description);
     
 }

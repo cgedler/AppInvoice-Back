@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.items.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -33,8 +34,8 @@ import javax.persistence.Table;
  * @since Mar 14, 2024
  */
 @Entity
-@Table(name = "price")
-public class ItemPrice {
+@Table(name = "Inventory.Price")
+public class ItemPrice implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

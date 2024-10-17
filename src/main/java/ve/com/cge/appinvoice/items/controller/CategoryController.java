@@ -22,6 +22,8 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -50,6 +52,8 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
 @RequestMapping("/item/category")
 @CrossOrigin(origins = {"http://localhost:4200"})
 public class CategoryController {
+    
+    private static Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     private final CategoryService categoryService;
     private final JwtService jwtService;
@@ -63,6 +67,7 @@ public class CategoryController {
         
     @GetMapping(value = "/")
     public List<Category> getCategoriesData() {
+        logger.info("- Get list : CategoryController -");
         List<Category> listCategories = new ArrayList<Category>();
         listCategories = categoryService.findCategories();
         return listCategories;
@@ -70,6 +75,7 @@ public class CategoryController {
     
     @GetMapping(value = "/{id}")
     public ResponseEntity<CategoryDTO> getCategoryData(@PathVariable Long id) {
+        logger.info("- Get by Id : CategoryController -");
         CategoryDTO categoryDTO = categoryService.findCategoryById(id);
         if (categoryDTO == null) {
            return ResponseEntity.notFound().build();
@@ -79,6 +85,7 @@ public class CategoryController {
        
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody CategoryDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Add new : CategoryController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -92,6 +99,7 @@ public class CategoryController {
     
     @PutMapping(value = "/{id}")
     public ResponseEntity<UserResponse> edit(@PathVariable Long id, @RequestBody CategoryDTO request, @RequestHeader("Authorization") String token) {
+        logger.info("- Edit by Id : CategoryController -");
         String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
@@ -105,7 +113,8 @@ public class CategoryController {
     
     @DeleteMapping(value = "/{id}")
     public ResponseEntity<UserResponse> delete(@PathVariable Long id, @RequestHeader("Authorization") String token) {
-    String tokenString = jwtService.getTokenFromHeader(token);
+        logger.info("- Delete by Id : CategoryController -");
+        String tokenString = jwtService.getTokenFromHeader(token);
         String username = jwtService.getUsernameFromToken(tokenString);
         Audit transaction = new Audit(
                 username,
