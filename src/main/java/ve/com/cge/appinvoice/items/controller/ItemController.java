@@ -83,6 +83,14 @@ public class ItemController {
         return ResponseEntity.ok(itemDTO);        
     }
     
+    @GetMapping(value = "/categoryid/{id}")
+    public List<Item> getItemDataByCategoryId(@PathVariable Long id) {
+        logger.info("- Get by Category Id : ItemController -");
+        List<Item> listItems = new ArrayList<Item>();
+        listItems = itemService.findItemByCategoryId(id);
+        return listItems;        
+    }
+    
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody ItemDTO request, @RequestHeader("Authorization") String token) {
         logger.info("- Add new : ItemController -");

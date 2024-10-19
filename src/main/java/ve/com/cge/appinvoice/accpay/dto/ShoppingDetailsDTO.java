@@ -15,6 +15,8 @@
 
 package ve.com.cge.appinvoice.accpay.dto;
 
+import java.math.BigDecimal;
+
 /**
  * ShoppingDetailsDTO 
  * 
@@ -29,12 +31,12 @@ public class ShoppingDetailsDTO {
     private Long shoppingId;
     private Long itemId;
     private Integer quantity;
-    private double amount;
+    private BigDecimal amount;
 
     public ShoppingDetailsDTO() {
     }
 
-    public ShoppingDetailsDTO(Long id, String description, Long shoppingId, Long itemId, Integer quantity, double amount) {
+    public ShoppingDetailsDTO(Long id, String description, Long shoppingId, Long itemId, Integer quantity, BigDecimal amount) {
         this.id = id;
         this.description = description;
         this.shoppingId = shoppingId;
@@ -83,11 +85,11 @@ public class ShoppingDetailsDTO {
         this.quantity = quantity;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

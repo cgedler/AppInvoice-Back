@@ -52,6 +52,11 @@ public class ItemService {
         return null;
     }
     
+    public List<Item> findItemByCategoryId(Long id) {
+        List<Item> itemsList = itemRepository.findByCategoryId(id);
+        return itemsList;   
+    }
+    
     @Transactional
     public UserResponse insertItem(ItemDTO request) {
         Item item = new Item(request.getId(), request.getDescription(), request.getCategory(), request.getStock(), request.getPrice());

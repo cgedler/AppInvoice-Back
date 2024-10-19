@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.finance.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,18 +47,18 @@ public class PurchaseLedger implements Serializable {
     private Timestamp date;
     
     @Column(name = "subtotal", nullable = false)
-    private double subTotal;
+    private BigDecimal subTotal;
     
     @Column(name = "amount_tax", nullable = false)
-    private double amountTax;
+    private BigDecimal amountTax;
     
     @Column(name = "total", nullable = false)
-    private double total;
+    private BigDecimal total;
 
     public PurchaseLedger() {
     }
 
-    public PurchaseLedger(Long shoppingId, Timestamp date, double subTotal, double amountTax, double total) {
+    public PurchaseLedger(Long shoppingId, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
         this.shoppingId = shoppingId;
         this.date = date;
         this.subTotal = subTotal;
@@ -65,7 +66,7 @@ public class PurchaseLedger implements Serializable {
         this.total = total;
     }
 
-    public PurchaseLedger(Long id, Long shoppingId, Timestamp date, double subTotal, double amountTax, double total) {
+    public PurchaseLedger(Long id, Long shoppingId, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
         this.id = id;
         this.shoppingId = shoppingId;
         this.date = date;
@@ -94,27 +95,27 @@ public class PurchaseLedger implements Serializable {
         this.date = date;
     }
 
-    public double getSubTotal() {
+    public BigDecimal getSubTotal() {
         return subTotal;
     }
 
-    public void setSubTotal(double subTotal) {
+    public void setSubTotal(BigDecimal subTotal) {
         this.subTotal = subTotal;
     }
 
-    public double getAmountTax() {
+    public BigDecimal getAmountTax() {
         return amountTax;
     }
 
-    public void setAmountTax(double amountTax) {
+    public void setAmountTax(BigDecimal amountTax) {
         this.amountTax = amountTax;
     }
 
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 

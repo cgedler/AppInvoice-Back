@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.accrec.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -56,12 +57,12 @@ public class BillingDetails implements Serializable {
     private Integer quantity;
     
     @Column(name = "amount", nullable = false)
-    private double amount;
+    private BigDecimal amount;
 
     public BillingDetails() {
     }
 
-    public BillingDetails(String description, Billing billing, Item item, Integer quantity, double amount) {
+    public BillingDetails(String description, Billing billing, Item item, Integer quantity, BigDecimal amount) {
         this.description = description;
         this.billing = billing;
         this.item = item;
@@ -69,7 +70,7 @@ public class BillingDetails implements Serializable {
         this.amount = amount;
     }
 
-    public BillingDetails(Long id, String description, Billing billing, Item item, Integer quantity, double amount) {
+    public BillingDetails(Long id, String description, Billing billing, Item item, Integer quantity, BigDecimal amount) {
         this.id = id;
         this.description = description;
         this.billing = billing;
@@ -114,11 +115,11 @@ public class BillingDetails implements Serializable {
         this.quantity = quantity;
     }
 
-    public double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 

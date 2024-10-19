@@ -25,6 +25,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 
 /**
  * ItemPrice entity
@@ -42,7 +43,7 @@ public class ItemPrice implements Serializable {
     private Long id;
     
     @Column(name = "price", nullable = false)
-    private double price;
+    private BigDecimal price;
     
     @OneToOne
     @JoinColumn(name = "item_id", referencedColumnName = "id")
@@ -52,16 +53,16 @@ public class ItemPrice implements Serializable {
     public ItemPrice() {
     }
 
-    public ItemPrice(double price) {
+    public ItemPrice(BigDecimal price) {
         this.price = price;
     }
 
-    public ItemPrice(Long id, double price) {
+    public ItemPrice(Long id, BigDecimal price) {
         this.id = id;
         this.price = price;
     }
 
-    public ItemPrice(Long id, double price, Item item) {
+    public ItemPrice(Long id, BigDecimal price, Item item) {
         this.id = id;
         this.price = price;
         this.item = item;
@@ -75,11 +76,11 @@ public class ItemPrice implements Serializable {
         this.id = id;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
     

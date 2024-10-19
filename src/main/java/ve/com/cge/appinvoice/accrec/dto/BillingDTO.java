@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.accrec.dto;
 
+import java.math.BigDecimal;
 import ve.com.cge.appinvoice.accrec.model.BillingDetails;
 import ve.com.cge.appinvoice.accrec.model.Customer;
 import ve.com.cge.appinvoice.accrec.model.Seller;
@@ -40,14 +41,14 @@ public class BillingDTO {
     private Bank bank;
     private Taxes taxes;
     private Timestamp date;
-    private double subTotal;
-    private double amountTax;
-    private double total;
+    private BigDecimal subTotal;
+    private BigDecimal amountTax;
+    private BigDecimal total;
 
     public BillingDTO() {
     }
 
-    public BillingDTO(Long id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, double subTotal, double amountTax, double total) {
+    public BillingDTO(Long id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
         this.id = id;
         this.description = description;
         this.billingDetails = billingDetails;
@@ -125,27 +126,27 @@ public class BillingDTO {
         this.date = date;
     }
 
-    public double getSubTotal() {
+    public BigDecimal getSubTotal() {
         return subTotal;
     }
 
-    public void setSubTotal(double subTotal) {
+    public void setSubTotal(BigDecimal subTotal) {
         this.subTotal = subTotal;
     }
 
-    public double getAmountTax() {
+    public BigDecimal getAmountTax() {
         return amountTax;
     }
 
-    public void setAmountTax(double amountTax) {
+    public void setAmountTax(BigDecimal amountTax) {
         this.amountTax = amountTax;
     }
 
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 

@@ -15,8 +15,11 @@
 
 package ve.com.cge.appinvoice.items.repository;
 
+import java.util.List;
 import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 import ve.com.cge.appinvoice.items.model.Item;
 
 /**
@@ -29,5 +32,8 @@ import ve.com.cge.appinvoice.items.model.Item;
 public interface IItemRepository extends JpaRepository<Item, Long> {
 
     Optional<Item> findById(Long id);
+
+    @Query("select i from Item i where i.category.id = :id")
+    List<Item> findByCategoryId(@Param("id") Long id);
 
 }

@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.accpay.dto;
 
+import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
 import ve.com.cge.appinvoice.accpay.model.ShoppingDetails;
@@ -38,14 +39,14 @@ public class ShoppingDTO {
     private Bank bank;
     private Taxes taxes;
     private Timestamp date;
-    private double subTotal;
-    private double amountTax;
-    private double total;
+    private BigDecimal subTotal;
+    private BigDecimal amountTax;
+    private BigDecimal total;
 
     public ShoppingDTO() {
     }
 
-    public ShoppingDTO(Long id, String description, List<ShoppingDetails> shoppingDetails, Supplier supplier, Bank bank, Taxes taxes, Timestamp date, double subTotal, double amountTax, double total) {
+    public ShoppingDTO(Long id, String description, List<ShoppingDetails> shoppingDetails, Supplier supplier, Bank bank, Taxes taxes, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
         this.id = id;
         this.description = description;
         this.shoppingDetails = shoppingDetails;
@@ -114,27 +115,27 @@ public class ShoppingDTO {
         this.date = date;
     }
 
-    public double getSubTotal() {
+    public BigDecimal getSubTotal() {
         return subTotal;
     }
 
-    public void setSubTotal(double subTotal) {
+    public void setSubTotal(BigDecimal subTotal) {
         this.subTotal = subTotal;
     }
 
-    public double getAmountTax() {
+    public BigDecimal getAmountTax() {
         return amountTax;
     }
 
-    public void setAmountTax(double amountTax) {
+    public void setAmountTax(BigDecimal amountTax) {
         this.amountTax = amountTax;
     }
 
-    public double getTotal() {
+    public BigDecimal getTotal() {
         return total;
     }
 
-    public void setTotal(double total) {
+    public void setTotal(BigDecimal total) {
         this.total = total;
     }
 
