@@ -17,6 +17,7 @@ package ve.com.cge.appinvoice.finance.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -45,11 +46,11 @@ public class Taxes implements Serializable {
     
     @OneToMany(mappedBy = "taxes")
     @JsonIgnore
-    private List<Billing> billing;
+    private List<Billing> billing = new ArrayList<>();
 
     @OneToMany(mappedBy = "taxes")
     @JsonIgnore
-    private List<Shopping> shopping;
+    private List<Shopping> shopping = new ArrayList<>();
 
     @Column(name = "tax", nullable = false)
     private double tax;

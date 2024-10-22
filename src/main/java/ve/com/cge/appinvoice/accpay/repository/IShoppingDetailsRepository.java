@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.accpay.repository;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import ve.com.cge.appinvoice.accpay.model.ShoppingDetails;
 
@@ -26,5 +27,8 @@ import ve.com.cge.appinvoice.accpay.model.ShoppingDetails;
  * @since Mar 22, 2024
  */
 public interface IShoppingDetailsRepository extends JpaRepository<ShoppingDetails, Long> {
+    
+    @Override
+    public <S extends ShoppingDetails> List<S> saveAll(Iterable<S> entities);
 
 }

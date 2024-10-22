@@ -19,9 +19,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -47,12 +50,12 @@ public class Shopping implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
     
-    @OneToMany(mappedBy = "shopping")
-    @JsonIgnore
-    private List<ShoppingDetails> shoppingDetails;
+    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnore 
+    private List<ShoppingDetails> shoppingDetails = new ArrayList<ShoppingDetails>();
     
     @ManyToOne
     @JoinColumn(name = "supplier_id")
@@ -66,16 +69,16 @@ public class Shopping implements Serializable {
     @JoinColumn(name = "taxes_id")
     private Taxes taxes;
     
-    @Column(name = "date", nullable = false)
+    @Column(name = "date")
     private Timestamp date;
     
-    @Column(name = "subtotal", nullable = false)
+    @Column(name = "subtotal")
     private BigDecimal subTotal;
     
-    @Column(name = "amount_tax", nullable = false)
+    @Column(name = "amount_tax")
     private BigDecimal amountTax;
     
-    @Column(name = "total", nullable = false)
+    @Column(name = "total")
     private BigDecimal total;
 
     public Shopping() {

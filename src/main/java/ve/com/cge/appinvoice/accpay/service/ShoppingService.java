@@ -21,6 +21,7 @@ import ve.com.cge.appinvoice.accpay.dto.ShoppingDTO;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.stereotype.Service;
+import ve.com.cge.appinvoice.accpay.repository.IShoppingDetailsRepository;
 import ve.com.cge.appinvoice.config.user.UserResponse;
 
 /**
@@ -34,9 +35,11 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
 public class ShoppingService {
 
     private final IShoppingRepository shoppingRepository;
+    private final IShoppingDetailsRepository shoppingDetailsService;
 
-    public ShoppingService(IShoppingRepository shoppingRepository) {
+    public ShoppingService(IShoppingRepository shoppingRepository, IShoppingDetailsRepository shoppingDetailsService) {
         this.shoppingRepository = shoppingRepository;
+        this.shoppingDetailsService = shoppingDetailsService;
     }
     
     public List<Shopping> findShoppings() {
@@ -74,6 +77,7 @@ public class ShoppingService {
                 request.getSubTotal(),
                 request.getAmountTax(),
                 request.getTotal());
+        shoppingDetailsService.saveAll(shopping.getShoppingDetails());
         shoppingRepository.save(shopping);
         return new UserResponse("The new data was create");
     }

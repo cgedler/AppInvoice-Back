@@ -17,6 +17,7 @@ package ve.com.cge.appinvoice.accpay.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -43,7 +44,7 @@ public class Supplier implements Serializable {
     
     @OneToMany(mappedBy = "supplier")
     @JsonIgnore
-    private List<Shopping> shopping;
+    private List<Shopping> shopping = new ArrayList<>();
 
     public Supplier() {
     }

@@ -17,8 +17,10 @@ package ve.com.cge.appinvoice.accpay.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -42,38 +44,38 @@ public class ShoppingDetails implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     
-    @Column(name = "description", nullable = false)
+    @Column(name = "description")
     private String description;
     
-    @ManyToOne
-    @JoinColumn(name = "shopping_id")
-    private Shopping shopping;
+    //@ManyToOne(cascade = CascadeType.MERGE)
+    //@JoinColumn(name = "shopping_id")
+    //private Shopping shopping;
     
     @ManyToOne
     @JoinColumn(name = "item_id")
     private Item item;
     
-    @Column(name = "quantity", nullable = false)
+    @Column(name = "quantity")
     private Integer quantity;
         
-    @Column(name = "amount", nullable = false)
+    @Column(name = "amount")
     private BigDecimal amount;
 
     public ShoppingDetails() {
     }
 
-    public ShoppingDetails(String description, Shopping shopping, Item item, Integer quantity, BigDecimal amount) {
+    public ShoppingDetails(String description, Item item, Integer quantity, BigDecimal amount) {
         this.description = description;
-        this.shopping = shopping;
+        //this.shopping = shopping;
         this.item = item;
         this.quantity = quantity;
         this.amount = amount;
     }
 
-    public ShoppingDetails(Long id, String description, Shopping shopping, Item item, Integer quantity, BigDecimal amount) {
+    public ShoppingDetails(Long id, String description, Item item, Integer quantity, BigDecimal amount) {
         this.id = id;
         this.description = description;
-        this.shopping = shopping;
+        //this.shopping = shopping;
         this.item = item;
         this.quantity = quantity;
         this.amount = amount;
@@ -91,6 +93,7 @@ public class ShoppingDetails implements Serializable {
         this.description = description;
     }
 
+    /*
     public Shopping getShopping() {
         return shopping;
     }
@@ -98,7 +101,8 @@ public class ShoppingDetails implements Serializable {
     public void setShopping(Shopping shopping) {
         this.shopping = shopping;
     }
-
+    */
+    
     public Item getItem() {
         return item;
     }
