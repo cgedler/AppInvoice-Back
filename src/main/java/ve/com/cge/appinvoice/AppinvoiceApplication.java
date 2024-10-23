@@ -29,7 +29,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class AppinvoiceApplication {
     
     public static void main(String[] args) {
-	SpringApplication.run(AppinvoiceApplication.class, args);
+	SpringApplication.run(AppinvoiceApplication.class, args);  
     }
-
+    
 }

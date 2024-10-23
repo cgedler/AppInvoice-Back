@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.items.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import ve.com.cge.appinvoice.items.model.Category;
 import ve.com.cge.appinvoice.items.model.ItemPrice;
 import ve.com.cge.appinvoice.items.model.ItemStock;
@@ -26,6 +27,7 @@ import ve.com.cge.appinvoice.items.model.ItemStock;
  * @version 1.0
  * @since Mar 21, 2024
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ItemDTO {
     
     private Long id;
@@ -83,6 +85,11 @@ public class ItemDTO {
 
     public void setPrice(ItemPrice price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return "ItemDTO{" + "id=" + id + ", description=" + description + ", category=" + category + ", stock=" + stock + ", price=" + price + '}';
     }
 
 }

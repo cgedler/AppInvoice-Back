@@ -119,4 +119,9 @@ public class PurchaseLedger implements Serializable {
         this.total = total;
     }
 
+    @Override
+    public String toString() {
+        return "PurchaseLedger{" + "id=" + id + ", shoppingId=" + shoppingId + ", date=" + date + ", subTotal=" + subTotal + ", amountTax=" + amountTax + ", total=" + total + '}';
+    }
+
 }

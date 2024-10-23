@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.accrec.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.math.BigDecimal;
 import ve.com.cge.appinvoice.accrec.model.BillingDetails;
 import ve.com.cge.appinvoice.accrec.model.Customer;
@@ -31,6 +32,7 @@ import ve.com.cge.appinvoice.finance.model.Taxes;
  * @version 1.0
  * @since Mar 23, 2024
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BillingDTO {
  
     private Long id;
@@ -148,6 +150,11 @@ public class BillingDTO {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "BillingDTO{" + "id=" + id + ", description=" + description + ", billingDetails=" + billingDetails + ", customer=" + customer + ", seller=" + seller + ", bank=" + bank + ", taxes=" + taxes + ", date=" + date + ", subTotal=" + subTotal + ", amountTax=" + amountTax + ", total=" + total + '}';
     }
 
 }

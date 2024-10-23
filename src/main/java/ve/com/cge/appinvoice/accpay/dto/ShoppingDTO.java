@@ -15,6 +15,9 @@
 
 package ve.com.cge.appinvoice.accpay.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.util.List;
@@ -30,6 +33,7 @@ import ve.com.cge.appinvoice.finance.model.Taxes;
  * @version 1.0
  * @since Mar 22, 2024
  */
+@JsonInclude(Include.NON_NULL)
 public class ShoppingDTO {
  
     private Long id;
@@ -39,14 +43,14 @@ public class ShoppingDTO {
     private Bank bank;
     private Taxes taxes;
     private Timestamp date;
-    private BigDecimal subTotal;
-    private BigDecimal amountTax;
+    private BigDecimal subtotal;
+    private BigDecimal amount_tax;
     private BigDecimal total;
 
     public ShoppingDTO() {
     }
 
-    public ShoppingDTO(Long id, String description, List<ShoppingDetails> shoppingDetails, Supplier supplier, Bank bank, Taxes taxes, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
+    public ShoppingDTO(Long id, String description, List<ShoppingDetails> shoppingDetails, Supplier supplier, Bank bank, Taxes taxes, Timestamp date, BigDecimal subtotal, BigDecimal amount_tax, BigDecimal total) {
         this.id = id;
         this.description = description;
         this.shoppingDetails = shoppingDetails;
@@ -54,8 +58,8 @@ public class ShoppingDTO {
         this.bank = bank;
         this.taxes = taxes;
         this.date = date;
-        this.subTotal = subTotal;
-        this.amountTax = amountTax;
+        this.subtotal = subtotal;
+        this.amount_tax = amount_tax;
         this.total = total;
     }
 
@@ -115,20 +119,24 @@ public class ShoppingDTO {
         this.date = date;
     }
 
+    @JsonProperty("subtotal")
     public BigDecimal getSubTotal() {
-        return subTotal;
+        return subtotal;
     }
 
-    public void setSubTotal(BigDecimal subTotal) {
-        this.subTotal = subTotal;
+    @JsonProperty("subtotal")
+    public void setSubTotal(BigDecimal subtotal) {
+        this.subtotal = subtotal;
     }
 
+    @JsonProperty("amount_tax")
     public BigDecimal getAmountTax() {
-        return amountTax;
+        return amount_tax;
     }
 
-    public void setAmountTax(BigDecimal amountTax) {
-        this.amountTax = amountTax;
+    @JsonProperty("amount_tax")
+    public void setAmountTax(BigDecimal amount_tax) {
+        this.amount_tax = amount_tax;
     }
 
     public BigDecimal getTotal() {
@@ -139,4 +147,9 @@ public class ShoppingDTO {
         this.total = total;
     }
 
+    @Override
+    public String toString() {
+        return "ShoppingDTO{" + "id=" + id + ", description=" + description + ", shoppingDetails=" + shoppingDetails + ", supplier=" + supplier + ", bank=" + bank + ", taxes=" + taxes + ", date=" + date + ", subtotal=" + subtotal + ", amount_tax=" + amount_tax + ", total=" + total + '}';
+    }
+    
 }

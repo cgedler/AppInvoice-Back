@@ -117,5 +117,10 @@ public class Item implements Serializable {
     public void setPrice(ItemPrice price) {
         this.price = price;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Item{" + "id=" + id + ", description=" + description + ", category=" + category + ", stock=" + stock + ", price=" + price + '}';
+    }
+
 }

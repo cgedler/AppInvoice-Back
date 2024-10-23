@@ -15,12 +15,16 @@
 
 package ve.com.cge.appinvoice.accpay.service;
 
+import java.util.ArrayList;
 import ve.com.cge.appinvoice.accpay.model.Shopping;
 import ve.com.cge.appinvoice.accpay.repository.IShoppingRepository;
 import ve.com.cge.appinvoice.accpay.dto.ShoppingDTO;
 import java.util.List;
 import javax.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import ve.com.cge.appinvoice.accpay.model.ShoppingDetails;
 import ve.com.cge.appinvoice.accpay.repository.IShoppingDetailsRepository;
 import ve.com.cge.appinvoice.config.user.UserResponse;
 
@@ -33,13 +37,15 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
  */
 @Service
 public class ShoppingService {
+    
+    private static Logger logger = LoggerFactory.getLogger(ShoppingService.class);
 
     private final IShoppingRepository shoppingRepository;
-    private final IShoppingDetailsRepository shoppingDetailsService;
+    private final IShoppingDetailsRepository shoppingDetailsRepository;
 
-    public ShoppingService(IShoppingRepository shoppingRepository, IShoppingDetailsRepository shoppingDetailsService) {
+    public ShoppingService(IShoppingRepository shoppingRepository, IShoppingDetailsRepository shoppingDetailsRepository) {
         this.shoppingRepository = shoppingRepository;
-        this.shoppingDetailsService = shoppingDetailsService;
+        this.shoppingDetailsRepository = shoppingDetailsRepository;
     }
     
     public List<Shopping> findShoppings() {
@@ -67,9 +73,11 @@ public class ShoppingService {
     
     @Transactional
     public UserResponse insertShopping(ShoppingDTO request) {
+        List<ShoppingDetails> shoppingDetails = new ArrayList<ShoppingDetails>();
+                
         Shopping shopping = new Shopping(
                 request.getDescription(),
-                request.getShoppingDetails(),
+                shoppingDetails,
                 request.getSupplier(),
                 request.getBank(),
                 request.getTaxes(),
@@ -77,8 +85,20 @@ public class ShoppingService {
                 request.getSubTotal(),
                 request.getAmountTax(),
                 request.getTotal());
-        shoppingDetailsService.saveAll(shopping.getShoppingDetails());
-        shoppingRepository.save(shopping);
+        //logger.info("Request: " + request.toString());
+        
+        
+        logger.info("Request AmountTax: " + request.getAmountTax());
+        logger.info("Request SubTotal: " + request.getSubTotal());
+        
+        //shoppingRepository.save(shopping);
+        
+        
+        //for(ShoppingDetails s : request.getShoppingDetails()) {
+        //    s.setShopping(shopping);
+        //    shoppingDetailsRepository.save(s);
+        //}
+        
         return new UserResponse("The new data was create");
     }
     

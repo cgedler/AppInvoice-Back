@@ -77,5 +77,10 @@ public class Supplier implements Serializable {
     public void setShopping(List<Shopping> shopping) {
         this.shopping = shopping;
     }
+
+    @Override
+    public String toString() {
+        return "Supplier{" + "id=" + id + ", description=" + description + '}';
+    }
     
 }

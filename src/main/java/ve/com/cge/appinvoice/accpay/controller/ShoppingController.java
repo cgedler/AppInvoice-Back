@@ -70,7 +70,7 @@ public class ShoppingController {
     @GetMapping(value = "/")
     public List<Shopping> getShoppingsData() {
         logger.info("- Get list : ShoppingController -");
-        List<Shopping> listShoppings= new ArrayList<Shopping>();
+        List<Shopping> listShoppings = new ArrayList<Shopping>();
         listShoppings = shoppingService.findShoppings();
         return listShoppings;
     }

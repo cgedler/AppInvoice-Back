@@ -88,4 +88,9 @@ public class Taxes implements Serializable {
         this.tax = tax;
     }
 
+    @Override
+    public String toString() {
+        return "Taxes{" + "id=" + id + ", description=" + description + ", tax=" + tax + '}';
+    }
+    
 }

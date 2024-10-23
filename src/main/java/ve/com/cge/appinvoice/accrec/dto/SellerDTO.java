@@ -15,6 +15,8 @@
 
 package ve.com.cge.appinvoice.accrec.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * SellerDTO 
  * 
@@ -22,6 +24,7 @@ package ve.com.cge.appinvoice.accrec.dto;
  * @version 1.0
  * @since Mar 23, 2024
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SellerDTO {
 
     private Long id;
@@ -49,6 +52,11 @@ public class SellerDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "SellerDTO{" + "id=" + id + ", description=" + description + '}';
     }
 
 }

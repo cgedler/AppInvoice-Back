@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.accpay.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.math.BigDecimal;
 
 /**
@@ -24,6 +25,7 @@ import java.math.BigDecimal;
  * @version 1.0
  * @since Mar 22, 2024
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class ShoppingDetailsDTO {
     
     private Long id;
@@ -91,6 +93,11 @@ public class ShoppingDetailsDTO {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return "ShoppingDetailsDTO{" + "id=" + id + ", description=" + description + ", shoppingId=" + shoppingId + ", itemId=" + itemId + ", quantity=" + quantity + ", amount=" + amount + '}';
     }
 
 }

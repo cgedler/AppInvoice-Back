@@ -15,6 +15,8 @@
 
 package ve.com.cge.appinvoice.finance.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * BankDTO 
  * 
@@ -22,6 +24,7 @@ package ve.com.cge.appinvoice.finance.dto;
  * @version 1.0
  * @since Mar 23, 2024
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class BankDTO {
 
     private Long id;
@@ -59,6 +62,11 @@ public class BankDTO {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    @Override
+    public String toString() {
+        return "BankDTO{" + "id=" + id + ", description=" + description + ", number=" + number + '}';
     }
     
 }

@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.accpay.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import ve.com.cge.appinvoice.accpay.repository.IShoppingDetailsRepository;
 import org.springframework.stereotype.Service;
@@ -34,6 +35,15 @@ public class ShoppingDetailsService {
 
     public ShoppingDetailsService(IShoppingDetailsRepository shoppingDetailsRepository) {
         this.shoppingDetailsRepository = shoppingDetailsRepository;
+    }
+    
+    public List<ShoppingDetails> findAllById(Long id) {
+         List<ShoppingDetails> list = new ArrayList<ShoppingDetails>();
+         list = shoppingDetailsRepository.findAllById(id);
+         
+         return list;
+         
+         
     }
    
 }

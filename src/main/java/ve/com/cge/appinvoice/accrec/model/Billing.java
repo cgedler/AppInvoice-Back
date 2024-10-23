@@ -196,4 +196,9 @@ public class Billing implements Serializable {
         this.total = total;
     }
 
+    @Override
+    public String toString() {
+        return "Billing{" + "id=" + id + ", description=" + description + ", billingDetails=" + billingDetails + ", customer=" + customer + ", seller=" + seller + ", bank=" + bank + ", taxes=" + taxes + ", date=" + date + ", subTotal=" + subTotal + ", amountTax=" + amountTax + ", total=" + total + '}';
+    }
+
 }

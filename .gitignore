@@ -8,3 +8,5 @@
 /src/main/java/uml/Requirements.md
 /src/main/java/uml/EntitysDetails.puml
 /nbproject/
+/src/main/java/ve/com/cge/appinvoice/generic/AbstractBaseService.java
+/src/main/java/ve/com/cge/appinvoice/generic/AbstractDtoConverter.java

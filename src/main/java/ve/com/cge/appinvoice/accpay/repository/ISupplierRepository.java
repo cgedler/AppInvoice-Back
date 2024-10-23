@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.accpay.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import ve.com.cge.appinvoice.accpay.model.Supplier;
 
 /**
@@ -25,6 +26,7 @@ import ve.com.cge.appinvoice.accpay.model.Supplier;
  * @version 1.0
  * @since Mar 22, 2024
  */
+@Repository
 public interface ISupplierRepository extends JpaRepository<Supplier, Long> {
 
 }

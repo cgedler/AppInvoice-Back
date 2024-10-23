@@ -86,5 +86,10 @@ public class ItemStock implements Serializable {
     public void setItem(Item item) {
         this.item = item;
     }
-    
+
+    @Override
+    public String toString() {
+        return "ItemStock{" + "id=" + id + ", quantity=" + quantity + ", item=" + item + '}';
+    }
+
 }

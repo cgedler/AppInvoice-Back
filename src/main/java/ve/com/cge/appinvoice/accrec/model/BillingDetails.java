@@ -123,4 +123,9 @@ public class BillingDetails implements Serializable {
         this.amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "BillingDetails{" + "id=" + id + ", description=" + description + ", billing=" + billing + ", item=" + item + ", quantity=" + quantity + ", amount=" + amount + '}';
+    }
+
 }

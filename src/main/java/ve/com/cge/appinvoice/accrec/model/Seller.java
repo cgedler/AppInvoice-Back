@@ -68,5 +68,10 @@ public class Seller implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "Seller{" + "id=" + id + ", description=" + description + ", billing=" + billing + '}';
+    }
     
 }

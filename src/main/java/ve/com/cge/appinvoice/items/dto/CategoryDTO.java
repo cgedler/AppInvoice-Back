@@ -15,6 +15,8 @@
 
 package ve.com.cge.appinvoice.items.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * CategoryDTO 
  * 
@@ -22,6 +24,7 @@ package ve.com.cge.appinvoice.items.dto;
  * @version 1.0
  * @since Mar 14, 2024
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CategoryDTO {
 
     private Long id;
@@ -54,6 +57,11 @@ public class CategoryDTO {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoryDTO{" + "id=" + id + ", description=" + description + '}';
     }
         
 }

@@ -47,9 +47,9 @@ public class ShoppingDetails implements Serializable {
     @Column(name = "description")
     private String description;
     
-    //@ManyToOne(cascade = CascadeType.MERGE)
-    //@JoinColumn(name = "shopping_id")
-    //private Shopping shopping;
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "shopping_id")
+    private Shopping shopping;
     
     @ManyToOne
     @JoinColumn(name = "item_id")
@@ -64,18 +64,18 @@ public class ShoppingDetails implements Serializable {
     public ShoppingDetails() {
     }
 
-    public ShoppingDetails(String description, Item item, Integer quantity, BigDecimal amount) {
+    public ShoppingDetails(String description, Shopping shopping, Item item, Integer quantity, BigDecimal amount) {
         this.description = description;
-        //this.shopping = shopping;
+        this.shopping = shopping;
         this.item = item;
         this.quantity = quantity;
         this.amount = amount;
     }
 
-    public ShoppingDetails(Long id, String description, Item item, Integer quantity, BigDecimal amount) {
+    public ShoppingDetails(Long id, String description, Shopping shopping, Item item, Integer quantity, BigDecimal amount) {
         this.id = id;
         this.description = description;
-        //this.shopping = shopping;
+        this.shopping = shopping;
         this.item = item;
         this.quantity = quantity;
         this.amount = amount;
@@ -93,7 +93,7 @@ public class ShoppingDetails implements Serializable {
         this.description = description;
     }
 
-    /*
+    
     public Shopping getShopping() {
         return shopping;
     }
@@ -101,7 +101,7 @@ public class ShoppingDetails implements Serializable {
     public void setShopping(Shopping shopping) {
         this.shopping = shopping;
     }
-    */
+    
     
     public Item getItem() {
         return item;
@@ -127,4 +127,9 @@ public class ShoppingDetails implements Serializable {
         this.amount = amount;
     }
 
+    @Override
+    public String toString() {
+        return "ShoppingDetails{" + "id=" + id + ", description=" + description + ", shopping=" + shopping + ", item=" + item + ", quantity=" + quantity + ", amount=" + amount + '}';
+    }
+    
 }

@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.accpay.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -53,7 +54,7 @@ public class Shopping implements Serializable {
     @Column(name = "description")
     private String description;
     
-    @OneToMany(fetch=FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(fetch=FetchType.EAGER,  mappedBy = "shopping", cascade = CascadeType.ALL)
     @JsonIgnore 
     private List<ShoppingDetails> shoppingDetails = new ArrayList<ShoppingDetails>();
     
@@ -73,10 +74,10 @@ public class Shopping implements Serializable {
     private Timestamp date;
     
     @Column(name = "subtotal")
-    private BigDecimal subTotal;
+    private BigDecimal subtotal;
     
     @Column(name = "amount_tax")
-    private BigDecimal amountTax;
+    private BigDecimal amount_tax;
     
     @Column(name = "total")
     private BigDecimal total;
@@ -84,19 +85,19 @@ public class Shopping implements Serializable {
     public Shopping() {
     }
 
-    public Shopping(String description, List<ShoppingDetails> shoppingDetails, Supplier supplier, Bank bank, Taxes taxes, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
+    public Shopping(String description, List<ShoppingDetails> shoppingDetails, Supplier supplier, Bank bank, Taxes taxes, Timestamp date, BigDecimal subtotal, BigDecimal amount_tax, BigDecimal total) {
         this.description = description;
         this.shoppingDetails = shoppingDetails;
         this.supplier = supplier;
         this.bank = bank;
         this.taxes = taxes;
         this.date = date;
-        this.subTotal = subTotal;
-        this.amountTax = amountTax;
+        this.subtotal = subtotal;
+        this.amount_tax = amount_tax;
         this.total = total;
     }
 
-    public Shopping(Long id, String description, List<ShoppingDetails> shoppingDetails, Supplier supplier, Bank bank, Taxes taxes, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
+    public Shopping(Long id, String description, List<ShoppingDetails> shoppingDetails, Supplier supplier, Bank bank, Taxes taxes, Timestamp date, BigDecimal subtotal, BigDecimal amount_tax, BigDecimal total) {
         this.id = id;
         this.description = description;
         this.shoppingDetails = shoppingDetails;
@@ -104,8 +105,8 @@ public class Shopping implements Serializable {
         this.bank = bank;
         this.taxes = taxes;
         this.date = date;
-        this.subTotal = subTotal;
-        this.amountTax = amountTax;
+        this.subtotal = subtotal;
+        this.amount_tax = amount_tax;
         this.total = total;
     }
 
@@ -161,20 +162,24 @@ public class Shopping implements Serializable {
         this.date = date;
     }
 
+    @JsonProperty("subtotal")
     public BigDecimal getSubTotal() {
-        return subTotal;
+        return subtotal;
     }
 
-    public void setSubTotal(BigDecimal subTotal) {
-        this.subTotal = subTotal;
+    @JsonProperty("subtotal")
+    public void setSubTotal(BigDecimal subtotal) {
+        this.subtotal = subtotal;
     }
 
+    @JsonProperty("amount_tax")
     public BigDecimal getAmountTax() {
-        return amountTax;
+        return amount_tax;
     }
 
-    public void setAmountTax(BigDecimal amountTax) {
-        this.amountTax = amountTax;
+    @JsonProperty("amount_tax")
+    public void setAmountTax(BigDecimal amount_tax) {
+        this.amount_tax = amount_tax;
     }
 
     public BigDecimal getTotal() {
@@ -183,6 +188,11 @@ public class Shopping implements Serializable {
 
     public void setTotal(BigDecimal total) {
         this.total = total;
+    }
+
+    @Override
+    public String toString() {
+        return "Shopping{" + "id=" + id + ", description=" + description + ", shoppingDetails=" + shoppingDetails + ", supplier=" + supplier + ", bank=" + bank + ", taxes=" + taxes + ", date=" + date + ", subtotal=" + subtotal + ", amount_tax=" + amount_tax + ", total=" + total + '}';
     }
 
 }

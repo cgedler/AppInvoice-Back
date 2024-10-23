@@ -15,6 +15,8 @@
 
 package ve.com.cge.appinvoice.config.security.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * LoginRequest: DTO for login request
  * 
@@ -22,6 +24,7 @@ package ve.com.cge.appinvoice.config.security.dto;
  * @version 1.0
  * @since Feb 24, 2024
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class LoginRequest {
     
     private String username;

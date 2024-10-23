@@ -15,6 +15,8 @@
 
 package ve.com.cge.appinvoice.accpay.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 /**
  * SupplierDTO 
  * 
@@ -22,6 +24,7 @@ package ve.com.cge.appinvoice.accpay.dto;
  * @version 1.0
  * @since Mar 22, 2024
  */
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class SupplierDTO {
     
     private Long id;
@@ -50,5 +53,10 @@ public class SupplierDTO {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
+    @Override
+    public String toString() {
+        return "SupplierDTO{" + "id=" + id + ", description=" + description + '}';
+    }
+
 }
