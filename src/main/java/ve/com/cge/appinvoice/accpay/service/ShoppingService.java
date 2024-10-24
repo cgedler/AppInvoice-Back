@@ -85,20 +85,16 @@ public class ShoppingService {
                 request.getSubTotal(),
                 request.getAmountTax(),
                 request.getTotal());
-        //logger.info("Request: " + request.toString());
-        
-        
-        logger.info("Request AmountTax: " + request.getAmountTax());
-        logger.info("Request SubTotal: " + request.getSubTotal());
-        
-        //shoppingRepository.save(shopping);
-        
-        
-        //for(ShoppingDetails s : request.getShoppingDetails()) {
-        //    s.setShopping(shopping);
-        //    shoppingDetailsRepository.save(s);
-        //}
-        
+        /* Testing here:
+         * logger.info("Request: " + request.toString());
+         * logger.info("Request AmountTax: " + request.getAmountTax());
+         * logger.info("Request SubTotal: " + request.getSubTotal());
+         */
+        shoppingRepository.save(shopping);
+        for(ShoppingDetails s : request.getShoppingDetails()) {
+            s.setShopping(shopping);
+            shoppingDetailsRepository.save(s);
+        }
         return new UserResponse("The new data was create");
     }
     

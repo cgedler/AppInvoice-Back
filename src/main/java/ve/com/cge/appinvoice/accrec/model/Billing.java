@@ -19,9 +19,12 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,9 +53,9 @@ public class Billing implements Serializable {
     @Column(name = "description", nullable = false)
     private String description;
     
-    @OneToMany(mappedBy = "billing")
+    @OneToMany(fetch=FetchType.EAGER,  mappedBy = "billing", cascade = CascadeType.ALL)
     @JsonIgnore
-    private List<BillingDetails> billingDetails;
+    private List<BillingDetails> billingDetails = new ArrayList<BillingDetails>();
 
     @ManyToOne
     @JoinColumn(name = "customer_id")
@@ -74,10 +77,10 @@ public class Billing implements Serializable {
     private Timestamp date;
     
     @Column(name = "subtotal", nullable = false)
-    private BigDecimal subTotal;
+    private BigDecimal subtotal;
     
     @Column(name = "amount_tax", nullable = false)
-    private BigDecimal amountTax;
+    private BigDecimal amount_tax;
     
     @Column(name = "total", nullable = false)
     private BigDecimal total;
@@ -85,7 +88,7 @@ public class Billing implements Serializable {
     public Billing() {
     }
 
-    public Billing(String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
+    public Billing(String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, BigDecimal subtotal, BigDecimal amount_tax, BigDecimal total) {
         this.description = description;
         this.billingDetails = billingDetails;
         this.customer = customer;
@@ -93,12 +96,12 @@ public class Billing implements Serializable {
         this.bank = bank;
         this.taxes = taxes;
         this.date = date;
-        this.subTotal = subTotal;
-        this.amountTax = amountTax;
+        this.subtotal = subtotal;
+        this.amount_tax = amount_tax;
         this.total = total;
     }
 
-    public Billing(Long id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
+    public Billing(Long id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, BigDecimal subtotal, BigDecimal amount_tax, BigDecimal total) {
         this.id = id;
         this.description = description;
         this.billingDetails = billingDetails;
@@ -107,8 +110,8 @@ public class Billing implements Serializable {
         this.bank = bank;
         this.taxes = taxes;
         this.date = date;
-        this.subTotal = subTotal;
-        this.amountTax = amountTax;
+        this.subtotal = subtotal;
+        this.amount_tax = amount_tax;
         this.total = total;
     }
 
@@ -173,19 +176,19 @@ public class Billing implements Serializable {
     }
 
     public BigDecimal getSubTotal() {
-        return subTotal;
+        return subtotal;
     }
 
-    public void setSubTotal(BigDecimal subTotal) {
-        this.subTotal = subTotal;
+    public void setSubTotal(BigDecimal subtotal) {
+        this.subtotal = subtotal;
     }
 
     public BigDecimal getAmountTax() {
-        return amountTax;
+        return amount_tax;
     }
 
-    public void setAmountTax(BigDecimal amountTax) {
-        this.amountTax = amountTax;
+    public void setAmountTax(BigDecimal amount_tax) {
+        this.amount_tax = amount_tax;
     }
 
     public BigDecimal getTotal() {
@@ -198,7 +201,7 @@ public class Billing implements Serializable {
 
     @Override
     public String toString() {
-        return "Billing{" + "id=" + id + ", description=" + description + ", billingDetails=" + billingDetails + ", customer=" + customer + ", seller=" + seller + ", bank=" + bank + ", taxes=" + taxes + ", date=" + date + ", subTotal=" + subTotal + ", amountTax=" + amountTax + ", total=" + total + '}';
+        return "Billing{" + "id=" + id + ", description=" + description + ", billingDetails=" + billingDetails + ", customer=" + customer + ", seller=" + seller + ", bank=" + bank + ", taxes=" + taxes + ", date=" + date + ", subtotal=" + subtotal + ", amount_tax=" + amount_tax + ", total=" + total + '}';
     }
 
 }

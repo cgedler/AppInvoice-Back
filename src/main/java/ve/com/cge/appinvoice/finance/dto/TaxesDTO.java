@@ -68,5 +68,5 @@ public class TaxesDTO {
     public String toString() {
         return "TaxesDTO{" + "id=" + id + ", description=" + description + ", tax=" + tax + '}';
     }
-    
+
 }

@@ -15,12 +15,17 @@
 
 package ve.com.cge.appinvoice.accrec.service;
 
+import java.util.ArrayList;
 import ve.com.cge.appinvoice.accrec.repository.IBillingRepository;
 import ve.com.cge.appinvoice.accrec.model.Billing;
 import java.util.List;
 import javax.transaction.Transactional;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import ve.com.cge.appinvoice.accrec.dto.BillingDTO;
+import ve.com.cge.appinvoice.accrec.model.BillingDetails;
+import ve.com.cge.appinvoice.accrec.repository.IBillingDetailsRepository;
 import ve.com.cge.appinvoice.config.user.UserResponse;
 
 /**
@@ -33,10 +38,14 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
 @Service
 public class BillingService {
     
+    private static Logger logger = LoggerFactory.getLogger(BillingService.class);
+    
     private final IBillingRepository billingRepository;
+    private final IBillingDetailsRepository billingDetailsRepository;
 
-    public BillingService(IBillingRepository billingRepository) {
+    public BillingService(IBillingRepository billingRepository, IBillingDetailsRepository billingDetailsRepository) {
         this.billingRepository = billingRepository;
+        this.billingDetailsRepository = billingDetailsRepository;
     }
     
     public List<Billing> findBillings() {
@@ -65,9 +74,10 @@ public class BillingService {
     
     @Transactional
     public UserResponse insertBilling(BillingDTO request) {
+        List<BillingDetails> billingDetails = new ArrayList<BillingDetails>();         
         Billing billing = new Billing(
                 request.getDescription(),
-                request.getBillingDetails(),
+                billingDetails,
                 request.getCustomer(),
                 request.getSeller(),
                 request.getBank(),
@@ -77,6 +87,10 @@ public class BillingService {
                 request.getAmountTax(),
                 request.getTotal());
         billingRepository.save(billing);
+        for(BillingDetails s : request.getBillingDetails()) {
+            s.setBilling(billing);
+            billingDetailsRepository.save(s);
+        }
         return new UserResponse("The new data was create");
     }
     

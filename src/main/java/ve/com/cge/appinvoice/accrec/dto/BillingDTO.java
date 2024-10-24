@@ -43,14 +43,14 @@ public class BillingDTO {
     private Bank bank;
     private Taxes taxes;
     private Timestamp date;
-    private BigDecimal subTotal;
-    private BigDecimal amountTax;
+    private BigDecimal subtotal;
+    private BigDecimal amount_tax;
     private BigDecimal total;
 
     public BillingDTO() {
     }
 
-    public BillingDTO(Long id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, BigDecimal subTotal, BigDecimal amountTax, BigDecimal total) {
+    public BillingDTO(Long id, String description, List<BillingDetails> billingDetails, Customer customer, Seller seller, Bank bank, Taxes taxes, Timestamp date, BigDecimal subtotal, BigDecimal amount_tax, BigDecimal total) {
         this.id = id;
         this.description = description;
         this.billingDetails = billingDetails;
@@ -59,8 +59,8 @@ public class BillingDTO {
         this.bank = bank;
         this.taxes = taxes;
         this.date = date;
-        this.subTotal = subTotal;
-        this.amountTax = amountTax;
+        this.subtotal = subtotal;
+        this.amount_tax = amount_tax;
         this.total = total;
     }
 
@@ -129,19 +129,19 @@ public class BillingDTO {
     }
 
     public BigDecimal getSubTotal() {
-        return subTotal;
+        return subtotal;
     }
 
-    public void setSubTotal(BigDecimal subTotal) {
-        this.subTotal = subTotal;
+    public void setSubTotal(BigDecimal subtotal) {
+        this.subtotal = subtotal;
     }
 
     public BigDecimal getAmountTax() {
-        return amountTax;
+        return amount_tax;
     }
 
-    public void setAmountTax(BigDecimal amountTax) {
-        this.amountTax = amountTax;
+    public void setAmountTax(BigDecimal amount_tax) {
+        this.amount_tax = amount_tax;
     }
 
     public BigDecimal getTotal() {
@@ -154,7 +154,7 @@ public class BillingDTO {
 
     @Override
     public String toString() {
-        return "BillingDTO{" + "id=" + id + ", description=" + description + ", billingDetails=" + billingDetails + ", customer=" + customer + ", seller=" + seller + ", bank=" + bank + ", taxes=" + taxes + ", date=" + date + ", subTotal=" + subTotal + ", amountTax=" + amountTax + ", total=" + total + '}';
+        return "BillingDTO{" + "id=" + id + ", description=" + description + ", billingDetails=" + billingDetails + ", customer=" + customer + ", seller=" + seller + ", bank=" + bank + ", taxes=" + taxes + ", date=" + date + ", subtotal=" + subtotal + ", amount_tax=" + amount_tax + ", total=" + total + '}';
     }
 
 }
