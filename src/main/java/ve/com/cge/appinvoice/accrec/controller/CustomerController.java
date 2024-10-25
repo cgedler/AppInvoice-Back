@@ -15,11 +15,17 @@
 
 package ve.com.cge.appinvoice.accrec.controller;
 
+import java.io.IOException;
 import ve.com.cge.appinvoice.accrec.model.Customer;
 import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import javax.servlet.http.HttpServletResponse;
+import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -82,6 +88,18 @@ public class CustomerController {
         }
         return ResponseEntity.ok(customerDTO);        
     }
+    
+    @GetMapping(value = "/pdf")
+    public void getCustomerPDF(HttpServletResponse response) throws IOException, JRException {
+       response.setContentType("application/pdf");
+       DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
+       String currentDateTime = dateFormatter.format(new Date());
+       String headerKey = "Content-Disposition";
+       String headerValue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
+       response.setHeader(headerKey, headerValue);
+       customerService.exportJasperReport(response);
+    }
+    
     
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody CustomerDTO request, @RequestHeader("Authorization") String token) {

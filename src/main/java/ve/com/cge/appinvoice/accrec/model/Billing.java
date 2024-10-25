@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.accrec.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -175,18 +176,22 @@ public class Billing implements Serializable {
         this.date = date;
     }
 
+    @JsonProperty("subtotal")
     public BigDecimal getSubTotal() {
         return subtotal;
     }
 
+    @JsonProperty("subtotal")
     public void setSubTotal(BigDecimal subtotal) {
         this.subtotal = subtotal;
     }
 
+    @JsonProperty("amount_tax")
     public BigDecimal getAmountTax() {
         return amount_tax;
     }
 
+    @JsonProperty("amount_tax")
     public void setAmountTax(BigDecimal amount_tax) {
         this.amount_tax = amount_tax;
     }

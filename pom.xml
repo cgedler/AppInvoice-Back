@@ -27,6 +27,8 @@
         <mssql.version>11.2.0.jre8</mssql.version>
         <!-- Logging -->
         <apache.logging.version>2.17.1</apache.logging.version>
+        <!-- JasperReports -->
+        <jasperreports.version>6.20.0</jasperreports.version>
     </properties>
     <!-- Inherit defaults from Spring Boot -->
     <parent>
@@ -111,6 +113,12 @@
             <artifactId>log4j-slf4j-impl</artifactId>
             <version>${apache.logging.version}</version>
             <scope>test</scope>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/net.sf.jasperreports/jasperreports -->
+        <dependency>
+            <groupId>net.sf.jasperreports</groupId>
+            <artifactId>jasperreports</artifactId>
+            <version>${jasperreports.version}</version>
         </dependency>
                 
         <!--            

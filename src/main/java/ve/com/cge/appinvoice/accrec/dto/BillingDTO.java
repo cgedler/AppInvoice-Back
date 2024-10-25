@@ -16,6 +16,7 @@
 package ve.com.cge.appinvoice.accrec.dto;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import ve.com.cge.appinvoice.accrec.model.BillingDetails;
 import ve.com.cge.appinvoice.accrec.model.Customer;
@@ -128,18 +129,22 @@ public class BillingDTO {
         this.date = date;
     }
 
+    @JsonProperty("subtotal")
     public BigDecimal getSubTotal() {
         return subtotal;
     }
 
+    @JsonProperty("subtotal")
     public void setSubTotal(BigDecimal subtotal) {
         this.subtotal = subtotal;
     }
 
+    @JsonProperty("amount_tax")
     public BigDecimal getAmountTax() {
         return amount_tax;
     }
 
+    @JsonProperty("amount_tax")
     public void setAmountTax(BigDecimal amount_tax) {
         this.amount_tax = amount_tax;
     }

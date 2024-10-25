@@ -15,10 +15,23 @@
 
 package ve.com.cge.appinvoice.accrec.service;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.HashMap;
 import ve.com.cge.appinvoice.accrec.model.Customer;
 import java.util.List;
+import java.util.Map;
+import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 import ve.com.cge.appinvoice.accrec.dto.CustomerDTO;
 import ve.com.cge.appinvoice.accrec.repository.ICustomerRepository;
 import ve.com.cge.appinvoice.config.user.UserResponse;
@@ -70,6 +83,20 @@ public class CustomerService {
     public UserResponse deleteCustomer(Long id) {
         customerRepository.deleteById(id);
         return new UserResponse("The data was delete");
+    }
+    
+    public void exportJasperReport(HttpServletResponse response) throws JRException, IOException {
+        List<Customer> customerList = customerRepository.findAll();
+        //Get file and compile it
+        File file = ResourceUtils.getFile("classpath:static/prueba.jrxml");
+        JasperReport jasperReport = JasperCompileManager.compileReport(file.getAbsolutePath());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(customerList);
+        Map<String, Object> parameters = new HashMap<>();
+        parameters.put("createdBy", "Simplifying Tech");
+        //Fill Jasper report
+        JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, dataSource);
+        //Export report
+        JasperExportManager.exportReportToPdfStream(jasperPrint,response.getOutputStream());
     }
 
 }
