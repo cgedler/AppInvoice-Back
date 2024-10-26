@@ -15,7 +15,10 @@
 
 package ve.com.cge.appinvoice.accrec.service;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.HashMap;
 import ve.com.cge.appinvoice.accrec.model.Customer;
@@ -23,6 +26,7 @@ import java.util.List;
 import java.util.Map;
 import javax.servlet.http.HttpServletResponse;
 import javax.transaction.Transactional;
+import net.sf.jasperreports.engine.JREmptyDataSource;
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperExportManager;
@@ -30,11 +34,15 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ResourceUtils;
 import ve.com.cge.appinvoice.accrec.dto.CustomerDTO;
 import ve.com.cge.appinvoice.accrec.repository.ICustomerRepository;
 import ve.com.cge.appinvoice.config.user.UserResponse;
+import ve.com.cge.jaspercompiler.JasperService;
 
 /**
  * CustomerService 
@@ -47,9 +55,11 @@ import ve.com.cge.appinvoice.config.user.UserResponse;
 public class CustomerService {
     
     private final ICustomerRepository customerRepository;
+    private final JasperService jasperService;
 
-    public CustomerService(ICustomerRepository customerRepository) {
+    public CustomerService(ICustomerRepository customerRepository, JasperService jasperService) {
         this.customerRepository = customerRepository;
+        this.jasperService = jasperService;
     }
     
     public List<Customer> findCustomers() {
@@ -84,6 +94,39 @@ public class CustomerService {
         customerRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }
+    
+    
+    public byte[] exportListToPdf() throws JRException, FileNotFoundException {
+        List<Customer> customerList = customerRepository.findAll();
+        String template = "templates/Base.jrxml";  
+        return JasperExportManager.exportReportToPdf(getReport(customerList, template));
+    }
+
+    public byte[] exportListToXls() throws JRException, FileNotFoundException {
+        List<Customer> customerList = customerRepository.findAll();
+        String template = "templates/Base.jrxml";
+        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+        SimpleOutputStreamExporterOutput output = new SimpleOutputStreamExporterOutput(byteArray);
+        JRXlsExporter exporter = new JRXlsExporter();
+        exporter.setExporterInput(new SimpleExporterInput(getReport(customerList, template)));
+        exporter.setExporterOutput(output);
+        exporter.exportReport();
+        output.close();
+        return byteArray.toByteArray();
+    }
+
+    private JasperPrint getReport(List<Customer> list, String nameReport) throws FileNotFoundException, JRException {
+        Map<String, Object> params = new HashMap<String, Object>();
+        FileInputStream logoStream = new FileInputStream(ResourceUtils.getFile("classpath:templates/invoice_logo.png").getAbsolutePath());
+        params.put("customersData", new JRBeanCollectionDataSource(list));
+        params.put("title","Customers");
+        params.put("logo", logoStream);
+        JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(
+                ResourceUtils.getFile("classpath:templates/Base.jrxml")//------------------------
+                        .getAbsolutePath()), params, new JREmptyDataSource());
+        return report;
+    }
+    
     
     public void exportJasperReport(HttpServletResponse response) throws JRException, IOException {
         List<Customer> customerList = customerRepository.findAll();

@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.accrec.controller;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import ve.com.cge.appinvoice.accrec.model.Customer;
 import java.sql.Timestamp;
@@ -28,6 +29,9 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -90,16 +94,21 @@ public class CustomerController {
     }
     
     @GetMapping(value = "/pdf")
-    public void getCustomerPDF(HttpServletResponse response) throws IOException, JRException {
-       response.setContentType("application/pdf");
-       DateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:hh:mm:ss");
-       String currentDateTime = dateFormatter.format(new Date());
-       String headerKey = "Content-Disposition";
-       String headerValue = "attachment; filename=pdf_" + currentDateTime + ".pdf";
-       response.setHeader(headerKey, headerValue);
-       customerService.exportJasperReport(response);
+    public ResponseEntity<byte[]> getCustomerPDF() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("customerReport", "customerReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(customerService.exportListToPdf());
     }
     
+    @GetMapping(value = "/xls")
+    public ResponseEntity<byte[]> getCustomerXLS() throws JRException, FileNotFoundException {
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8");
+        ContentDisposition contentDisposition= ContentDisposition.builder("attachment").filename("customerReport" + ".xls").build();
+        headers.setContentDisposition(contentDisposition);
+        return ResponseEntity.ok().headers(headers).body(customerService.exportListToXls());
+    }
     
     @PostMapping(value = "/add")
     public ResponseEntity<UserResponse> create(@RequestBody CustomerDTO request, @RequestHeader("Authorization") String token) {
