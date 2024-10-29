@@ -15,14 +15,19 @@
 
 package ve.com.cge.appinvoice.accpay.controller;
 
+import java.io.FileNotFoundException;
 import ve.com.cge.appinvoice.accpay.dto.SupplierDTO;
 import ve.com.cge.appinvoice.accpay.model.Supplier;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -81,6 +86,34 @@ public class SupplierController {
            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(supplierDTO);        
+    }
+    
+     @GetMapping(value = "/pdf/{id}")
+    public ResponseEntity<byte[]> getSupplierByIdPDF(@PathVariable Long id) throws JRException, FileNotFoundException {
+        logger.info("- Print PDF by Id : SupplierController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("supplierReport", "supplierReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(supplierService.exporByIdToPdf(id));
+    }
+    
+    @GetMapping(value = "/pdf")
+    public ResponseEntity<byte[]> getSupplierPDF() throws JRException, FileNotFoundException {
+        logger.info("- Print list PDF : SupplierController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("supplierReport", "suppliersReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(supplierService.exportListToPdf());
+    }
+    
+    @GetMapping(value = "/xls")
+    public ResponseEntity<byte[]> getSupplierXLS() throws JRException, FileNotFoundException {
+        logger.info("- Print list XLS : SupplierController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8");
+        ContentDisposition contentDisposition= ContentDisposition.builder("attachment").filename("suppliersReport" + ".xls").build();
+        headers.setContentDisposition(contentDisposition);
+        return ResponseEntity.ok().headers(headers).body(supplierService.exportListToXls());
     }
     
     @PostMapping(value = "/add")

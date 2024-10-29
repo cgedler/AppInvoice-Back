@@ -15,13 +15,18 @@
 
 package ve.com.cge.appinvoice.finance.controller;
 
+import java.io.FileNotFoundException;
 import ve.com.cge.appinvoice.finance.model.Bank;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -81,6 +86,34 @@ public class BankController {
            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(bankDTO);        
+    }
+    
+     @GetMapping(value = "/pdf/{id}")
+    public ResponseEntity<byte[]> getBankByIdPDF(@PathVariable Long id) throws JRException, FileNotFoundException {
+        logger.info("- Print PDF by Id : BankController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("bankReport", "bankReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(bankService.exporByIdToPdf(id));
+    }
+    
+    @GetMapping(value = "/pdf")
+    public ResponseEntity<byte[]> getBankPDF() throws JRException, FileNotFoundException {
+        logger.info("- Print list PDF : BankController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("bankReport", "banksReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(bankService.exportListToPdf());
+    }
+    
+    @GetMapping(value = "/xls")
+    public ResponseEntity<byte[]> getBankXLS() throws JRException, FileNotFoundException {
+        logger.info("- Print list XLS : BankController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8");
+        ContentDisposition contentDisposition= ContentDisposition.builder("attachment").filename("banksReport" + ".xls").build();
+        headers.setContentDisposition(contentDisposition);
+        return ResponseEntity.ok().headers(headers).body(bankService.exportListToXls());
     }
     
     @PostMapping(value = "/add")

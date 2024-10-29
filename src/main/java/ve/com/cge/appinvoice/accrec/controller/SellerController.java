@@ -15,13 +15,18 @@
 
 package ve.com.cge.appinvoice.accrec.controller;
 
+import java.io.FileNotFoundException;
 import ve.com.cge.appinvoice.accrec.model.Seller;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -81,6 +86,34 @@ public class SellerController {
            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(sellerDTO);        
+    }
+    
+     @GetMapping(value = "/pdf/{id}")
+    public ResponseEntity<byte[]> getSellerByIdPDF(@PathVariable Long id) throws JRException, FileNotFoundException {
+        logger.info("- Print PDF by Id : SellerController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("sellerReport", "sellerReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(sellerService.exporByIdToPdf(id));
+    }
+    
+    @GetMapping(value = "/pdf")
+    public ResponseEntity<byte[]> getSellerPDF() throws JRException, FileNotFoundException {
+        logger.info("- Print list PDF : SellerController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("sellerReport", "sellersReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(sellerService.exportListToPdf());
+    }
+    
+    @GetMapping(value = "/xls")
+    public ResponseEntity<byte[]> getSellerXLS() throws JRException, FileNotFoundException {
+        logger.info("- Print list XLS : SellerController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8");
+        ContentDisposition contentDisposition= ContentDisposition.builder("attachment").filename("sellersReport" + ".xls").build();
+        headers.setContentDisposition(contentDisposition);
+        return ResponseEntity.ok().headers(headers).body(sellerService.exportListToXls());
     }
     
     @PostMapping(value = "/add")

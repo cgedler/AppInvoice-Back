@@ -15,11 +15,27 @@
 
 package ve.com.cge.appinvoice.items.service;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.util.HashMap;
 import ve.com.cge.appinvoice.items.dto.CategoryDTO;
 import ve.com.cge.appinvoice.items.repository.ICategoryRepository;
 import java.util.List;
+import java.util.Map;
 import javax.transaction.Transactional;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRXlsExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 import org.springframework.stereotype.Service;
+import org.springframework.util.ResourceUtils;
 import ve.com.cge.appinvoice.config.user.UserResponse;
 import ve.com.cge.appinvoice.items.model.Category;
 
@@ -70,6 +86,56 @@ public class CategoryService {
     public UserResponse deleteCategory(Long id) {
         categoryRepository.deleteById(id);
         return new UserResponse("The data was delete");
-    }   
+    }
+    
+    public byte[] exporByIdToPdf(Long id) throws JRException, FileNotFoundException {
+        Category category = categoryRepository.findById(id).orElse(null);
+        String template = "templates/Base_details.jrxml";  
+        return JasperExportManager.exportReportToPdf(getReport(category, template));
+    }
+    
+    private JasperPrint getReport(Category category, String nameReport) throws FileNotFoundException, JRException {
+        Map<String, Object> params = new HashMap<String, Object>();
+        FileInputStream logoStream = new FileInputStream(ResourceUtils.getFile("classpath:templates/invoice_logo.png").getAbsolutePath());
+        params.put("id", category.getId().toString());
+        params.put("description", category.getDescription());
+        params.put("title","Category");
+        params.put("logo", logoStream);
+        JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(
+                ResourceUtils.getFile("classpath:" + nameReport)
+                        .getAbsolutePath()), params, new JREmptyDataSource());
+        return report;
+    }
+    
+    public byte[] exportListToPdf() throws JRException, FileNotFoundException {
+        List<Category> categoryList = categoryRepository.findAll();
+        String template = "templates/Base.jrxml";  
+        return JasperExportManager.exportReportToPdf(getListReport(categoryList, template));
+    }
+
+    public byte[] exportListToXls() throws JRException, FileNotFoundException {
+        List<Category> categoryList = categoryRepository.findAll();
+        String template = "templates/Base.jrxml";
+        ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
+        SimpleOutputStreamExporterOutput output = new SimpleOutputStreamExporterOutput(byteArray);
+        JRXlsExporter exporter = new JRXlsExporter();
+        exporter.setExporterInput(new SimpleExporterInput(getListReport(categoryList, template)));
+        exporter.setExporterOutput(output);
+        exporter.exportReport();
+        output.close();
+        return byteArray.toByteArray();
+    }
+
+    private JasperPrint getListReport(List<Category> list, String nameReport) throws FileNotFoundException, JRException {
+        Map<String, Object> params = new HashMap<String, Object>();
+        FileInputStream logoStream = new FileInputStream(ResourceUtils.getFile("classpath:templates/invoice_logo.png").getAbsolutePath());
+        params.put("categorysData", new JRBeanCollectionDataSource(list));
+        params.put("title","Categorys List");
+        params.put("logo", logoStream);
+        JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(
+                ResourceUtils.getFile("classpath:" + nameReport)
+                        .getAbsolutePath()), params, new JREmptyDataSource());
+        return report;
+    }
     
 }

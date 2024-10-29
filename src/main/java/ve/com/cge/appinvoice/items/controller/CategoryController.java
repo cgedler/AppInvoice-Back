@@ -15,6 +15,7 @@
 
 package ve.com.cge.appinvoice.items.controller;
 
+import java.io.FileNotFoundException;
 import ve.com.cge.appinvoice.items.model.Category;
 import ve.com.cge.appinvoice.items.service.CategoryService;
 import ve.com.cge.appinvoice.items.dto.CategoryDTO;
@@ -22,8 +23,12 @@ import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import net.sf.jasperreports.engine.JRException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.ContentDisposition;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -81,6 +86,34 @@ public class CategoryController {
            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(categoryDTO);        
+    }
+    
+     @GetMapping(value = "/pdf/{id}")
+    public ResponseEntity<byte[]> getCategoryByIdPDF(@PathVariable Long id) throws JRException, FileNotFoundException {
+        logger.info("- Print PDF by Id : CategoryController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("categoryReport", "categoryReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(categoryService.exporByIdToPdf(id));
+    }
+    
+    @GetMapping(value = "/pdf")
+    public ResponseEntity<byte[]> getCategoryPDF() throws JRException, FileNotFoundException {
+        logger.info("- Print list PDF : CategoryController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("categoryReport", "categorysReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(categoryService.exportListToPdf());
+    }
+    
+    @GetMapping(value = "/xls")
+    public ResponseEntity<byte[]> getCategoryXLS() throws JRException, FileNotFoundException {
+        logger.info("- Print list XLS : CategoryController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8");
+        ContentDisposition contentDisposition= ContentDisposition.builder("attachment").filename("categorysReport" + ".xls").build();
+        headers.setContentDisposition(contentDisposition);
+        return ResponseEntity.ok().headers(headers).body(categoryService.exportListToXls());
     }
        
     @PostMapping(value = "/add")

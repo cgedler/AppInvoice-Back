@@ -93,19 +93,30 @@ public class CustomerController {
         return ResponseEntity.ok(customerDTO);        
     }
     
-    @GetMapping(value = "/pdf")
-    public ResponseEntity<byte[]> getCustomerPDF() throws JRException, FileNotFoundException {
+    @GetMapping(value = "/pdf/{id}")
+    public ResponseEntity<byte[]> getCustomerByIdPDF(@PathVariable Long id) throws JRException, FileNotFoundException {
+        logger.info("- Print PDF by Id : CustomerController -");
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_PDF);
         headers.setContentDispositionFormData("customerReport", "customerReport.pdf");
+        return ResponseEntity.ok().headers(headers).body(customerService.exporByIdToPdf(id));
+    }
+    
+    @GetMapping(value = "/pdf")
+    public ResponseEntity<byte[]> getCustomerPDF() throws JRException, FileNotFoundException {
+        logger.info("- Print list PDF : CustomerController -");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_PDF);
+        headers.setContentDispositionFormData("customerReport", "customersReport.pdf");
         return ResponseEntity.ok().headers(headers).body(customerService.exportListToPdf());
     }
     
     @GetMapping(value = "/xls")
     public ResponseEntity<byte[]> getCustomerXLS() throws JRException, FileNotFoundException {
+        logger.info("- Print list XLS : CustomerController -");
         HttpHeaders headers = new HttpHeaders();
         headers.set("Content-Type", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet; charset=UTF-8");
-        ContentDisposition contentDisposition= ContentDisposition.builder("attachment").filename("customerReport" + ".xls").build();
+        ContentDisposition contentDisposition= ContentDisposition.builder("attachment").filename("customersReport" + ".xls").build();
         headers.setContentDisposition(contentDisposition);
         return ResponseEntity.ok().headers(headers).body(customerService.exportListToXls());
     }
