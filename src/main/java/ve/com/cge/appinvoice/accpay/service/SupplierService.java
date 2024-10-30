@@ -129,7 +129,7 @@ public class SupplierService {
     private JasperPrint getListReport(List<Supplier> list, String nameReport) throws FileNotFoundException, JRException {
         Map<String, Object> params = new HashMap<String, Object>();
         FileInputStream logoStream = new FileInputStream(ResourceUtils.getFile("classpath:templates/invoice_logo.png").getAbsolutePath());
-        params.put("suppliersData", new JRBeanCollectionDataSource(list));
+        params.put("listData", new JRBeanCollectionDataSource(list));
         params.put("title","Suppliers List");
         params.put("logo", logoStream);
         JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(

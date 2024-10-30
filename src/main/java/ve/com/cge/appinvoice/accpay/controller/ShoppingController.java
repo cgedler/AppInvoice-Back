@@ -19,7 +19,9 @@ import ve.com.cge.appinvoice.accpay.dto.ShoppingDTO;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.ResponseEntity;
@@ -73,6 +75,17 @@ public class ShoppingController {
         List<Shopping> listShoppings = new ArrayList<Shopping>();
         listShoppings = shoppingService.findShoppings();
         return listShoppings;
+    }
+    
+    @GetMapping(value = "/year/{year}")
+    public ResponseEntity<?> getShoppingsDataByYear(@PathVariable int year) {
+        logger.info("- Get list By Year : ShoppingController -");
+        Map<String, Object> params = new HashMap<String, Object>();
+        params = shoppingService.shoppingsByYear(year);
+        if (params == null) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok(params);
     }
     
     @GetMapping(value = "/{id}")

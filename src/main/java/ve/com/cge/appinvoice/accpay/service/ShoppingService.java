@@ -12,32 +12,35 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 package ve.com.cge.appinvoice.accpay.service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashMap;
 import ve.com.cge.appinvoice.accpay.model.Shopping;
 import ve.com.cge.appinvoice.accpay.repository.IShoppingRepository;
 import ve.com.cge.appinvoice.accpay.dto.ShoppingDTO;
 import java.util.List;
+import java.util.Map;
 import javax.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
+import ve.com.cge.appinvoice.accpay.dto.ShoppingByYearDTO;
 import ve.com.cge.appinvoice.accpay.model.ShoppingDetails;
 import ve.com.cge.appinvoice.accpay.repository.IShoppingDetailsRepository;
 import ve.com.cge.appinvoice.config.user.UserResponse;
 
 /**
- * ShoppingService 
- * 
+ * ShoppingService
+ *
  * @author Christopher Gedler <cgedler@gmail.com>
  * @version 1.0
  * @since Mar 22, 2024
  */
 @Service
 public class ShoppingService {
-    
+
     private static Logger logger = LoggerFactory.getLogger(ShoppingService.class);
 
     private final IShoppingRepository shoppingRepository;
@@ -47,12 +50,73 @@ public class ShoppingService {
         this.shoppingRepository = shoppingRepository;
         this.shoppingDetailsRepository = shoppingDetailsRepository;
     }
-    
+
     public List<Shopping> findShoppings() {
         List<Shopping> shoppingList = shoppingRepository.findAll();
         return shoppingList;
     }
+
+    public List<Shopping> findShoppingsByYear(int year) {
+        List<Shopping> shoppingList = shoppingRepository.findAllByYear(year);
+        return shoppingList;
+    }
+
+    public Map<String, Object> shoppingsByYear(int year) {
+        List<Shopping> listShoppings = new ArrayList<Shopping>();
+        listShoppings = findShoppingsByYear(year);
        
+        ShoppingByYearDTO shoppingByYearDTO = new ShoppingByYearDTO();
+
+        for (Shopping s : listShoppings) {
+            int month = s.getDate().getMonth();
+            switch (month) {
+                case 1:
+                    shoppingByYearDTO.setJanuary(s.getTotal());
+                    break;
+                case 2:
+                    shoppingByYearDTO.setFebruary(s.getTotal());
+                    break;
+                case 3:
+                    shoppingByYearDTO.setMarch(s.getTotal());
+                    break;
+                case 4:
+                    shoppingByYearDTO.setApril(s.getTotal());
+                    break;
+                case 5:
+                    shoppingByYearDTO.setMay(s.getTotal());
+                    break;
+                case 6:
+                    shoppingByYearDTO.setJune(s.getTotal());
+                    break;
+                case 7:
+                    shoppingByYearDTO.setJuly(s.getTotal());
+                    break;
+                case 8:
+                    shoppingByYearDTO.setAugust(s.getTotal());
+                    break;
+                case 9:
+                    shoppingByYearDTO.setSeptember(s.getTotal());
+                    break;
+                case 10:
+                    shoppingByYearDTO.setOctober(s.getTotal());
+                    break;
+                case 11:
+                    shoppingByYearDTO.setNovember(s.getTotal());
+                    break;
+                case 12:
+                    shoppingByYearDTO.setDecember(s.getTotal());
+                    break;              
+                default:
+                    throw new AssertionError();
+            }
+
+        }
+
+        Map<String, Object> params = new HashMap<String, Object>();
+
+        return params;
+    }
+
     public ShoppingDTO findShoppingById(Long id) {
         Shopping shopping = shoppingRepository.findById(id).orElse(null);
         if (shopping != null) {
@@ -70,11 +134,11 @@ public class ShoppingService {
         }
         return null;
     }
-    
+
     @Transactional
     public UserResponse insertShopping(ShoppingDTO request) {
         List<ShoppingDetails> shoppingDetails = new ArrayList<ShoppingDetails>();
-                
+
         Shopping shopping = new Shopping(
                 request.getDescription(),
                 shoppingDetails,
@@ -91,13 +155,13 @@ public class ShoppingService {
          * logger.info("Request SubTotal: " + request.getSubTotal());
          */
         shoppingRepository.save(shopping);
-        for(ShoppingDetails s : request.getShoppingDetails()) {
+        for (ShoppingDetails s : request.getShoppingDetails()) {
             s.setShopping(shopping);
             shoppingDetailsRepository.save(s);
         }
         return new UserResponse("The new data was create");
     }
-    
+
     @Transactional
     public UserResponse updateShopping(ShoppingDTO request, Long id) {
         Shopping shopping = new Shopping(
@@ -114,11 +178,11 @@ public class ShoppingService {
         shoppingRepository.save(shopping);
         return new UserResponse("The data was update");
     }
-     
+
     @Transactional
     public UserResponse deleteShopping(Long id) {
         shoppingRepository.deleteById(id);
         return new UserResponse("The data was delete");
     }
-    
+
 }

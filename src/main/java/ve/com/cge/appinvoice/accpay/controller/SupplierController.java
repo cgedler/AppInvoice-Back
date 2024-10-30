@@ -88,7 +88,7 @@ public class SupplierController {
         return ResponseEntity.ok(supplierDTO);        
     }
     
-     @GetMapping(value = "/pdf/{id}")
+    @GetMapping(value = "/pdf/{id}")
     public ResponseEntity<byte[]> getSupplierByIdPDF(@PathVariable Long id) throws JRException, FileNotFoundException {
         logger.info("- Print PDF by Id : SupplierController -");
         HttpHeaders headers = new HttpHeaders();

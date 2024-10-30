@@ -129,7 +129,7 @@ public class CategoryService {
     private JasperPrint getListReport(List<Category> list, String nameReport) throws FileNotFoundException, JRException {
         Map<String, Object> params = new HashMap<String, Object>();
         FileInputStream logoStream = new FileInputStream(ResourceUtils.getFile("classpath:templates/invoice_logo.png").getAbsolutePath());
-        params.put("categorysData", new JRBeanCollectionDataSource(list));
+        params.put("listData", new JRBeanCollectionDataSource(list));
         params.put("title","Categorys List");
         params.put("logo", logoStream);
         JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(

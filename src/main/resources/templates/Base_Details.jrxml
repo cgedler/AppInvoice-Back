@@ -12,10 +12,10 @@
 			<style mode="Opaque" backcolor="#EEEFF0"/>
 		</conditionalStyle>
 	</style>
-        <parameter name="title" class="java.lang.String"/>
-        <parameter name="logo" class="java.io.InputStream"/>
-        <parameter name="id" class="java.lang.String"/>
-        <parameter name="description" class="java.lang.String"/>
+	<parameter name="title" class="java.lang.String"/>
+	<parameter name="logo" class="java.io.InputStream"/>
+	<parameter name="id" class="java.lang.String"/>
+	<parameter name="description" class="java.lang.String"/>
 	<title>
 		<band height="112" splitType="Stretch">
 			<line>
@@ -25,13 +25,13 @@
 				</reportElement>
 			</line>
 			<staticText>
-				<reportElement x="415" y="10" width="50" height="20" uuid="0f86baff-6386-4f3f-b3fe-2388707babe8"/>
+				<reportElement x="381" y="10" width="50" height="20" uuid="0f86baff-6386-4f3f-b3fe-2388707babe8"/>
 				<box rightPadding="4"/>
 				<textElement textAlignment="Right"/>
 				<text><![CDATA[Date:]]></text>
 			</staticText>
 			<textField pattern="EEEEE dd MMMMM yyyy">
-				<reportElement x="465" y="10" width="84" height="20" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
+				<reportElement x="431" y="10" width="124" height="20" uuid="bb10dbe1-0a4f-4722-9953-c163b63cf979"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 			<image hAlign="Center">
@@ -61,7 +61,7 @@
 				<text><![CDATA[City, street, ZIP code]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="0" y="77" width="555" height="20" forecolor="#FFFFFF" backcolor="#A1A1A1" uuid="254f6c3f-86f0-4d27-9206-92dca2b771f5"/>
+				<reportElement x="0" y="75" width="555" height="20" forecolor="#000000" backcolor="#A1A1A1" uuid="254f6c3f-86f0-4d27-9206-92dca2b771f5"/>
 				<textElement textAlignment="Center">
 					<font size="11"/>
 				</textElement>
@@ -102,7 +102,7 @@
 		</band>
 	</columnHeader>
 	<detail>
-		<band height="60">
+		<band height="28">
 			<textField>
 				<reportElement x="0" y="0" width="111" height="20" uuid="691b7084-0b49-4669-b8ca-ee54183e50d7"/>
 				<box>
@@ -130,9 +130,9 @@
 		</band>
 	</detail>
 	<lastPageFooter>
-		<band height="110">
+		<band height="72">
 			<staticText>
-				<reportElement positionType="Float" mode="Opaque" x="0" y="60" width="555" height="50" backcolor="#E6E8E9" uuid="13b2c8f4-cdc6-4382-accb-81a7e3577a33"/>
+				<reportElement positionType="Float" mode="Opaque" x="0" y="18" width="555" height="50" backcolor="#E6E8E9" uuid="13b2c8f4-cdc6-4382-accb-81a7e3577a33"/>
 				<textElement textAlignment="Center">
 					<font fontName="Serif" size="9" isItalic="true"/>
 				</textElement>
@@ -141,16 +141,16 @@
 Author: Ing. Christopher Gedler]]></text>
 			</staticText>
 			<textField>
-				<reportElement mode="Opaque" x="0" y="43" width="515" height="13" backcolor="#E6E6E6" uuid="343e27be-8fe6-48b8-b192-2c8ead076e4b"/>
+				<reportElement mode="Opaque" x="0" y="2" width="515" height="13" backcolor="#E6E6E6" uuid="343e27be-8fe6-48b8-b192-2c8ead076e4b"/>
 				<textElement textAlignment="Right"/>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement mode="Opaque" x="515" y="43" width="40" height="13" backcolor="#E6E6E6" uuid="862a711d-d73c-4c43-9630-751c9b8bdadb"/>
+				<reportElement mode="Opaque" x="515" y="2" width="40" height="13" backcolor="#E6E6E6" uuid="862a711d-d73c-4c43-9630-751c9b8bdadb"/>
 				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 			<textField pattern="M/d/yy">
-				<reportElement x="0" y="43" width="280" height="13" uuid="0968f76c-ee0f-448b-99cf-5b722bc56841"/>
+				<reportElement x="0" y="2" width="280" height="13" uuid="0968f76c-ee0f-448b-99cf-5b722bc56841"/>
 				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
 			</textField>
 		</band>

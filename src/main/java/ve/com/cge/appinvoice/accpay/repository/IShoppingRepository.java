@@ -15,7 +15,9 @@
 
 package ve.com.cge.appinvoice.accpay.repository;
 
+import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import ve.com.cge.appinvoice.accpay.model.Shopping;
 
@@ -29,6 +31,7 @@ import ve.com.cge.appinvoice.accpay.model.Shopping;
 @Repository
 public interface IShoppingRepository extends JpaRepository<Shopping, Long> {
     
-    
+    @Query(value = "SELECT s FROM Shopping s WHERE year(s.date) = ?1")
+    List<Shopping> findAllByYear(int year);
 
 }

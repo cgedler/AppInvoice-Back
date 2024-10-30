@@ -105,8 +105,8 @@ public class ItemService {
         params.put("id", item.getId().toString());
         params.put("description", item.getDescription());
         params.put("category", item.getCategory().getDescription());
-        params.put("price", item.getPrice().getPrice());
-        params.put("stock", item.getStock().getQuantity());
+        params.put("price", item.getPrice().getPrice().toString());
+        params.put("stock", item.getStock().getQuantity().toString());
         params.put("title","Item");
         params.put("logo", logoStream);
         JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(

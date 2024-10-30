@@ -99,7 +99,7 @@ public class TaxesService {
         FileInputStream logoStream = new FileInputStream(ResourceUtils.getFile("classpath:templates/invoice_logo.png").getAbsolutePath());
         params.put("id", taxes.getId().toString());
         params.put("description", taxes.getDescription());
-        params.put("description", taxes.getTax());
+        params.put("tax", taxes.getTax());
         params.put("title","Taxes");
         params.put("logo", logoStream);
         JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(
@@ -131,7 +131,7 @@ public class TaxesService {
         Map<String, Object> params = new HashMap<String, Object>();
         FileInputStream logoStream = new FileInputStream(ResourceUtils.getFile("classpath:templates/invoice_logo.png").getAbsolutePath());
         params.put("taxesData", new JRBeanCollectionDataSource(list));
-        params.put("title","Taxess List");
+        params.put("title","Taxes List");
         params.put("logo", logoStream);
         JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(
                 ResourceUtils.getFile("classpath:" + nameReport)

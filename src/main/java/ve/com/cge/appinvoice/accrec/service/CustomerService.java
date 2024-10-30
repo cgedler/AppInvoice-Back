@@ -16,10 +16,8 @@
 package ve.com.cge.appinvoice.accrec.service;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.HashMap;
 import ve.com.cge.appinvoice.accrec.model.Customer;
 import java.util.List;
@@ -131,7 +129,7 @@ public class CustomerService {
     private JasperPrint getListReport(List<Customer> list, String nameReport) throws FileNotFoundException, JRException {
         Map<String, Object> params = new HashMap<String, Object>();
         FileInputStream logoStream = new FileInputStream(ResourceUtils.getFile("classpath:templates/invoice_logo.png").getAbsolutePath());
-        params.put("customersData", new JRBeanCollectionDataSource(list));
+        params.put("listData", new JRBeanCollectionDataSource(list));
         params.put("title","Customers List");
         params.put("logo", logoStream);
         JasperPrint report = JasperFillManager.fillReport(JasperCompileManager.compileReport(
