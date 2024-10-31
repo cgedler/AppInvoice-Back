@@ -64,56 +64,52 @@ public class ShoppingService {
     public Map<String, Object> shoppingsByYear(int year) {
         List<Shopping> listShoppings = new ArrayList<Shopping>();
         listShoppings = findShoppingsByYear(year);
-       
         ShoppingByYearDTO shoppingByYearDTO = new ShoppingByYearDTO();
-
         for (Shopping s : listShoppings) {
             int month = s.getDate().getMonth();
             switch (month) {
-                case 1:
+                case 0:
                     shoppingByYearDTO.setJanuary(s.getTotal());
                     break;
-                case 2:
+                case 1:
                     shoppingByYearDTO.setFebruary(s.getTotal());
                     break;
-                case 3:
+                case 2:
                     shoppingByYearDTO.setMarch(s.getTotal());
                     break;
-                case 4:
+                case 3:
                     shoppingByYearDTO.setApril(s.getTotal());
                     break;
-                case 5:
+                case 4:
                     shoppingByYearDTO.setMay(s.getTotal());
                     break;
-                case 6:
+                case 5:
                     shoppingByYearDTO.setJune(s.getTotal());
                     break;
-                case 7:
+                case 6:
                     shoppingByYearDTO.setJuly(s.getTotal());
                     break;
-                case 8:
+                case 7:
                     shoppingByYearDTO.setAugust(s.getTotal());
                     break;
-                case 9:
+                case 8:
                     shoppingByYearDTO.setSeptember(s.getTotal());
                     break;
-                case 10:
+                case 9:
                     shoppingByYearDTO.setOctober(s.getTotal());
                     break;
-                case 11:
+                case 10:
                     shoppingByYearDTO.setNovember(s.getTotal());
                     break;
-                case 12:
+                case 11:
                     shoppingByYearDTO.setDecember(s.getTotal());
                     break;              
                 default:
-                    throw new AssertionError();
+                    break;
             }
-
         }
-
         Map<String, Object> params = new HashMap<String, Object>();
-
+        params.put("ShoppingByYearDTO", shoppingByYearDTO);
         return params;
     }
 
