@@ -12,9 +12,9 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+
 package ve.com.cge.appinvoice.accpay.service;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import ve.com.cge.appinvoice.accpay.model.Shopping;

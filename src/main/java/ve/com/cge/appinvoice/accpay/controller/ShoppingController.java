@@ -68,7 +68,6 @@ public class ShoppingController {
         this.shoppingService = shoppingService;
     }
   
-    
     @GetMapping(value = "/")
     public List<Shopping> getShoppingsData() {
         logger.info("- Get list : ShoppingController -");
