@@ -15,17 +15,17 @@ spring:
     # MSSQL
     url: jdbc:sqlserver://ASUS\\SQL2014:1433;databaseName=jwt;TrustServerCertificate=True;
     username: profit
-    password: profit
+    password:
     driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
     # Postgres
     # url: jdbc:postgresql://localhost:5432/jwt
     # username: postgres
-    # password: 1234
+    # password:
     # driver-class-name: org.postgresql.Driver
     # MySQL
     # url: jdbc:mysql://${MYSQL_HOST:localhost}:3306/jwt
     # username: cge
-    # password: "%Clave01%"
+    # password:
     # driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
